@@ -17,3 +17,7 @@ Moocambo (<b>moocambo.js</b>): client-side javascript intended to communicate to
 - addHtml: appends an HTML file content (fragment) to the element specified
 - replaceHtml: replaces the element specified with an HTML file content (fragment)
 - executeJS: execute functions on remotes javascript files
+
+Moocambo UI (<b>moocambo_ui.js</b>): UI functions and objects used by any application.
+Moocambo DB (<b>moocambo_db.js</b>): DB functions and objects used by any application.
+Moocambo Util (<b>moocambo_util.js</b>): Utility functions and objects used by any application.
