@@ -3,7 +3,7 @@
 */
 var initFunction = "init",
     moocambo_socket_server = require("./moocambo_socket_server"),
-    host = "localhost";
+    host = "localhost"; //Change to the real IP in production environment
 
 moocambo_socket_server.listen(9999, host, function(ctx) {
     var app;
