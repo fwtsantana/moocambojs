@@ -221,13 +221,34 @@ function prepareJSFunction(jsFunction) {
 function getValue(elem) {
     var tents = [elem.value, elem.getAttribute('data-value'), elem.textContent];
     
-    var valor;
+    var value;
     for (var i=0; i <= tents.length;i++) {
-        valor = tents[i];
-        if (valor) break;
+        value = tents[i];
+        if (value) break;
     }
     
-    console.log(elem + " - " + valor);
+    if(typeof value == "string") {
+        value = prepareStringValue(value);
+    }
     
-    return valor;
+    console.log(elem + " - " + value);
+    
+    return value;
+}
+
+function prepareStringValue(strValue) {
+    var parts = strValue.trim().split("'");
+
+    if (parts.length == 1) return strValue;
+
+    var outcome = "";
+    for(var i in parts) {
+        if (i == 0) {
+            outcome += parts[i];
+        } else {
+            outcome += "\\'" + parts[i];
+        }
+    }
+
+    return outcome;
 }
