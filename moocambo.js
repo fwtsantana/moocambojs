@@ -1,13 +1,176 @@
 // WebSocket Object
 var	wsocket;
 
-//Define application name
-var url_parts = location.pathname.split("/");
-
 //Client context
 var ctx = {
-    app : url_parts[1],
+    app : location.pathname.replace(/\//g, ""),
+    path : "",
     eventID : ""
+};
+
+var privatefunctions = {
+    prepareStringValue: function(strValue) {
+        'use strict';
+
+        strValue = strValue.split("\\").join("");
+
+        var parts = strValue.trim().split("'");
+
+        if (parts.length == 1) return strValue;
+
+        var outcome = "";
+        for(var i in parts) {
+            if (i == 0) {
+                outcome += parts[i];
+            } else {
+                outcome += "\\'" + parts[i];
+            }
+        }
+
+        return outcome;
+    }
+    , prepareJSFunction: function(jsFunction) {
+        if (!jsFunction) return "";
+
+        var index = jsFunction.indexOf('(');
+
+        var args = jsFunction.substring(jsFunction.indexOf('(') + 1, jsFunction.lastIndexOf(')'));
+
+        if (index == -1) return jsFunction;
+
+        var funcao = jsFunction.split('(')[0];
+
+        return funcao + '(' + privatefunctions.prepareArguments(args) + ')';
+    }
+    , validateConnection: function(websocket, file, uiRef, initArgs) {
+        'use strict';
+        if (websocket.readyState != 1) {
+            console.log("Connecting again...");
+            connect(file,uiRef,initArgs);
+
+            if (websocket.readyState != 1) {
+                console.log("Unable to connect!");
+            }
+
+            return false;
+        }
+        return true;
+    }
+    , updateElem: function(elem, uiFragment) {
+        'use strict';
+        elem.parentNode.replaceChild(privatefunctions.text2dom(uiFragment), elem);
+    }
+    , validateUIReference: function(uiRef) {
+        'use strict';
+        //Verifying element existence
+        if (!document.getElementById(uiRef)) {
+            console.log("Invalid UI Reference (" + uiRef + ")");
+            return false;
+        }
+
+        return true;
+    }
+    , validateUIOperation: function(uiOper) {
+        'use strict';
+
+        switch(uiOper) {
+            case "add", "replace":
+                return true;
+            default:
+                console.log("Invalid UI operation!");
+                return false;
+        }
+    }
+    , processResponse: function(data) {
+        'use strict';
+
+        var obj = JSON.parse(data),
+            uiFragment = decodeURI(obj.uiFragment),
+            elem = document.getElementById(obj.uiRef);
+
+        if (obj.path != "undefined") ctx.path = obj.path;
+
+        if (!elem) return;
+
+        if (obj.uiOper === "add") {
+            elem.appendChild(privatefunctions.text2dom(uiFragment));
+        } else if (obj.uiOper === "replace") {
+            privatefunctions.updateElem(elem, uiFragment);
+        }
+    }
+    , text2dom: function(text) {
+        'use strict';
+        var tmp = document.createElement("div");
+        tmp.innerHTML = text;
+        return tmp.childNodes[0];
+    }
+    , sendRequest: function(type, file, uiOper, uiRef, jsFunction, initArgs) {
+        var validate = false;
+
+        if (!file) file = ctx.path;
+
+        //Validate connection to the websocket
+        validate = privatefunctions.validateConnection(wsocket, file, uiRef, initArgs);
+
+        if (type === "html") {
+            validate &= privatefunctions.validateUIReference(uiRef);
+            validate &= privatefunctions.validateUIOperation(uiOper);
+        }
+
+        if (!validate) return;
+
+        ctx.eventID = ctx.app + type + file + uiOper + uiRef + initArgs;
+
+        var objEnviar = {
+        req: {
+            app: ctx.app
+            , type: type
+            , file: file
+            , jsFunction: jsFunction
+            , initArgs: initArgs
+        }, res: {
+            uiOper: uiOper
+            , uiRef: uiRef
+                }
+        },
+        dados = JSON.stringify(objEnviar);
+        wsocket.send(dados);
+    }
+    , validateArgumentsListSize: function () {
+        'use strict';
+        if (args.length >= 3) {
+            console.log("Invalid args list size!");
+        }
+        return (args.length >= 3);
+    }
+    , validateJSCommand: function(comandoJS) {
+        'use strict';
+        //TODO: validate
+
+        return true;
+    }
+    , prepareArguments: function(args) {
+        'use strict';
+
+        if (!args) return "";
+
+        var argz = args.replace(/,/g,', ').split(',');
+
+        args = "";
+        for(var i in argz) {
+            if (i>0) args += ', ';
+
+            var res = eval(argz[i]);
+
+            if (parseInt(res) != res && parseFloat(res) != res) {
+                res = "'" + res + "'";
+            }
+
+            args += res;
+        }
+
+        return args;
+    }
 };
 
 function connect(htmlFile, uiRef, initArgs) {
@@ -44,178 +207,30 @@ function connect(htmlFile, uiRef, initArgs) {
     
 	// Listen for new messages arriving at the client
 	wsocket.onmessage = function (e) {
-        processResponse(e.data);
+        privatefunctions.processResponse(e.data);
 		ctx.eventID = "";
 	};
 }
 
-function processResponse(data) {
-    'use strict';
-    
-    var obj = JSON.parse(data),
-        uiFragment = decodeURI(obj.uiFragment),
-        elem = document.getElementById(obj.uiRef);
-
-    if (!elem) return;
-    
-	if (obj.uiOper === "add") {
-		elem.appendChild(text2dom(uiFragment));
-	} else if (obj.uiOper === "replace") {
-        updateElem(elem, uiFragment);
-	}
-}
-
-function text2dom(text) {
-    'use strict';
-	var tmp = document.createElement("div");
-	tmp.innerHTML = text;
-	return tmp.childNodes[0];
-}
-
-function validateArgumentsListSize() {
-    'use strict';
-    if (args.length >= 3) {
-        console.log("Invalid args list size!");
-    }
-    return (args.length >= 3);
-}
-
-function validateUIOperation(uiOper) {
-    'use strict';
-	
-    switch(uiOper) {
-        case "add", "replace":
-            return true;
-        default:
-            console.log("Invalid UI operation!");
-            return false;
-    }
-}
-
-function validateConnection(websocket, file, uiRef, initArgs) {
-    'use strict';
-    if (websocket.readyState != 1) {
-        console.log("Connecting again...");
-        connect(file,uiRef,initArgs);
-        
-        if (websocket.readyState != 1) {
-            console.log("Unable to connect!");
-        }
-        
-		return false;
-	}
-    return true;
-}
-
-function validateUIReference(uiRef) {
-    'use strict';
-    //Verifying element existence
-    if (!document.getElementById(uiRef)) {
-        console.log("Invalid UI Reference (" + uiRef + ")");
-        return false;
-    }
-    
-	return true;
-}
-
-function validateJSCommand(comandoJS) {
-    'use strict';
-    //TODO: validate
-    
-    return true;
-}
-
-function sendRequest(app, type, file, uiOper, uiRef, jsFunction, initArgs) {
-    var validate = false;
-    
-    //Validate connection to the websocket
-    validate = validateConnection(wsocket, file, uiRef, initArgs);
-    
-    if (type === "html") {
-        validate &= validateUIReference(uiRef);
-        validate &= validateUIOperation(uiOper);
-    }
-    
-    if (!validate) return;
-    
-	ctx.eventID = app + type + file + uiOper + uiRef + initArgs;
-    
-    var objEnviar = {
-    req: {
-        app: app
-        , type: type
-        , file: file
-        , jsFunction: jsFunction
-        , initArgs: initArgs
-    }, res: {
-        uiOper: uiOper
-        , uiRef: uiRef
-            }
-    },
-    dados = JSON.stringify(objEnviar);
-    wsocket.send(dados);
-}
-
 function addHtml(file, uiRef, initArgs) {
     'use strict';
-    sendRequest(ctx.app, "html", file, "add", uiRef, "", prepareArguments(initArgs));
+    console.log('addHtml function');
+    
+    privatefunctions.sendRequest("html", file, "add", uiRef, "", privatefunctions.prepareArguments(initArgs));
 }
 
 function replaceHtml(file, uiRef, initArgs) {
     'use strict';
-    console.log('replaceHtml');
-    sendRequest(ctx.app, "html", file, "replace", uiRef, "", prepareArguments(initArgs));
+    console.log('replaceHtml function');
+    
+    privatefunctions.sendRequest("html", file, "replace", uiRef, "", privatefunctions.prepareArguments(initArgs));
 }
 
-function updateElem(elem, uiFragment) {
+function executeJS(jsFunction, file) {
     'use strict';
+    console.log("executeJS function");
     
-    elem.parentNode.replaceChild(text2dom(uiFragment), elem);
-}
-
-function executeJS(file, jsFunction) {
-    'use strict';
-    
-    console.log(jsFunction);
-    
-    sendRequest(ctx.app, "js", file, "", "", prepareJSFunction(jsFunction));
-}
-
-function prepareArguments(args) {
-    'use strict';
-    
-    if (!args) return "";
-    
-    var argz = args.replace(/,/g,', ').split(',');
-    
-    args = "";
-    for(var i in argz) {
-        if (i>0) args += ', ';
-        
-        var res = eval(argz[i]);
-        
-        if (parseInt(res) != res && parseFloat(res) != res) {
-            res = "'" + res + "'";
-        }
-        
-        args += res;
-    }
-    
-    return args;
-}
-
-function prepareJSFunction(jsFunction) {
-    if (!jsFunction) return "";
-    
-    var index = jsFunction.indexOf('(');
-    
-    var args = jsFunction.substring(jsFunction.indexOf('(') + 1, jsFunction.lastIndexOf(')'));
-    
-    if (index == -1) return jsFunction;
-    
-    var funcao = jsFunction.split('(')[0];
-    
-    return funcao + '(' + prepareArguments(args) + ')';
+    privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
 }
 
 function getValue(elem) {
@@ -224,31 +239,13 @@ function getValue(elem) {
     var value;
     for (var i=0; i <= tents.length;i++) {
         value = tents[i];
-        if (value) break;
+        
+        if (value != undefined) break;
     }
     
     if(typeof value == "string") {
-        value = prepareStringValue(value);
+        value = privatefunctions.prepareStringValue(value);
     }
-    
-    console.log(elem + " - " + value);
     
     return value;
-}
-
-function prepareStringValue(strValue) {
-    var parts = strValue.trim().split("'");
-
-    if (parts.length == 1) return strValue;
-
-    var outcome = "";
-    for(var i in parts) {
-        if (i == 0) {
-            outcome += parts[i];
-        } else {
-            outcome += "\\'" + parts[i];
-        }
-    }
-
-    return outcome;
 }

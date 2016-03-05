@@ -3,36 +3,57 @@
 */
 var initFunction = "init",
     moocambo_socket_server = require("./moocambo_socket_server"),
-    host = "localhost"; //Change to the real IP in production environment
+//    host = "10.65.11.79";
+    host = "localhost";
 
 moocambo_socket_server.listen(9999, host, function(ctx) {
-    var app;
+    'use strict';
+    
+    var app, lastFragment, mongodb;
     
 	console.log("#####################################################\nCONNECTED ON " + host);
     
-    ctx.loadPage = function(ctx, path, uiOper, uiRef, initArgs) {
+    ctx.setMongoDB = function(newDB) {
+        this.mongodb = newDB;
+    };
+    
+    ctx.db = function() {
+        return this.mongodb;
+    }
+    
+    ctx.loadPage = function(path, uiOper, uiRef, initArgs) {
         'use strict';
-        console.log("loadPage function");
         
         try {
+            this.lastFragment = path;
+            
+            if (!initArgs) initArgs="";
+            
             var fs = require("fs"), jsFunction = initFunction + "(" + initArgs + ")";
             
-            var uiFragment = fs.readFileSync(app.appName + "/" + path + ".html", 'utf-8');
+            var uiFragment = fs.readFileSync(app.appName + "/" + this.lastFragment + ".html", 'utf-8');
             
             this.loadFragment(uiFragment, uiOper, uiRef);
             
-            loadJS(app, ctx, path, jsFunction);
+            loadJS(app, this, this.lastFragment, jsFunction);
             
         } catch(err) {
             console.log("[LOAD_PAGE_ERROR] = " + err);
+            this.lastFragment = "";
         }
     };
     
     ctx.loadFragment = function(uiFragment, uiOper, uiRef) {
-        'use strict';        
-        var ret  ='{"uiOper":"' + uiOper + '", "uiRef":"' +  uiRef +'","uiFragment":"' + encodeURI(uiFragment) + '"}';
+        'use strict';
+        console.log("loadFragment function");
+        
+        var ret  ='{"uiOper":"' + uiOper + '", "uiRef":"' +  uiRef +'","uiFragment":"' + encodeURI(uiFragment) + '","path":"' + this.lastFragment + '"}';
         
         this.send(ret);
+    };
+    
+    ctx.log = function(obj) {
+        console.log("[LOG@" + ctx.sessionID + "--" + new Date().toISOString() + "]:", Object.keys(obj).slice(-1)[0] + " function");
     };
     
 	ctx.on("data", function(opcode, dados) {
@@ -46,15 +67,17 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
 	});
 	
 	ctx.on("close", function(code, reason) {
+        if (ctx.db()) ctx.db().close();
         console.log("Connection closed: ", code, reason);
 	});
 });
 
 function processRequest(app, ctx, incomingData) {
+    'use strict';
+    
     var type = incomingData.req.type;
     if (type == "html"){
-        ctx.loadPage(ctx
-                        , incomingData.req.file
+        ctx.loadPage(incomingData.req.file
                         , incomingData.res.uiOper
                         , incomingData.res.uiRef
                         , incomingData.req.initArgs);
@@ -68,6 +91,8 @@ function processRequest(app, ctx, incomingData) {
 }
 
 function loadApp(ctx, incomingData) {
+    'use strict';
+    
     var appName = incomingData.req.app;
     
     console.log("Loading App " + appName + "...");
@@ -80,9 +105,10 @@ function loadApp(ctx, incomingData) {
 }
 
 function loadJS(app, ctx, jsModule, jsFunction) {
+    'use strict';
+    
     try {
         var caminhoModuloJS = "./" + app.appName + "/" + jsModule + ".js";
-        
         var js = reloadModule(caminhoModuloJS, ctx, app);
         
         console.log(jsModule + " loaded");
@@ -98,7 +124,6 @@ function loadJS(app, ctx, jsModule, jsFunction) {
 
 function reloadModule(nomeModulo, ctx, app) {
     'use strict';
-    console.log("reloadModule function");
     
     uncache(nomeModulo);
     
@@ -110,6 +135,8 @@ function reloadModule(nomeModulo, ctx, app) {
 }
 
 function uncache(moduleName) {
+    'use strict';
+    
     // Run over the cache looking for the files
     // loaded by the specified module name
     searchCache(moduleName, function (mod) {
@@ -121,6 +148,8 @@ function uncache(moduleName) {
  * Runs over the cache to search for all the cached files.
  */
 function searchCache(moduleName, callback) {
+    'use strict';
+    
     // Resolve the module identified by the specified name
     var mod = require.resolve(moduleName);
  
@@ -140,3 +169,16 @@ function searchCache(moduleName, callback) {
         })(mod);
     }
 };
+
+
+//var crypto = require('crypto');
+//
+//function randomValueHex (len) {
+//    return crypto.randomBytes(Math.ceil(len/2))
+//        .toString('hex') // convert to hexadecimal format
+//        .slice(0,len);   // return required number of characters
+//}
+//
+//var value1 = randomValueHex(12) // value 'd5be8583137b'
+//var value2 = randomValueHex(2)  // value 'd9'
+//var value3 = randomValueHex(7)  // value 'ad0fc8c'

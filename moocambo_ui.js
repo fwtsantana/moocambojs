@@ -1,13 +1,19 @@
 module.exports = {
-    select: function(idObjeto, arrayDados) {
-        var ret = "<select id='" + idObjeto + "'>";
-
-        for(var i=0; i<arrayDados.length; i++) {
-            ret += "<option value='" + arrayDados[i][0].value + "'>" + arrayDados[i][1].value + "</option>";
+    mongodb:{
+        select: function(elemId, elemAttr, data) {
+            
+            if (data == null) return this.select(elemId, elemAttr, "");
+            
+            var content="";
+            for(var i=0; i< Object.keys(data).length; i++) {
+                content += "<option value='" + data[i][0].value + "'>" + data[i][1].value + "</option>";
+            }
+            
+            return this.select(elemId, elemAttr, content);
         }
-        ret += "</select>";
-        
-        return ret;
+    }
+    , select: function(elemId, elemAttr, elemContents) {
+        return createElem("select", elemId, elemAttr, elemContents);
     }
     , div: function(elemId, elemAttr, elemContents) {
         return createElem("div", elemId, elemAttr, elemContents);
@@ -20,6 +26,12 @@ module.exports = {
     }
     , input: function(elemId, elemAttr, elemContents) {
         return createElem("input", elemId, elemAttr, elemContents);
+    }
+    , a: function(elemId, elemAttr, elemContents) {
+        return createElem("a", elemId, elemAttr, elemContents);
+    }
+    , button: function(elemId, elemAttr, elemContents) {
+        return createElem("button", elemId, elemAttr, elemContents);
     }
     
 }

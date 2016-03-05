@@ -238,65 +238,58 @@ exports.listen = function (port, host, connectionHandler) {
 //    var srv = https.createServer(options, function (req, res) {
     var srv = http.createServer(function (req, res) {
         
-        var path = req.url.replace(/\/\/+/g, '/');
+        var hasPeriod = (req.url.split('.').length > 1); 
         
-        if (path == '/') return;
+        var path = "";
         
-        var req_parts = path.split('.');
+        req.url = req.url.replace(/\/\//g,"\/");
         
-        if (req_parts.length == 1) {
-            if (path.slice(-1) === '/') {
-                path = path.substring(0, path.length - 1);
-                hasFinalSlash = true;
-                app = path;
-            }
-            fs.createReadStream("." + path + path + ".html").pipe(res);            
+        //Main page
+        if (!hasPeriod) {
             
-        }  else {
-            if (!hasFinalSlash) {
-                res.end();
-                return;
-            }
+            app = "/" + req.url.replace(/\//g,"");
             
-            //Main javascript
-            if (path.indexOf("moocambo.js") > -1) {
-                res.writeHead(200, {'content-type':'text/javascript'});
-                fs.createReadStream('./moocambo.js').pipe(res);
-                return;
-            }
+            hasFinalSlash = (req.url.slice(-1) === "/");
             
-            var ext = req_parts[1];
+            path = "." + app + app + ".html";
             
-            switch(ext) {
-                case "js":
-                    res.writeHead(200, {'content-type':'text/javascript'});
-                    break;
-                case "css":
-                    res.writeHead(200, {'content-type':'text/css'});
-                    break;
-                case "svg":
-                    res.writeHead(200, {'content-type':'image/svg+xml'});
-                    break;
-                case "ico":
-                    res.writeHead(200, {'content-type':'image/x-icon'});
-                    break;
-                default:
-            }
-            
-            if (path.indexOf(app) === 0) {
-                path = "." + path;
+        } else {
+            if (hasFinalSlash){
+                path = "." + req.url;
+                
             } else {
-                path = "." + app + path;
+                if (fs.existsSync("." + req.url)){
+                    path = "." + req.url;
+                } else {
+                    path = "." + app + req.url;
+                }
             }
-            
-            fs.createReadStream(path).pipe(res);
         }
+        
+        var rs = fs.createReadStream(path);
+        
+        rs.on('open', function(){
+            rs.pipe(res);
+        });
+        
+        rs.on('error', function(){
+            fs.createReadStream("./notfound.html").pipe(res);
+        });
+        
     });
     
     srv.on('upgrade', function (req, socket, upgradeHead) {
         var ws = new WebSocketConnection(req, socket, upgradeHead);
         connectionHandler(ws);
+        
+        if (!ws.sessionID) ws.sessionID = randomValueHex(12);
     });
 
     srv.listen(port, host);
 };
+
+function randomValueHex (len) {
+    return crypto.randomBytes(Math.ceil(len/2))
+        .toString('hex') // convert to hexadecimal format
+        .slice(0,len);   // return required number of characters
+}
