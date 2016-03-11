@@ -44,7 +44,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
     
     ctx.loadFragment = function(uiFragment, uiOper, uiRef) {
         'use strict';
-        console.log("loadFragment function");
+        this.logHtml(this.lastFragment);
         
         var ret  ='{"uiOper":"' + uiOper + '", "uiRef":"' +  uiRef +'","uiFragment":"' + encodeURI(uiFragment) + '","path":"' + this.lastFragment + '"}';
         
@@ -58,9 +58,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
             var caminhoModuloJS = "./" + app.appName + "/" + jsModule + ".js";
             var js = reloadModule(caminhoModuloJS, this, app);
 
-            console.log(jsModule + " loaded");
-
-            console.log("Calling " + 'js.' + jsFunction);
+            this.logJS(jsModule + "/" + jsFunction);
 
             eval('js.' + jsFunction);
 
@@ -69,9 +67,26 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
         }
     }
     
-    ctx.log = function(obj) {
-        console.log("[LOG@" + ctx.sessionID + "--" + new Date().toISOString() + "]:  ", Object.keys(obj).slice(-1)[0] + " function");
+    ctx.log = function(msg) {
+        var data = new Date().toLocaleDateString();
+        var timestamp = data.split('-')[2] + '/' + data.split('-')[1] + '/' + data.split('-')[0];
+        
+//        console.log("[", timestamp,  " ", new Date().toLocaleTimeString(), "][LOG@", ctx.sessionID, "]: Calling ", Object.keys(obj).slice(-1)[0].trim(), " function");
+        console.log("[", timestamp, new Date().toLocaleTimeString(), "][LOG@", this.sessionID, "]: \n\t", msg);
+        
     };
+    
+    ctx.logJS = function(functionName) {
+        var msg = "Calling " + functionName + " function";
+        
+        this.log(msg);
+    };
+    
+    ctx.logHtml = function(pageName) {
+        var msg = "Loading page/fragment " + pageName;
+        
+        this.log(msg);
+    }
     
 	ctx.on("data", function(opcode, dados) {
         console.log("Receiving data...");
