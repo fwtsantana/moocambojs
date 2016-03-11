@@ -3,7 +3,6 @@
 */
 var initFunction = "init",
     moocambo_socket_server = require("./moocambo_socket_server"),
-//    host = "10.65.11.79";
     host = "localhost";
 
 moocambo_socket_server.listen(9999, host, function(ctx) {
@@ -35,7 +34,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
             
             this.loadFragment(uiFragment, uiOper, uiRef);
             
-            loadJS(app, this, this.lastFragment, jsFunction);
+            this.loadJS(app, this.lastFragment, jsFunction);
             
         } catch(err) {
             console.log("[LOAD_PAGE_ERROR] = " + err);
@@ -52,6 +51,24 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
         this.send(ret);
     };
     
+    ctx.loadJS = function(app, jsModule, jsFunction) {
+        'use strict';
+
+        try {
+            var caminhoModuloJS = "./" + app.appName + "/" + jsModule + ".js";
+            var js = reloadModule(caminhoModuloJS, this, app);
+
+            console.log(jsModule + " loaded");
+
+            console.log("Calling " + 'js.' + jsFunction);
+
+            eval('js.' + jsFunction);
+
+        } catch(err) {
+            console.log("ERROR = " + err);
+        }
+    }
+    
     ctx.log = function(obj) {
         console.log("[LOG@" + ctx.sessionID + "--" + new Date().toISOString() + "]:", Object.keys(obj).slice(-1)[0] + " function");
     };
@@ -61,34 +78,26 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
         
         var incomingData = JSON.parse(dados);
         
-        if (!app) app = loadApp(ctx, incomingData);
-                
-        processRequest(app, ctx, incomingData);
+        if (!app) app = loadApp(this, incomingData);
+        
+        //Processing request
+        var type = incomingData.req.type;
+        if (type == "html"){
+            this.loadPage(incomingData.req.file
+                            , incomingData.res.uiOper
+                            , incomingData.res.uiRef
+                            , incomingData.req.initArgs);
+
+        } else if (type == "js"){
+            this.loadJS(app, incomingData.req.file, incomingData.req.jsFunction);
+        }
 	});
 	
 	ctx.on("close", function(code, reason) {
-        if (ctx.db()) ctx.db().close();
+        if (this.db()) this.db().close();
         console.log("Connection closed: ", code, reason);
 	});
 });
-
-function processRequest(app, ctx, incomingData) {
-    'use strict';
-    
-    var type = incomingData.req.type;
-    if (type == "html"){
-        ctx.loadPage(incomingData.req.file
-                        , incomingData.res.uiOper
-                        , incomingData.res.uiRef
-                        , incomingData.req.initArgs);
-        
-    } else if (type == "js"){
-        loadJS(app
-                           , ctx
-                           , incomingData.req.file
-                           , incomingData.req.jsFunction);
-    }
-}
 
 function loadApp(ctx, incomingData) {
     'use strict';
@@ -102,24 +111,6 @@ function loadApp(ctx, incomingData) {
     aplic.appName = appName;
     
     return aplic;
-}
-
-function loadJS(app, ctx, jsModule, jsFunction) {
-    'use strict';
-    
-    try {
-        var caminhoModuloJS = "./" + app.appName + "/" + jsModule + ".js";
-        var js = reloadModule(caminhoModuloJS, ctx, app);
-        
-        console.log(jsModule + " loaded");
-
-        console.log("Calling " + 'js.' + jsFunction);
-        
-        eval('js.' + jsFunction);
-
-    } catch(err) {
-        console.log("ERROR = " + err);
-    }
 }
 
 function reloadModule(nomeModulo, ctx, app) {
