@@ -62,7 +62,6 @@ module.exports = {
     , ui: {
         emptyDiv: function(ctx, elemId, ui) {
             'use strict';
-            console.log("emptyDiv function");
             
             ctx.loadFragment(ui.div(elemId,[],""), "replace", elemId);
         }

@@ -214,21 +214,18 @@ function connect(htmlFile, uiRef, initArgs) {
 
 function addHtml(file, uiRef, initArgs) {
     'use strict';
-    console.log('addHtml function');
     
     privatefunctions.sendRequest("html", file, "add", uiRef, "", privatefunctions.prepareArguments(initArgs));
 }
 
 function replaceHtml(file, uiRef, initArgs) {
     'use strict';
-    console.log('replaceHtml function');
     
     privatefunctions.sendRequest("html", file, "replace", uiRef, "", privatefunctions.prepareArguments(initArgs));
 }
 
 function executeJS(jsFunction, file) {
     'use strict';
-    console.log("executeJS function");
     
     privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
 }

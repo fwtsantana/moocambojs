@@ -28,8 +28,7 @@ module.exports = {
         });
     }
     , dataUIElement: function(app, ctx, dbConfig, elemId, elementoUI, uiOper, uiRef, query, onError) {
-        console.log("dataUIElement function");
-        
+        'use strict';
         var onSuccess = function(rowCount, data) {
             console.log(rowCount + ' rows returned.');
             ctx.loadFragment(elementoUI(elemId, data), uiOper, uiRef);
@@ -38,7 +37,8 @@ module.exports = {
         this.executeSQL(app, ctx, dbConfig, query, onError, onSuccess);
     }
     , dataHTMLSelect : function(app, ctx, dbConfig, sqlQuery, elemId) {
-        console.log("dataHTMLSelect function");
+        'use strict';
+        
         this.dataUIElement(app, ctx, dbConfig, elemId, app.ui.listaSuspensa, "replace", elemId, sqlQuery);
     }
     , SQL: {
@@ -66,7 +66,6 @@ module.exports = {
     }
     , mongodb: function(url, ctx, dbFunction, uiReprFunction) {
         'use strict';
-        ctx.log(this);
         
         var execMongo = function(db, uiReprFunction) {
             
