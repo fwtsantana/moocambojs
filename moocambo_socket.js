@@ -34,7 +34,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
             
             this.loadFragment(uiFragment, uiOper, uiRef);
             
-            this.loadJS(app, this.lastFragment, jsFunction);
+            this.executeJS(app, this.lastFragment, jsFunction);
             
         } catch(err) {
             console.log("[LOAD_PAGE_ERROR] = " + err);
@@ -51,7 +51,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
         this.send(ret);
     };
     
-    ctx.loadJS = function(app, jsModule, jsFunction) {
+    ctx.executeJS = function(app, jsModule, jsFunction) {
         'use strict';
 
         try {
@@ -70,7 +70,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
     }
     
     ctx.log = function(obj) {
-        console.log("[LOG@" + ctx.sessionID + "--" + new Date().toISOString() + "]:", Object.keys(obj).slice(-1)[0] + " function");
+        console.log("[LOG@" + ctx.sessionID + "--" + new Date().toISOString() + "]:  ", Object.keys(obj).slice(-1)[0] + " function");
     };
     
 	ctx.on("data", function(opcode, dados) {
@@ -89,7 +89,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
                             , incomingData.req.initArgs);
 
         } else if (type == "js"){
-            this.loadJS(app, incomingData.req.file, incomingData.req.jsFunction);
+            this.executeJS(app, incomingData.req.file, incomingData.req.jsFunction);
         }
 	});
 	
