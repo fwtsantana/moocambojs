@@ -9,7 +9,11 @@ Moocambo Server (<b>moocambo_socket.js</b>): server-side javascript that enables
 - host: defines the host in which the server is executed
 
 When a connection is done, the corresponding application is loaded (if not already loaded)
-and a context object (ctx) is associated to the new connection user. 
+and a context object (ctx) is associated to the new user session. The context object (ctx) has the following main functions:
+- loadPage: loads an HTML page and its corresponding code behind (same name JS file), executing the initFunction
+- loadFragment: loads an HTML fragment without loading a code behind. 
+- executeJS: loads an JS file and executes the specified function.
+- log: logs to the console.
 
 
 Moocambo (<b>moocambo.js</b>): client-side javascript intended to communicate to the server using the following operations:
@@ -18,8 +22,8 @@ Moocambo (<b>moocambo.js</b>): client-side javascript intended to communicate to
 - replaceHtml: replaces the element specified with an HTML file content (fragment)
 - executeJS: execute functions on remotes javascript files
 
-Moocambo UI (<b>moocambo_ui.js</b>): UI functions and objects used by any application.
+Moocambo UI (<b>moocambo_ui.js</b>): UI functions and objects used by an application.
 
-Moocambo DB (<b>moocambo_db.js</b>): DB functions and objects used by any application.
+Moocambo DB (<b>moocambo_db.js</b>): DB functions and objects used by an application.
 
-Moocambo Util (<b>moocambo_util.js</b>): Utility functions and objects used by any application.
+Moocambo Util (<b>moocambo_util.js</b>): Utility functions and objects used by an application.
