@@ -3,7 +3,8 @@
 */
 var initFunction = "init",
     moocambo_socket_server = require("./moocambo_socket_server"),
-    host = "localhost";
+    fs = require("fs"),
+    host = getHost();
 
 moocambo_socket_server.listen(9999, host, function(ctx) {
     'use strict';
@@ -28,8 +29,8 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
             
             if (!initArgs) initArgs="";
             
-            var fs = require("fs"), jsFunction = initFunction + "(" + initArgs + ")";
-            
+            var jsFunction = initFunction + "(" + initArgs + ")";
+
             var uiFragment = fs.readFileSync(app.appName + "/" + this.lastFragment + ".html", 'utf-8');
             
             this.loadFragment(uiFragment, uiOper, uiRef);
@@ -176,6 +177,32 @@ function searchCache(moduleName, callback) {
     }
 };
 
+function getHost() {
+    try{
+        
+        var conf = fs.readFileSync("moocambo.json");
+        
+        conf = JSON.parse(conf);
+        
+        return conf.host;
+        
+    } catch(e) {
+        console.log("[FATAL ERROR] = could not load default config server name. Returning LOCALHOST instead.")
+        
+        console.log(e);
+
+        return "localhost";
+    }
+}
+
+//function fileExists(filepath) {
+//    try{
+//        fs.accessSync(filepath);
+//        return true;
+//    } catch(e) {
+//        return false;
+//    }
+//}
 
 //var crypto = require('crypto');
 //
