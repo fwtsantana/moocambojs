@@ -35,11 +35,13 @@ var privatefunctions = {
         var index = jsFunction.indexOf('(');
 
         var args = jsFunction.substring(jsFunction.indexOf('(') + 1, jsFunction.lastIndexOf(')'));
-
+        
+        
+        
         if (index == -1) return jsFunction;
-
+        
         var funcao = jsFunction.split('(')[0];
-
+        
         return funcao + '(' + privatefunctions.prepareArguments(args) + ')';
     }
     , validateConnection: function(websocket, file, uiRef, initArgs) {
@@ -134,6 +136,7 @@ var privatefunctions = {
                 }
         },
         dados = JSON.stringify(objEnviar);
+        
         wsocket.send(dados);
     }
     , validateArgumentsListSize: function () {
@@ -154,21 +157,41 @@ var privatefunctions = {
 
         if (!args) return "";
 
-        var argz = args.replace(/,/g,', ').split(',');
-
+        var argz = [];
+        
+        try {
+            argz = args.replace(/,/g,', ').split(',');
+        } catch(e) {
+            argz[0] = args;
+        }
+        
         args = "";
         for(var i in argz) {
             if (i>0) args += ', ';
-
-            var res = eval(argz[i]);
-
-            if (parseInt(res) != res && parseFloat(res) != res) {
-                res = "'" + res + "'";
+            
+            var res;
+            
+            console.log(typeof argz[i], argz[i]);
+            
+            try {
+                res = eval(argz[i]);
+            } catch(e) {
+                res = argz[i];
             }
-
+            
+            res = "'" + res + "'";
+            
+//            if (typeof(argz[i] === 'string')) {
+//                res = "'" + argz[i] + "'";
+//            } else {
+//                res = eval(argz[i]);
+//            }
+            
             args += res;
         }
-
+        
+        console.log(args);
+        
         return args;
     }
 };
@@ -226,6 +249,8 @@ function replaceHtml(file, uiRef, initArgs) {
 
 function executeJS(jsFunction, file) {
     'use strict';
+    
+    console.log(jsFunction);
     
     privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
 }

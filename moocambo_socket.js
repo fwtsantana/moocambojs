@@ -4,21 +4,22 @@
 var initFunction = "init",
     moocambo_socket_server = require("./moocambo_socket_server"),
     fs = require("fs"),
+//    host = "10.65.11.79";
     host = getHost();
 
 moocambo_socket_server.listen(9999, host, function(ctx) {
     'use strict';
     
-    var app, lastFragment, mongodb;
+    var app, lastFragment, _mongodb;
     
 	console.log("#####################################################\nCONNECTED ON " + host);
     
     ctx.setMongoDB = function(newDB) {
-        this.mongodb = newDB;
+        _mongodb = newDB;
     };
     
-    ctx.db = function() {
-        return this.mongodb;
+    ctx.mongodb = function() {
+        return _mongodb;
     }
     
     ctx.loadPage = function(path, uiOper, uiRef, initArgs) {
@@ -110,7 +111,7 @@ moocambo_socket_server.listen(9999, host, function(ctx) {
 	});
 	
 	ctx.on("close", function(code, reason) {
-        if (this.db()) this.db().close();
+        if (_mongodb) _mongodb.close();
         console.log("Connection closed: ", code, reason);
 	});
 });

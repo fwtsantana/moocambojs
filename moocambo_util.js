@@ -47,6 +47,8 @@ module.exports = {
     }
     , string: {
         isEmpty : function(str) {
+            if (!str) return true;
+            
             return (str+"").trim().length == 0;
         }
     }
