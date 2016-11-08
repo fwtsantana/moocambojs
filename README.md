@@ -1,11 +1,13 @@
 # MoocamboJS
 web framework (websocket + nodejs)
 
-Moocambo Server Prototype (<b>moocambo_socket_server</b>): Javascript websocket server prototype.
+Moocambo Server Prototype (<b>server.js</b>): Javascript websocket server prototype.
 
-Moocambo Server (<b>moocambo_socket.js</b>): server-side javascript that enables websockets connections. It has the following important elements:
+Moocambo Server (<b>moocambo.js</b>): server-side javascript that enables websockets connections. It has the following important elements:
 - app: object that represents the application activated by NodeJS
-- initFunction: the name of the initialization function executed each time an HTML file or fragment is returned
+- initFunction: the name of the initialization function executed each time an HTML page is loaded
+- pageDir: pages directory
+- fragmentDir: fragment directory
 - host: defines the host in which the server is executed
 
 When a connection is done, the corresponding application is loaded (if not already loaded)
