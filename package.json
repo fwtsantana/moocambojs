@@ -1,0 +1,12 @@
+{
+    "name": "moocambojs",
+    "version": "0.0.1",
+    "main":"moocambo.js",
+    "author":"Wilton Santana",
+    "description": "NodeJS Framework",
+    "repository": {
+        "type": "git",
+        "url": "https://wilton_santana@bitbucket.org/moocambo/moocambojs.git"
+    },
+    "license": "UNLICENSED"
+}

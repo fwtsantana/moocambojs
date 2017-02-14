@@ -1,273 +1,285 @@
-// WebSocket Object
-var	wsocket;
+/*
+	Moocambo Socket Server Listener
+*/
+var initFunction = "init",
+    pageDir = "web_content/pages/",
+    fragmentDir = "web_content/fragments/",
+    server = require("./server"),
+    fs = require("fs"),
+//    host = "10.65.11.79";
+    host = getHost();
 
-//Client context
-var ctx = {
-    app : location.pathname.replace(/\//g, ""),
-    path : "",
-    eventID : ""
-};
-
-var privatefunctions = {
-    prepareStringValue: function(strValue) {
-        'use strict';
-
-        strValue = strValue.split("\\").join("");
-
-        var parts = strValue.trim().split("'");
-
-        if (parts.length == 1) return strValue;
-
-        var outcome = "";
-        for(var i in parts) {
-            if (i == 0) {
-                outcome += parts[i];
-            } else {
-                outcome += "\\'" + parts[i];
-            }
-        }
-
-        return outcome;
+server.listen(9999, host, function(ctx) {
+    'use strict';
+    
+    var app, _mongodb;
+    
+	console.info("#####################################################\nCONNECTED ON " + host);
+    
+    ctx.setMongoDB = function(newDB) {
+        _mongodb = newDB;
+    };
+    
+    ctx.mongodb = function() {
+        return _mongodb;
     }
-    , prepareJSFunction: function(jsFunction) {
-        if (!jsFunction) return "";
-
-        var index = jsFunction.indexOf('(');
-
-        var args = jsFunction.substring(jsFunction.indexOf('(') + 1, jsFunction.lastIndexOf(')'));
+    
+    ctx.loadPage = function(pageFile, replacedElement, initArgs) {
+        'use strict';
         
+        changeFromPage(app, this, pageFile, "replace", replacedElement, initArgs);
+    };
+    
+    ctx.addPage = function(pageFile, addedElement, initArgs) {
+        'use strict';
         
+        changeFromPage(app, this, pageFile, "add", addedElement, initArgs);
+    }
+    
+    ctx.loadFragment = function(fragmentFile, replacedElement) {
+        'use strict';
         
-        if (index == -1) return jsFunction;
+        changeFromFragment(app, this, fragmentFile, "replace", replacedElement);
         
-        var funcao = jsFunction.split('(')[0];
+    };
+    
+    ctx.addFragment = function(fragmentFile, addedElement) {
+        'use strict';
         
-        return funcao + '(' + privatefunctions.prepareArguments(args) + ')';
+        changeFromFragment(app, this, fragmentFile, "add", addedElement);
     }
-    , validateConnection: function(websocket, file, uiRef, initArgs) {
+    
+    ctx.loadFragmentFromText = function(text, replacedElement) {
         'use strict';
-        if (websocket.readyState != 1) {
-            console.log("Connecting again...");
-            connect(file,uiRef,initArgs);
-
-            if (websocket.readyState != 1) {
-                console.log("Unable to connect!");
-            }
-
-            return false;
-        }
-        return true;
-    }
-    , updateElem: function(elem, uiFragment) {
-        'use strict';
-        elem.parentNode.replaceChild(privatefunctions.text2dom(uiFragment), elem);
-    }
-    , validateUIReference: function(uiRef) {
-        'use strict';
-        //Verifying element existence
-        if (!document.getElementById(uiRef)) {
-            console.log("Invalid UI Reference (" + uiRef + ")");
-            return false;
-        }
-
-        return true;
-    }
-    , validateUIOperation: function(uiOper) {
-        'use strict';
-
-        switch(uiOper) {
-            case "add", "replace":
-                return true;
-            default:
-                console.log("Invalid UI operation!");
-                return false;
-        }
-    }
-    , processResponse: function(data) {
-        'use strict';
-
-        var obj = JSON.parse(data),
-            uiFragment = decodeURI(obj.uiFragment),
-            elem = document.getElementById(obj.uiRef);
-
-        if (obj.path != "undefined") ctx.path = obj.path;
-
-        if (!elem) return;
-
-        if (obj.uiOper === "add") {
-            elem.appendChild(privatefunctions.text2dom(uiFragment));
-        } else if (obj.uiOper === "replace") {
-            privatefunctions.updateElem(elem, uiFragment);
-        }
-    }
-    , text2dom: function(text) {
-        'use strict';
-        var tmp = document.createElement("div");
-        tmp.innerHTML = text;
-        return tmp.childNodes[0];
-    }
-    , sendRequest: function(type, file, uiOper, uiRef, jsFunction, initArgs) {
-        var validate = false;
-
-        if (!file) file = ctx.path;
-
-        //Validate connection to the websocket
-        validate = privatefunctions.validateConnection(wsocket, file, uiRef, initArgs);
-
-        if (type === "html") {
-            validate &= privatefunctions.validateUIReference(uiRef);
-            validate &= privatefunctions.validateUIOperation(uiOper);
-        }
-
-        if (!validate) return;
-
-        ctx.eventID = ctx.app + type + file + uiOper + uiRef + initArgs;
-
-        var objEnviar = {
-        req: {
-            app: ctx.app
-            , type: type
-            , file: file
-            , jsFunction: jsFunction
-            , initArgs: initArgs
-        }, res: {
-            uiOper: uiOper
-            , uiRef: uiRef
-                }
-        },
-        dados = JSON.stringify(objEnviar);
         
-        wsocket.send(dados);
-    }
-    , validateArgumentsListSize: function () {
-        'use strict';
-        if (args.length >= 3) {
-            console.log("Invalid args list size!");
-        }
-        return (args.length >= 3);
-    }
-    , validateJSCommand: function(comandoJS) {
-        'use strict';
-        //TODO: validate
-
-        return true;
-    }
-    , prepareArguments: function(args) {
-        'use strict';
-
-        if (!args) return "";
-
-        var argz = [];
+        changeFromText(this, text, "replace", replacedElement);
         
+    };
+    
+    ctx.addFragmentFromText = function(text, addedElement) {
+        'use strict';
+        
+        changeFromText(this, text, "add", addedElement);
+    }
+    
+    ctx.executeJS = function(app, jsModule, jsFunction) {
+        'use strict';
+
         try {
-            argz = args.replace(/,/g,', ').split(',');
-        } catch(e) {
-            argz[0] = args;
-        }
-        
-        args = "";
-        for(var i in argz) {
-            if (i>0) args += ', ';
-            
-            var res;
-            
-            console.log(typeof argz[i], argz[i]);
-            
-            try {
-                res = eval(argz[i]);
-            } catch(e) {
-                res = argz[i];
+            if (!jsModule) {
+                jsModule = pageDir + ctx.lastFragment;
+            } else {
+                ctx.lastFragment = jsModule;
+                jsModule = pageDir + jsModule;
             }
             
-            res = "'" + res + "'";
+            var caminhoModuloJS = "./" + app.appName + "/" + jsModule + ".js";
+            var js = reloadModule(caminhoModuloJS, this, app);
+
+            this.logJS(jsModule + "/" + jsFunction);
             
-//            if (typeof(argz[i] === 'string')) {
-//                res = "'" + argz[i] + "'";
-//            } else {
-//                res = eval(argz[i]);
-//            }
+            eval('js.' + jsFunction);
             
-            args += res;
+            
+            
+        } catch(err) {
+            console.info("ERROR = " + err);
+        }
+    };
+    
+    ctx.log = function(msg) {
+        var data = new Date().toLocaleDateString();
+        var timestamp = data.split('-')[2] + '/' + data.split('-')[1] + '/' + data.split('-')[0];
+        
+        console.info("[", timestamp, new Date().toLocaleTimeString(), "][LOG@", this.sessionID, "]: \n\t", msg);
+        
+    };
+    
+    ctx.logJS = function(functionName) {
+        var msg = "Calling " + functionName + " function";
+        
+        this.log(msg);
+    };
+    
+    ctx.logHtml = function(pageName) {
+        var msg = "Loading page or fragment " + pageName;
+        
+        this.log(msg);
+    };
+    
+	ctx.on("data", function(opcode, dados) {
+        console.info("Receiving data...");
+        
+        var incomingData = JSON.parse(dados);
+        
+        if (!app) {
+            app = loadApp(this, incomingData);
         }
         
-        console.log(args);
+        //Processing request
+        var type = incomingData.req.type;
+        if (type == "html"){
+            this.loadPage(incomingData.req.file
+                            , incomingData.res.uiRef
+                            , incomingData.req.initArgs);
+
+        } else if (type == "js"){
+            this.executeJS(app, incomingData.req.file, incomingData.req.jsFunction);
+        }
+	});
+	
+	ctx.on("close", function(code, reason) {
+        if (_mongodb) _mongodb.close();
+        console.info("Connection closed: ", code, reason);
+	});
+});
+
+function loadApp(ctx, incomingData) {
+    'use strict';
+    
+    var appName = incomingData.req.app;
+    
+    console.info("Loading App " + appName + "...");
+    
+    var aplic = reloadModule("./" + appName + "/" + appName, ctx);
+    
+    aplic.appName = appName;
+    
+    return aplic;
+};
+
+function changeFromPage(app, ctx, pageFile, uiOper, element, initArgs) {
+    'use strict';
+    
+    var oldFileName = ctx.lastFragment;
+    
+    try {
         
-        return args;
+        ctx.lastFragment = pageFile;
+        
+        var fileName = app.appName + "/" + pageDir + pageFile + ".html";
+        
+        console.info("Reading file ", fileName);
+        var text = fs.readFileSync(fileName, 'utf-8');
+        
+        changeFromText(ctx, text, uiOper, element);
+
+        if (!initArgs) initArgs="";
+        var jsFunction = initFunction + "(" + initArgs + ")";
+        
+        ctx.executeJS(app, pageFile, jsFunction);
+        
+    } catch(err) {
+        console.info("[LOAD_PAGE_ERROR] = " + err);
+        ctx.lastFragment = oldFileName;
     }
 };
 
-function connect(htmlFile, uiRef, initArgs) {
-	// Initialize WebSocket connection and event handlers	
-	console.log("Connecting " + ctx.app);
-	
-//	wsocket = new WebSocket("wss://" + location.host);   // Secure connection WSS!
-    wsocket = new WebSocket("ws://" + location.host);
-	
-	// Listen for the connection open event
-	wsocket.onopen = function (e) {
-		console.log("Connected");
-        
-		if (htmlFile) {
-            replaceHtml(htmlFile, uiRef, initArgs);
-		}
-        
-        document.body.onunload = function () {
-            if (wsocket) {
-                wsocket.close();
-            }
-        };
-	};
-	
-    // Listen for the close connection event
-	wsocket.onclose = function (e) {
-		console.log("Disconnected: " + e.reason);
-	};
-    
-	// Listen for connection errors
-	wsocket.onerror = function (e) {
-		console.log("Error - connecting failure");
-	};
-    
-	// Listen for new messages arriving at the client
-	wsocket.onmessage = function (e) {
-        privatefunctions.processResponse(e.data);
-		ctx.eventID = "";
-	};
-}
-
-function addHtml(file, uiRef, initArgs) {
+function changeFromFragment(app, ctx, fragmentFile, uiOper, element) {
     'use strict';
-    
-    privatefunctions.sendRequest("html", file, "add", uiRef, "", privatefunctions.prepareArguments(initArgs));
-}
 
-function replaceHtml(file, uiRef, initArgs) {
-    'use strict';
-    
-    privatefunctions.sendRequest("html", file, "replace", uiRef, "", privatefunctions.prepareArguments(initArgs));
-}
+    try {
 
-function executeJS(jsFunction, file) {
-    'use strict';
-    
-    console.log(jsFunction);
-    
-    privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
-}
+        var text = fs.readFileSync(app.appName + "/" + fragmentDir + fragmentFile + ".html", 'utf-8');
 
-function getValue(elem) {
-    var tents = [elem.value, elem.getAttribute('data-value'), elem.textContent];
-    
-    var value;
-    for (var i=0; i <= tents.length;i++) {
-        value = tents[i];
-        
-        if (value != undefined) break;
+        changeFromText(ctx, text, uiOper, element);
+
+    } catch(err) {
+        console.info("[LOAD_PAGE_ERROR] = " + err);
     }
+};
+
+function changeFromText(ctx, text, uiOper, element) {
+    'use strict';
+
+    var ret  ='{"uiOper":"' + uiOper + '", "uiRef":"' + element + '","uiFragment":"' + encodeURI(text) + '","path":"' + ctx.lastFragment + '"}';
     
-    if(typeof value == "string") {
-        value = privatefunctions.prepareStringValue(value);
+    ctx.send(ret);
+};
+
+function reloadModule(nomeModulo, ctx, app) {
+    'use strict';
+    
+    console.info("Reloading module ", nomeModulo);
+    
+    uncache(nomeModulo);
+    
+    if (app) {
+        return require(nomeModulo)(app, ctx);
+    } else {
+        return require(nomeModulo)(ctx);
     }
-    
-    return value;
 }
+
+function uncache(moduleName) {
+    'use strict';
+    
+    // Run over the cache looking for the files
+    // loaded by the specified module name
+    searchCache(moduleName, function (mod) {
+        delete require.cache[mod.id];
+    });
+}
+
+/**
+ * Runs over the cache to search for all the cached files.
+ */
+function searchCache(moduleName, callback) {
+    'use strict';
+    
+    // Resolve the module identified by the specified name
+    var mod = require.resolve(moduleName);
+ 
+    // Check if the module has been resolved and found within
+    // the cache
+    if (mod && ((mod = require.cache[mod]) !== undefined)) {
+        // Recursively go over the results
+        (function run(mod) {
+            // Go over each of the module's children and
+            // run over it
+            mod.children.forEach(function (child) {
+                run(child);
+            });
+ 
+            // Call the specified callback providing the found module
+            callback(mod);
+        })(mod);
+    }
+};
+
+function getHost() {
+    try{
+        
+        var conf = fs.readFileSync("config.json");
+        
+        conf = JSON.parse(conf);
+        
+        return conf.host;
+        
+    } catch(e) {
+        console.info("[FATAL ERROR] = could not load default config server name. Returning LOCALHOST instead.")
+        
+        return "localhost";
+    }
+}
+
+//function fileExists(filepath) {
+//    try{
+//        fs.accessSync(filepath);
+//        return true;
+//    } catch(e) {
+//        return false;
+//    }
+//}
+
+//var crypto = require('crypto');
+//
+//function randomValueHex (len) {
+//    return crypto.randomBytes(Math.ceil(len/2))
+//        .toString('hex') // convert to hexadecimal format
+//        .slice(0,len);   // return required number of characters
+//}
+//
+//var value1 = randomValueHex(12) // value 'd5be8583137b'
+//var value2 = randomValueHex(2)  // value 'd9'
+//var value3 = randomValueHex(7)  // value 'ad0fc8c'
