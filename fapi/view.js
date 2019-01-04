@@ -1,5 +1,7 @@
-module.exports = function(ctx) {
-    var modulo = {
+'use strict';
+
+module.exports = function(moo) {
+    var module = {
         select: function(elemId, elemAttr, elemContents) {
             return createElem("select", elemId, elemAttr, elemContents);
         }
@@ -15,33 +17,56 @@ module.exports = function(ctx) {
         , input: function(elemId, elemAttr, elemContents) {
             return createElem("input", elemId, elemAttr, elemContents);
         }
+        , dateInput: function (elemId) {
+            var currentDate = moo.util().base.date.getCurrentDateYYYYMMDD();
+            return module.input(elemId, ["type='date'","min='2000-01-01'", "max='3000-01-01'", "value='" + currentDate + "'" ], "");
+        }
         , a: function(elemId, elemAttr, elemContents) {
             return createElem("a", elemId, elemAttr, elemContents);
         }
         , button: function(elemId, elemAttr, elemContents) {
             return createElem("button", elemId, elemAttr, elemContents);
         }
+        , field_validator: function(elemId, validationMsg) {
+            return module.div(elemId, ["class='field-validator'"], validationMsg);
+        }
         , json: {
-            select: function(elemId, dataArray) {
-                'use strict';
-                
+            select: function(elemId, dataArray, placeholder) {
                 if (dataArray == null) return this.select(elemId, {}, "");
                 
                 var content = "";
+                
+                if (placeholder) {
+                    content += "<option value='' disabled selected>" + placeholder + "</option>";
+                }
                 
                 for(var i = 0; i < dataArray.length; i++){
                     
                     var obj = dataArray[i];
                     
+                    console.info(obj);
+                    
                     content += "<option value='" + obj[Object.keys(obj)[0]] + "'>" + obj[Object.keys(obj)[1]] + "</option>";
                 }
 
-                return modulo.select(elemId, [], content);
+                return module.select(elemId, ["required"], content);
+            }
+        }
+        , messages: {
+            notification: function(msg, type) {
+                
+                var msgElem = module.div("msg_panel", ["class='msg-notification'"], msg);
+                
+                var hiddenInput = module.input("hidden", ["type='hidden'", "autofocus"], "");
+                
+                var content = module.div("msg", ["class='notification-panel " + type + "'"], hiddenInput + msgElem);
+                
+                return module.div("modal", ["class='modal'", "onclick=\"modal.remove('modal', 'main')\"", "onkeydown=\"modal.remove('modal', 'main')\""], content);
             }
         }
     }
     
-    return modulo;
+    return module;
 }
 
 function createElem(elemTag, elemId, elemAttr, elemContents) {

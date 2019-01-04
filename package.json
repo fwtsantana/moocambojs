@@ -1,12 +1,26 @@
 {
-    "name": "moocambojs",
-    "version": "0.0.1",
-    "main":"moocambo.js",
-    "author":"Wilton Santana",
-    "description": "NodeJS Framework",
-    "repository": {
-        "type": "git",
-        "url": "https://wilton_santana@bitbucket.org/moocambo/moocambojs.git"
-    },
-    "license": "UNLICENSED"
+  "name": "moocambojs",
+  "version": "1.0.0",
+  "description": "Javascript framework with websockets",
+  "main": "moocambo_init.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "biguint-format": "^1.0.0",
+    "mongodb": "^2.2.36",
+    "nodemailer": "^2.7.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node moocambo_init.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://wilton_santana@bitbucket.org/moocambo/moocambojs.git"
+  },
+  "author": "Wilton Santana",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/moocambo/moocambojs#readme"
 }

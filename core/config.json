@@ -1,0 +1,7 @@
+{
+    "host": "localhost",    
+    "port": "9999",
+    "pagesDir": "web_content/pages/",
+    "fragmentsDir": "web_content/fragments/",
+    "initFunction": "init"
+}

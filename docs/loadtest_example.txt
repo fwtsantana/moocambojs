@@ -1,0 +1,1 @@
+loadtest https://localhost:9999/debitus -t 20 -c 10 --keepalive --rps 2000 --insecure
