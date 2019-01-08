@@ -8,8 +8,16 @@ module.exports = function(moo) {
         MAIS: {value: "mais"}
     };
     
-    var modulo = {
+    var module = {
         base: require("../../../fapi/view")(moo)
+        , formField:  function(fieldName, labelName) {
+            var label = module.base.label("lbl_" + fieldName, ["for='txt_" + fieldName + "'", "class='" + moo.config.getLocal("theme") + " label'"], labelName);
+            var input = module.base.input("txt_" + fieldName, ["type='text'", "class='" + moo.config.getLocal("theme") + "'"], "");
+            
+            var div = module.base.div("div_" + fieldName, [], label + input);
+            
+            return div;
+        }
         , listaSuspensa: {}
         , grade: {}
         , cabecalhoH1: {}
@@ -41,13 +49,13 @@ module.exports = function(moo) {
         }
     };
     
-    modulo.listaSuspensa = function(elemId, dataArray) {
+    module.listaSuspensa = function(elemId, dataArray) {
         'use strict';
         
-        return modulo.base.json.select(elemId, dataArray);
+        return module.base.json.select(elemId, dataArray);
     };
     
-    modulo.grade = function (id, qtLinhas, qtColunas, larguraMin, borda, idDadoSequencial) {
+    module.grade = function (id, qtLinhas, qtColunas, larguraMin, borda, idDadoSequencial) {
         'use strict'
         
         //Numeração dos vértices
@@ -95,7 +103,7 @@ module.exports = function(moo) {
                 //Se existir solicitação para dados com ID sequencial
                 if (idDadoSequencial) idDado = "d:" + seq;
                 
-                var dado = modulo.base.div(idDado,[estiloDado], "");
+                var dado = module.base.div(idDado,[estiloDado], "");
 
                 str += dado;
 
@@ -103,38 +111,38 @@ module.exports = function(moo) {
             }
         }
         
-        return modulo.base.div(id,[],str);    
+        return module.base.div(id,[],str);    
     };
     
-    modulo.cabecalhoH1 = function() {
+    module.cabecalhoH1 = function() {
         'use strict';
         
         return "<h1 style='font-family: ninabold, Segoe UI;font-size:36px;background-color:#48576E;color:white'>" + texto + "</h1>";
     };
     
-    modulo.inputInteger = function(elemId, elemAttr) {
+    module.inputInteger = function(elemId, elemAttr) {
         'use strict';
         
         elemAttr.push("onkeydown='inputInteger.handleInput(event)'");
         elemAttr.push("onfocus='$util.emptyDiv(\"msg_" + elemId + "\")'");
                       
-        return modulo.base.input(elemId, elemAttr, "");
+        return module.base.input(elemId, elemAttr, "");
     }
     
-    modulo.inputDecimal = function(elemId) {
+    module.inputDecimal = function(elemId) {
         'use strict';
         
-        return modulo.base.input(elemId, ["type='text'"
+        return module.base.input(elemId, ["type='text'"
                    , "onkeydown='inputDecimal.handleInput(event)'"
                    , "onfocus='$util.emptyDiv(\"msg_" + elemId + "\")'"
                    , "onblur='inputDecimal.formatInput(event)'"], "");
     }
     
-    modulo.usuario.emailRecuperacaoSenha = function(codRecuperacaoSenha) {
+    module.usuario.emailRecuperacaoSenha = function(codRecuperacaoSenha) {
         return "<p>Olá, você solicitou recuperar a senha através desse email.\n\nEsse é o código que você deve utilizar para recuperá-la: <b>" + codRecuperacaoSenha + "</b></p>";
     }
     
-    modulo.load.painelData = function(dia, mes, ano, tipoBotao) {
+    module.load.painelData = function(dia, mes, ano, tipoBotao) {
         'use strict';
         
         dia = moo.util().calendario.obterDiaDoMesAjustado(dia, mes, ano);
@@ -150,7 +158,7 @@ module.exports = function(moo) {
         var atributos = ["class='col span_8_of_8'"];
         var conteudo = botaoDia + botaoMes + botaoAno + botaoMais;
         
-        var painelData = modulo.base.div(idPainel, atributos, conteudo);
+        var painelData = module.base.div(idPainel, atributos, conteudo);
         
         moo.server.fragment.loadFromText(painelData, "painelData");
         
@@ -177,44 +185,44 @@ module.exports = function(moo) {
         }
     }
     
-    modulo.load.painelDia = function(dia, mes, ano) {
+    module.load.painelDia = function(dia, mes, ano) {
         'use strict';
         
         this.painelData(dia, mes, ano, TIPO_BOTAO_DATA.DIA);
     };
     
-    modulo.load.painelMes = function(dia, mes, ano) {
+    module.load.painelMes = function(dia, mes, ano) {
         'use strict';
         
         this.painelData(dia, mes, ano, TIPO_BOTAO_DATA.MES);
     };
     
-    modulo.load.painelAno = function(dia, mes, ano) {
+    module.load.painelAno = function(dia, mes, ano) {
         'use strict';
         
         this.painelData(dia, mes, ano, TIPO_BOTAO_DATA.ANO);
     };
     
-    modulo.load.painelMais = function(dia, mes, ano) {
+    module.load.painelMais = function(dia, mes, ano) {
         'use strict';
         
         this.painelData(dia, mes, ano, TIPO_BOTAO_DATA.MAIS);
     };
     
-    modulo.load.cabecalhoCalendarioMensal = function() {
+    module.load.cabecalhoCalendarioMensal = function() {
         'use strict';
         
         var conteudo = "";
         var diasSemana = ["D","S","T","Q","Q","S","S"];
         for(var pos in diasSemana) {
-            var dia = modulo.base.div(diasSemana[pos], ["class='dado_grade dado_dia_semana'"], diasSemana[pos]);
+            var dia = module.base.div(diasSemana[pos], ["class='dado_grade dado_dia_semana'"], diasSemana[pos]);
             conteudo += dia;
         }
         
-        return modulo.base.div("cabecalho", ["style='display:table-row;align-content: center'"] ,conteudo);
+        return module.base.div("cabecalho", ["style='display:table-row;align-content: center'"] ,conteudo);
     };
     
-    modulo.load.calendarioMensal = function(dia, mes, ano) {
+    module.load.calendarioMensal = function(dia, mes, ano) {
         'use strict';
         
         var ultimoDiaDoMes = moo.util().base.date.getLastDayOfMonth(mes,ano),
@@ -242,47 +250,47 @@ module.exports = function(moo) {
                 
                 var onClick = "onclick=\"run('exibirPainelDia(" + diaDoMes + ", txtMes.getAttribute(\\'data-value\\'), $util.getValue(txtAno))')\"";
                 
-                var celula = modulo.base.div(diaDoMes,["class='" + classe + "'", onClick], diaDoMes);
+                var celula = module.base.div(diaDoMes,["class='" + classe + "'", onClick], diaDoMes);
                 
                 if (i==0) { // Primeira linha
 
                     if (j < posicaoPrimeiroDiaDoMes) {
-                        celula = modulo.base.div("l:" + i + ":c:" + j,["class='dado_grade'"], "");
+                        celula = module.base.div("l:" + i + ":c:" + j,["class='dado_grade'"], "");
                     }
 
                 } else if (i == (qtdLinhasDaGrade - 1)) { // Última linha
                     
                     if (j > posicaoUltimoDiaDoMes) {
-                        celula = modulo.base.div("l:" + i + ":c:" + j,["class='dado_grade'"], "");
+                        celula = module.base.div("l:" + i + ":c:" + j,["class='dado_grade'"], "");
                     }
                 }                
                 conteudoLinha += celula;
             }
-            conteudo += modulo.base.div("l:" + i, ["class='linha_grade'"], conteudoLinha);
+            conteudo += module.base.div("l:" + i, ["class='linha_grade'"], conteudoLinha);
         }
         
         var idPainel = "form";
         
-        var fragmento = modulo.base.div("calendario",[],conteudo);
+        var fragmento = module.base.div("calendario",[],conteudo);
         
-        var form = modulo.base.div(idPainel, [], fragmento);
+        var form = module.base.div(idPainel, [], fragmento);
         
         moo.server.fragment.loadFromText(form, idPainel);
     };
     
-    modulo.load.calendarioAnual = function(mes) {
+    module.load.calendarioAnual = function(mes) {
         'use strict';
         
         moo.server.fragment.load("calendarioAnual", "form");
         
         var mesPorExtenso = moo.util().calendario.mesPorExtenso(mes, true);
         
-        var fragmento = modulo.base.div(mes, ["class='dado_grade cor_foco_botao'"], mesPorExtenso);
+        var fragmento = module.base.div(mes, ["class='dado_grade cor_foco_botao'"], mesPorExtenso);
         
         moo.server.fragment.loadFromText(fragmento, mes);
     };
     
-    modulo.load.calendarioMais = function(ano) {
+    module.load.calendarioMais = function(ano) {
         var anoAtual = ano - 4,
             qtdLinhasDaGrade = 3,
             qtdColunasDaGrade = 3;
@@ -303,23 +311,23 @@ module.exports = function(moo) {
                 
                 var onClick = "onclick=\"run('exibirPainelAno($util.getValue(txtDia), txtMes.getAttribute(\\'data-value\\'), " + anoAtual + ")')\"";
                 
-                var celula = modulo.base.div(anoAtual, ["class='" + classe + "'", onClick], anoAtual);    
+                var celula = module.base.div(anoAtual, ["class='" + classe + "'", onClick], anoAtual);    
                 
                 anoAtual++;
                 
                 conteudoLinha += celula;
             }
-            conteudo += modulo.base.div("l:" + i, ["class='linha_grade'"], conteudoLinha);
+            conteudo += module.base.div("l:" + i, ["class='linha_grade'"], conteudoLinha);
         }
         
-        var calendario = modulo.base.div("calendario",[],conteudo);
+        var calendario = module.base.div("calendario",[],conteudo);
         
-        var fragmento = modulo.base.div("form", [], calendario);
+        var fragmento = module.base.div("form", [], calendario);
         
         moo.server.fragment.loadFromText(fragmento, "form");
     };
     
-    modulo.load.botaoData = function(id, onclick, valor, conteudo, foco) {
+    module.load.botaoData = function(id, onclick, valor, conteudo, foco) {
         'use strict';
         
         var classe = "botao";
@@ -331,10 +339,10 @@ module.exports = function(moo) {
         atributos.push("onclick=\"" + onclick + "\"");
         atributos.push("class='" + classe + "'");
         
-        return modulo.base.div(id, atributos, conteudo);
+        return module.base.div(id, atributos, conteudo);
     };
     
-    modulo.load.botaoDia = function(dia, foco) {
+    module.load.botaoDia = function(dia, foco) {
         'use strict';
         
         var id = "txtDia";
@@ -343,7 +351,7 @@ module.exports = function(moo) {
         return this.botaoData(id, onClick, dia, dia, foco);
     };
     
-    modulo.load.botaoMes = function(mes, foco) {
+    module.load.botaoMes = function(mes, foco) {
         'use strict';
         
         var id = "txtMes";
@@ -354,7 +362,7 @@ module.exports = function(moo) {
         return this.botaoData(id, onClick, mes, mesPorExtenso, foco);
     };
     
-    modulo.load.botaoAno = function(ano, foco) {
+    module.load.botaoAno = function(ano, foco) {
         'use strict';
         
         var id = "txtAno";
@@ -363,7 +371,7 @@ module.exports = function(moo) {
         return this.botaoData(id, onClick, ano, ano,foco);
     };
     
-    modulo.load.botaoMais = function(foco) {
+    module.load.botaoMais = function(foco) {
         'use strict';
         
         var id = "txtMais";
@@ -372,22 +380,22 @@ module.exports = function(moo) {
         return this.botaoData(id, onClick, "<>", "<>", foco);1
     };
     
-    modulo.load.linkNovoDebito = function() {
+    module.load.linkNovoDebito = function() {
         'use strict';
         
-        var conteudo = modulo.base.a("linkNovoDebito", ["onclick=\"run('exibirTelaNovoDebito($util.getValue(usr))')\""], "+Débito");
-        var fragmento = modulo.base.div("form", ["style='text-align:right'"], conteudo);
+        var conteudo = module.base.a("linkNovoDebito", ["onclick=\"run('exibirTelaNovoDebito($util.getValue(usr))')\""], "+Débito");
+        var fragmento = module.base.div("form", ["style='text-align:right'"], conteudo);
         
         moo.server.fragment.loadFromText(fragmento, "form");    
     }
     
-    modulo.goTo.login = function() {
+    module.goTo.login = function() {
         moo.server.page.load("acesso/login", "main");
     }
     
-    modulo.goTo.novoDebito = function(usuario) {
+    module.goTo.novoDebito = function(usuario) {
         moo.server.page.load("debito/cadDebito", "form", [usuario]);
     }
     
-    return modulo;
+    return module;
 };

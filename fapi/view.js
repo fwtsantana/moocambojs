@@ -2,7 +2,13 @@
 
 module.exports = function(moo) {
     var module = {
-        select: function(elemId, elemAttr, elemContents) {
+        form: function(elemId, elemAttr, elemContents) {
+            return createElem("form", elemId, elemAttr, elemContents);
+        }
+        , fieldset: function(elemId, elemAttr, elemContents) {
+            return createElem("fieldset", elemId, elemAttr, elemContents);
+        }
+        , select: function(elemId, elemAttr, elemContents) {
             return createElem("select", elemId, elemAttr, elemContents);
         }
         , div: function(elemId, elemAttr, elemContents) {

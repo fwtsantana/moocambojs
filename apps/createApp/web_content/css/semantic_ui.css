@@ -1,0 +1,5117 @@
+/*!
+ * # Semantic UI 2.4.1 - Button
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+/*******************************
+            Button
+*******************************/
+
+.semantic_ui.button {
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: none;
+  border: none;
+  vertical-align: baseline;
+  background: #E0E1E2 none;
+  color: rgba(0, 0, 0, 0.6);
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  margin: 0em 0.25em 0em 0em;
+  padding: 0.78571429em 1.5em 0.78571429em;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: bold;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
+  will-change: '';
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/*******************************
+            States
+*******************************/
+
+
+/*--------------
+      Hover
+---------------*/
+
+.semantic_ui.button:hover {
+  background-color: #CACBCD;
+  background-image: none;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  color: rgba(0, 0, 0, 0.8);
+}
+.semantic_ui.button:hover .icon {
+  opacity: 0.85;
+}
+
+/*--------------
+      Focus
+---------------*/
+
+.semantic_ui.button:focus {
+  background-color: #CACBCD;
+  color: rgba(0, 0, 0, 0.8);
+  background-image: '' !important;
+  -webkit-box-shadow: '' !important;
+          box-shadow: '' !important;
+}
+.semantic_ui.button:focus .icon {
+  opacity: 0.85;
+}
+
+/*--------------
+      Down
+---------------*/
+
+.semantic_ui.button:active,
+.semantic_ui.active.button:active {
+  background-color: #BABBBC;
+  background-image: '';
+  color: rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, none;
+          box-shadow: 0px 0px 0px 1px transparent inset, none;
+}
+
+/*--------------
+     Active
+---------------*/
+
+.semantic_ui.active.button {
+  background-color: #C0C1C2;
+  background-image: none;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset;
+          box-shadow: 0px 0px 0px 1px transparent inset;
+  color: rgba(0, 0, 0, 0.95);
+}
+.semantic_ui.active.button:hover {
+  background-color: #C0C1C2;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+.semantic_ui.active.button:active {
+  background-color: #C0C1C2;
+  background-image: none;
+}
+
+/*--------------
+    Loading
+---------------*/
+
+
+/* Specificity hack */
+.semantic_ui.loading.loading.loading.loading.loading.loading.button {
+  position: relative;
+  cursor: default;
+  text-shadow: none !important;
+  color: transparent !important;
+  opacity: 1;
+  pointer-events: auto;
+  -webkit-transition: all 0s linear, opacity 0.1s ease;
+  transition: all 0s linear, opacity 0.1s ease;
+}
+.semantic_ui.loading.button:before {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  margin: -0.64285714em 0em 0em -0.64285714em;
+  width: 1.28571429em;
+  height: 1.28571429em;
+  border-radius: 500rem;
+  border: 0.2em solid rgba(0, 0, 0, 0.15);
+}
+.semantic_ui.loading.button:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  margin: -0.64285714em 0em 0em -0.64285714em;
+  width: 1.28571429em;
+  height: 1.28571429em;
+  -webkit-animation: button-spin 0.6s linear;
+          animation: button-spin 0.6s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  border-radius: 500rem;
+  border-color: #FFFFFF transparent transparent;
+  border-style: solid;
+  border-width: 0.2em;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent;
+          box-shadow: 0px 0px 0px 1px transparent;
+}
+.semantic_ui.labeled.icon.loading.button .icon {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+@-webkit-keyframes button-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes button-spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.semantic_ui.basic.loading.button:not(.inverted):before {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.semantic_ui.basic.loading.button:not(.inverted):after {
+  border-top-color: #767676;
+}
+
+/*-------------------
+      Disabled
+--------------------*/
+
+.semantic_ui.buttons .disabled.button,
+.semantic_ui.disabled.button,
+.semantic_ui.button:disabled,
+.semantic_ui.disabled.button:hover,
+.semantic_ui.disabled.active.button {
+  cursor: default;
+  opacity: 0.45 !important;
+  background-image: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  pointer-events: none !important;
+}
+
+/* Basic Group With Disabled */
+.semantic_ui.basic.buttons .semantic_ui.disabled.button {
+  border-color: rgba(34, 36, 38, 0.5);
+}
+
+
+/*******************************
+             Types
+*******************************/
+
+
+/*-------------------
+       Animated
+--------------------*/
+
+.semantic_ui.animated.button {
+  position: relative;
+  overflow: hidden;
+  padding-right: 0em !important;
+  vertical-align: middle;
+  z-index: 1;
+}
+.semantic_ui.animated.button .content {
+  will-change: transform, opacity;
+}
+.semantic_ui.animated.button .visible.content {
+  position: relative;
+  margin-right: 1.5em;
+}
+.semantic_ui.animated.button .hidden.content {
+  position: absolute;
+  width: 100%;
+}
+
+/* Horizontal */
+.semantic_ui.animated.button .visible.content,
+.semantic_ui.animated.button .hidden.content {
+  -webkit-transition: right 0.3s ease 0s;
+  transition: right 0.3s ease 0s;
+}
+.semantic_ui.animated.button .visible.content {
+  left: auto;
+  right: 0%;
+}
+.semantic_ui.animated.button .hidden.content {
+  top: 50%;
+  left: auto;
+  right: -100%;
+  margin-top: -0.5em;
+}
+.semantic_ui.animated.button:focus .visible.content,
+.semantic_ui.animated.button:hover .visible.content {
+  left: auto;
+  right: 200%;
+}
+.semantic_ui.animated.button:focus .hidden.content,
+.semantic_ui.animated.button:hover .hidden.content {
+  left: auto;
+  right: 0%;
+}
+
+/* Vertical */
+.semantic_ui.vertical.animated.button .visible.content,
+.semantic_ui.vertical.animated.button .hidden.content {
+  -webkit-transition: top 0.3s ease, -webkit-transform 0.3s ease;
+  transition: top 0.3s ease, -webkit-transform 0.3s ease;
+  transition: top 0.3s ease, transform 0.3s ease;
+  transition: top 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+.semantic_ui.vertical.animated.button .visible.content {
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+  right: auto;
+}
+.semantic_ui.vertical.animated.button .hidden.content {
+  top: -50%;
+  left: 0%;
+  right: auto;
+}
+.semantic_ui.vertical.animated.button:focus .visible.content,
+.semantic_ui.vertical.animated.button:hover .visible.content {
+  -webkit-transform: translateY(200%);
+          transform: translateY(200%);
+  right: auto;
+}
+.semantic_ui.vertical.animated.button:focus .hidden.content,
+.semantic_ui.vertical.animated.button:hover .hidden.content {
+  top: 50%;
+  right: auto;
+}
+
+/* Fade */
+.semantic_ui.fade.animated.button .visible.content,
+.semantic_ui.fade.animated.button .hidden.content {
+  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, -webkit-transform 0.3s ease;
+}
+.semantic_ui.fade.animated.button .visible.content {
+  left: auto;
+  right: auto;
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+.semantic_ui.fade.animated.button .hidden.content {
+  opacity: 0;
+  left: 0%;
+  right: auto;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+.semantic_ui.fade.animated.button:focus .visible.content,
+.semantic_ui.fade.animated.button:hover .visible.content {
+  left: auto;
+  right: auto;
+  opacity: 0;
+  -webkit-transform: scale(0.75);
+          transform: scale(0.75);
+}
+.semantic_ui.fade.animated.button:focus .hidden.content,
+.semantic_ui.fade.animated.button:hover .hidden.content {
+  left: 0%;
+  right: auto;
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.semantic_ui.inverted.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+          box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+  background: transparent none;
+  color: #FFFFFF;
+  text-shadow: none !important;
+}
+
+/* Group */
+.semantic_ui.inverted.buttons .button {
+  margin: 0px 0px 0px -2px;
+}
+.semantic_ui.inverted.buttons .button:first-child {
+  margin-left: 0em;
+}
+.semantic_ui.inverted.vertical.buttons .button {
+  margin: 0px 0px -2px 0px;
+}
+.semantic_ui.inverted.vertical.buttons .button:first-child {
+  margin-top: 0em;
+}
+
+/* States */
+
+/* Hover */
+.semantic_ui.inverted.button:hover {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+          box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Active / Focus */
+.semantic_ui.inverted.button:focus,
+.semantic_ui.inverted.button.active {
+  background: #FFFFFF;
+  -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+          box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Active Focus */
+.semantic_ui.inverted.button.active:focus {
+  background: #DCDDDE;
+  -webkit-box-shadow: 0px 0px 0px 2px #DCDDDE inset !important;
+          box-shadow: 0px 0px 0px 2px #DCDDDE inset !important;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/*-------------------
+    Labeled Button
+--------------------*/
+
+.semantic_ui.labeled.button:not(.icon) {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background: none !important;
+  padding: 0px !important;
+  border: none !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+}
+.semantic_ui.labeled.button > .button {
+  margin: 0px;
+}
+.semantic_ui.labeled.button > .label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0px 0px 0px -1px !important;
+  padding: '';
+  font-size: 1em;
+  border-color: rgba(34, 36, 38, 0.15);
+}
+
+/* Tag */
+.semantic_ui.labeled.button > .tag.label:before {
+  width: 1.85em;
+  height: 1.85em;
+}
+
+/* Right */
+.semantic_ui.labeled.button:not([class*="left labeled"]) > .button {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.semantic_ui.labeled.button:not([class*="left labeled"]) > .label {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+
+/* Left Side */
+.ui[class*="left labeled"].button > .button {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.ui[class*="left labeled"].button > .label {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+/*-------------------
+       Social
+--------------------*/
+
+
+/* Facebook */
+.semantic_ui.facebook.button {
+  background-color: #3B5998;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.facebook.button:hover {
+  background-color: #304d8a;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.facebook.button:active {
+  background-color: #2d4373;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Twitter */
+.semantic_ui.twitter.button {
+  background-color: #55ACEE;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.twitter.button:hover {
+  background-color: #35a2f4;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.twitter.button:active {
+  background-color: #2795e9;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Google Plus */
+.semantic_ui.google.plus.button {
+  background-color: #DD4B39;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.google.plus.button:hover {
+  background-color: #e0321c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.google.plus.button:active {
+  background-color: #c23321;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Linked In */
+.semantic_ui.linkedin.button {
+  background-color: #1F88BE;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.linkedin.button:hover {
+  background-color: #147baf;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.linkedin.button:active {
+  background-color: #186992;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* YouTube */
+.semantic_ui.youtube.button {
+  background-color: #FF0000;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.youtube.button:hover {
+  background-color: #e60000;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.youtube.button:active {
+  background-color: #cc0000;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Instagram */
+.semantic_ui.instagram.button {
+  background-color: #49769C;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.instagram.button:hover {
+  background-color: #3d698e;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.instagram.button:active {
+  background-color: #395c79;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Pinterest */
+.semantic_ui.pinterest.button {
+  background-color: #BD081C;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.pinterest.button:hover {
+  background-color: #ac0013;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.pinterest.button:active {
+  background-color: #8c0615;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* VK */
+.semantic_ui.vk.button {
+  background-color: #4D7198;
+  color: #FFFFFF;
+  background-image: none;
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.vk.button:hover {
+  background-color: #41648a;
+  color: #FFFFFF;
+}
+.semantic_ui.vk.button:active {
+  background-color: #3c5876;
+  color: #FFFFFF;
+}
+
+/*--------------
+     Icon
+---------------*/
+
+.semantic_ui.button > .icon:not(.button) {
+  height: 0.85714286em;
+  opacity: 0.8;
+  margin: 0em 0.42857143em 0em -0.21428571em;
+  -webkit-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
+  vertical-align: '';
+  color: '';
+}
+.semantic_ui.button:not(.icon) > .icon:not(.button):not(.dropdown) {
+  margin: 0em 0.42857143em 0em -0.21428571em;
+}
+.semantic_ui.button:not(.icon) > .right.icon:not(.button):not(.dropdown) {
+  margin: 0em -0.21428571em 0em 0.42857143em;
+}
+
+
+/*******************************
+           Variations
+*******************************/
+
+
+/*-------------------
+       Floated
+--------------------*/
+
+.ui[class*="left floated"].buttons,
+.ui[class*="left floated"].button {
+  float: left;
+  margin-left: 0em;
+  margin-right: 0.25em;
+}
+.ui[class*="right floated"].buttons,
+.ui[class*="right floated"].button {
+  float: right;
+  margin-right: 0em;
+  margin-left: 0.25em;
+}
+
+/*-------------------
+       Compact
+--------------------*/
+
+.semantic_ui.compact.buttons .button,
+.semantic_ui.compact.button {
+  padding: 0.58928571em 1.125em 0.58928571em;
+}
+.semantic_ui.compact.icon.buttons .button,
+.semantic_ui.compact.icon.button {
+  padding: 0.58928571em 0.58928571em 0.58928571em;
+}
+.semantic_ui.compact.labeled.icon.buttons .button,
+.semantic_ui.compact.labeled.icon.button {
+  padding: 0.58928571em 3.69642857em 0.58928571em;
+}
+
+/*-------------------
+        Sizes
+--------------------*/
+
+.semantic_ui.mini.buttons .button,
+.semantic_ui.mini.buttons .or,
+.semantic_ui.mini.button {
+  font-size: 0.78571429rem;
+}
+.semantic_ui.tiny.buttons .button,
+.semantic_ui.tiny.buttons .or,
+.semantic_ui.tiny.button {
+  font-size: 0.85714286rem;
+}
+.semantic_ui.small.buttons .button,
+.semantic_ui.small.buttons .or,
+.semantic_ui.small.button {
+  font-size: 0.92857143rem;
+}
+.semantic_ui.buttons .button,
+.semantic_ui.buttons .or,
+.semantic_ui.button {
+  font-size: 1rem;
+}
+.semantic_ui.large.buttons .button,
+.semantic_ui.large.buttons .or,
+.semantic_ui.large.button {
+  font-size: 1.14285714rem;
+}
+.semantic_ui.big.buttons .button,
+.semantic_ui.big.buttons .or,
+.semantic_ui.big.button {
+  font-size: 1.28571429rem;
+}
+.semantic_ui.huge.buttons .button,
+.semantic_ui.huge.buttons .or,
+.semantic_ui.huge.button {
+  font-size: 1.42857143rem;
+}
+.semantic_ui.massive.buttons .button,
+.semantic_ui.massive.buttons .or,
+.semantic_ui.massive.button {
+  font-size: 1.71428571rem;
+}
+
+/*--------------
+    Icon Only
+---------------*/
+
+.semantic_ui.icon.buttons .button,
+.semantic_ui.icon.button {
+  padding: 0.78571429em 0.78571429em 0.78571429em;
+}
+.semantic_ui.icon.buttons .button > .icon,
+.semantic_ui.icon.button > .icon {
+  opacity: 0.9;
+  margin: 0em !important;
+  vertical-align: top;
+}
+
+/*-------------------
+        Basic
+--------------------*/
+
+.semantic_ui.basic.buttons .button,
+.semantic_ui.basic.button {
+  background: transparent none !important;
+  color: rgba(0, 0, 0, 0.6) !important;
+  font-weight: normal;
+  border-radius: 0.28571429rem;
+  text-transform: none;
+  text-shadow: none !important;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.basic.buttons {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 0.28571429rem;
+}
+.semantic_ui.basic.buttons .button {
+  border-radius: 0em;
+}
+.semantic_ui.basic.buttons .button:hover,
+.semantic_ui.basic.button:hover {
+  background: #FFFFFF !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.basic.buttons .button:focus,
+.semantic_ui.basic.button:focus {
+  background: #FFFFFF !important;
+  color: rgba(0, 0, 0, 0.8) !important;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.basic.buttons .button:active,
+.semantic_ui.basic.button:active {
+  background: #F8F8F8 !important;
+  color: rgba(0, 0, 0, 0.9) !important;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.basic.buttons .active.button,
+.semantic_ui.basic.active.button {
+  background: rgba(0, 0, 0, 0.05) !important;
+  -webkit-box-shadow: '' !important;
+          box-shadow: '' !important;
+  color: rgba(0, 0, 0, 0.95) !important;
+}
+.semantic_ui.basic.buttons .active.button:hover,
+.semantic_ui.basic.active.button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Vertical */
+.semantic_ui.basic.buttons .button:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset inset;
+          box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.35) inset, 0px 0px 0px 0px rgba(34, 36, 38, 0.15) inset inset;
+}
+.semantic_ui.basic.buttons .button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px rgba(34, 36, 38, 0.15) inset inset;
+          box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.15) inset, 0px 1px 4px 0px rgba(34, 36, 38, 0.15) inset inset;
+}
+.semantic_ui.basic.buttons .active.button {
+  -webkit-box-shadow: '' !important;
+          box-shadow: '' !important;
+}
+
+/* Standard Basic Inverted */
+.semantic_ui.basic.inverted.buttons .button,
+.semantic_ui.basic.inverted.button {
+  background-color: transparent !important;
+  color: #F9FAFB !important;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+}
+.semantic_ui.basic.inverted.buttons .button:hover,
+.semantic_ui.basic.inverted.button:hover {
+  color: #FFFFFF !important;
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+          box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+}
+.semantic_ui.basic.inverted.buttons .button:focus,
+.semantic_ui.basic.inverted.button:focus {
+  color: #FFFFFF !important;
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+          box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+}
+.semantic_ui.basic.inverted.buttons .button:active,
+.semantic_ui.basic.inverted.button:active {
+  background-color: rgba(255, 255, 255, 0.08) !important;
+  color: #FFFFFF !important;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.9) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.9) inset !important;
+}
+.semantic_ui.basic.inverted.buttons .active.button,
+.semantic_ui.basic.inverted.active.button {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  text-shadow: none;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.7) inset;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.7) inset;
+}
+.semantic_ui.basic.inverted.buttons .active.button:hover,
+.semantic_ui.basic.inverted.active.button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  -webkit-box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+          box-shadow: 0px 0px 0px 2px #ffffff inset !important;
+}
+
+/* Basic Group */
+.semantic_ui.basic.buttons .button {
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.semantic_ui.basic.vertical.buttons .button {
+  border-left: none;
+}
+.semantic_ui.basic.vertical.buttons .button {
+  border-left-width: 0px;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+}
+.semantic_ui.basic.vertical.buttons .button:first-child {
+  border-top-width: 0px;
+}
+
+/*--------------
+  Labeled Icon
+---------------*/
+
+.semantic_ui.labeled.icon.buttons .button,
+.semantic_ui.labeled.icon.button {
+  position: relative;
+  padding-left: 4.07142857em !important;
+  padding-right: 1.5em !important;
+}
+
+/* Left Labeled */
+.semantic_ui.labeled.icon.buttons > .button > .icon,
+.semantic_ui.labeled.icon.button > .icon {
+  position: absolute;
+  height: 100%;
+  line-height: 1;
+  border-radius: 0px;
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  text-align: center;
+  margin: 0em;
+  width: 2.57142857em;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: '';
+  -webkit-box-shadow: -1px 0px 0px 0px transparent inset;
+          box-shadow: -1px 0px 0px 0px transparent inset;
+}
+
+/* Left Labeled */
+.semantic_ui.labeled.icon.buttons > .button > .icon,
+.semantic_ui.labeled.icon.button > .icon {
+  top: 0em;
+  left: 0em;
+}
+
+/* Right Labeled */
+.ui[class*="right labeled"].icon.button {
+  padding-right: 4.07142857em !important;
+  padding-left: 1.5em !important;
+}
+.ui[class*="right labeled"].icon.button > .icon {
+  left: auto;
+  right: 0em;
+  border-radius: 0px;
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+  -webkit-box-shadow: 1px 0px 0px 0px transparent inset;
+          box-shadow: 1px 0px 0px 0px transparent inset;
+}
+.semantic_ui.labeled.icon.buttons > .button > .icon:before,
+.semantic_ui.labeled.icon.button > .icon:before,
+.semantic_ui.labeled.icon.buttons > .button > .icon:after,
+.semantic_ui.labeled.icon.button > .icon:after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.semantic_ui.labeled.icon.buttons .button > .icon {
+  border-radius: 0em;
+}
+.semantic_ui.labeled.icon.buttons .button:first-child > .icon {
+  border-top-left-radius: 0.28571429rem;
+  border-bottom-left-radius: 0.28571429rem;
+}
+.semantic_ui.labeled.icon.buttons .button:last-child > .icon {
+  border-top-right-radius: 0.28571429rem;
+  border-bottom-right-radius: 0.28571429rem;
+}
+.semantic_ui.vertical.labeled.icon.buttons .button:first-child > .icon {
+  border-radius: 0em;
+  border-top-left-radius: 0.28571429rem;
+}
+.semantic_ui.vertical.labeled.icon.buttons .button:last-child > .icon {
+  border-radius: 0em;
+  border-bottom-left-radius: 0.28571429rem;
+}
+
+/* Fluid Labeled */
+.semantic_ui.fluid[class*="left labeled"].icon.button,
+.semantic_ui.fluid[class*="right labeled"].icon.button {
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
+}
+
+/*--------------
+     Toggle
+---------------*/
+
+
+/* Toggle (Modifies active state to give affordances) */
+.semantic_ui.toggle.buttons .active.button,
+.semantic_ui.buttons .button.toggle.active,
+.semantic_ui.button.toggle.active {
+  background-color: #21BA45 !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  text-shadow: none;
+  color: #FFFFFF !important;
+}
+.semantic_ui.button.toggle.active:hover {
+  background-color: #16ab39 !important;
+  text-shadow: none;
+  color: #FFFFFF !important;
+}
+
+/*--------------
+    Circular
+---------------*/
+
+.semantic_ui.circular.button {
+  border-radius: 10em;
+}
+.semantic_ui.circular.button > .icon {
+  width: 1em;
+  vertical-align: baseline;
+}
+
+/*-------------------
+      Or Buttons
+--------------------*/
+
+.semantic_ui.buttons .or {
+  position: relative;
+  width: 0.3em;
+  height: 2.57142857em;
+  z-index: 3;
+}
+.semantic_ui.buttons .or:before {
+  position: absolute;
+  text-align: center;
+  border-radius: 500rem;
+  content: 'or';
+  top: 50%;
+  left: 50%;
+  background-color: #FFFFFF;
+  text-shadow: none;
+  margin-top: -0.89285714em;
+  margin-left: -0.89285714em;
+  width: 1.78571429em;
+  height: 1.78571429em;
+  line-height: 1.78571429em;
+  color: rgba(0, 0, 0, 0.4);
+  font-style: normal;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset;
+          box-shadow: 0px 0px 0px 1px transparent inset;
+}
+.semantic_ui.buttons .or[data-text]:before {
+  content: attr(data-text);
+}
+
+/* Fluid Or */
+.semantic_ui.fluid.buttons .or {
+  width: 0em !important;
+}
+.semantic_ui.fluid.buttons .or:after {
+  display: none;
+}
+
+/*-------------------
+       Attached
+--------------------*/
+
+
+/* Singular */
+.semantic_ui.attached.button {
+  position: relative;
+  display: block;
+  margin: 0em;
+  border-radius: 0em;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) !important;
+          box-shadow: 0px 0px 0px 1px rgba(34, 36, 38, 0.15) !important;
+}
+
+/* Top / Bottom */
+.semantic_ui.attached.top.button {
+  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+}
+.semantic_ui.attached.bottom.button {
+  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+}
+
+/* Left / Right */
+.semantic_ui.left.attached.button {
+  display: inline-block;
+  border-left: none;
+  text-align: right;
+  padding-right: 0.75em;
+  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+}
+.semantic_ui.right.attached.button {
+  display: inline-block;
+  text-align: left;
+  padding-left: 0.75em;
+  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+}
+
+/* Plural */
+.semantic_ui.attached.buttons {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 0em;
+  width: auto !important;
+  z-index: 2;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+.semantic_ui.attached.buttons .button {
+  margin: 0em;
+}
+.semantic_ui.attached.buttons .button:first-child {
+  border-radius: 0em;
+}
+.semantic_ui.attached.buttons .button:last-child {
+  border-radius: 0em;
+}
+
+/* Top / Bottom */
+.ui[class*="top attached"].buttons {
+  margin-bottom: -1px;
+  border-radius: 0.28571429rem 0.28571429rem 0em 0em;
+}
+.ui[class*="top attached"].buttons .button:first-child {
+  border-radius: 0.28571429rem 0em 0em 0em;
+}
+.ui[class*="top attached"].buttons .button:last-child {
+  border-radius: 0em 0.28571429rem 0em 0em;
+}
+.ui[class*="bottom attached"].buttons {
+  margin-top: -1px;
+  border-radius: 0em 0em 0.28571429rem 0.28571429rem;
+}
+.ui[class*="bottom attached"].buttons .button:first-child {
+  border-radius: 0em 0em 0em 0.28571429rem;
+}
+.ui[class*="bottom attached"].buttons .button:last-child {
+  border-radius: 0em 0em 0.28571429rem 0em;
+}
+
+/* Left / Right */
+.ui[class*="left attached"].buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-right: 0em;
+  margin-left: -1px;
+  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+}
+.ui[class*="left attached"].buttons .button:first-child {
+  margin-left: -1px;
+  border-radius: 0em 0.28571429rem 0em 0em;
+}
+.ui[class*="left attached"].buttons .button:last-child {
+  margin-left: -1px;
+  border-radius: 0em 0em 0.28571429rem 0em;
+}
+.ui[class*="right attached"].buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin-left: 0em;
+  margin-right: -1px;
+  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+}
+.ui[class*="right attached"].buttons .button:first-child {
+  margin-left: -1px;
+  border-radius: 0.28571429rem 0em 0em 0em;
+}
+.ui[class*="right attached"].buttons .button:last-child {
+  margin-left: -1px;
+  border-radius: 0em 0em 0em 0.28571429rem;
+}
+
+/*-------------------
+        Fluid
+--------------------*/
+
+.semantic_ui.fluid.buttons,
+.semantic_ui.fluid.button {
+  width: 100%;
+}
+.semantic_ui.fluid.button {
+  display: block;
+}
+.semantic_ui.two.buttons {
+  width: 100%;
+}
+.semantic_ui.two.buttons > .button {
+  width: 50%;
+}
+.semantic_ui.three.buttons {
+  width: 100%;
+}
+.semantic_ui.three.buttons > .button {
+  width: 33.333%;
+}
+.semantic_ui.four.buttons {
+  width: 100%;
+}
+.semantic_ui.four.buttons > .button {
+  width: 25%;
+}
+.semantic_ui.five.buttons {
+  width: 100%;
+}
+.semantic_ui.five.buttons > .button {
+  width: 20%;
+}
+.semantic_ui.six.buttons {
+  width: 100%;
+}
+.semantic_ui.six.buttons > .button {
+  width: 16.666%;
+}
+.semantic_ui.seven.buttons {
+  width: 100%;
+}
+.semantic_ui.seven.buttons > .button {
+  width: 14.285%;
+}
+.semantic_ui.eight.buttons {
+  width: 100%;
+}
+.semantic_ui.eight.buttons > .button {
+  width: 12.5%;
+}
+.semantic_ui.nine.buttons {
+  width: 100%;
+}
+.semantic_ui.nine.buttons > .button {
+  width: 11.11%;
+}
+.semantic_ui.ten.buttons {
+  width: 100%;
+}
+.semantic_ui.ten.buttons > .button {
+  width: 10%;
+}
+.semantic_ui.eleven.buttons {
+  width: 100%;
+}
+.semantic_ui.eleven.buttons > .button {
+  width: 9.09%;
+}
+.semantic_ui.twelve.buttons {
+  width: 100%;
+}
+.semantic_ui.twelve.buttons > .button {
+  width: 8.3333%;
+}
+
+/* Fluid Vertical Buttons */
+.semantic_ui.fluid.vertical.buttons,
+.semantic_ui.fluid.vertical.buttons > .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: auto;
+}
+.semantic_ui.two.vertical.buttons > .button {
+  height: 50%;
+}
+.semantic_ui.three.vertical.buttons > .button {
+  height: 33.333%;
+}
+.semantic_ui.four.vertical.buttons > .button {
+  height: 25%;
+}
+.semantic_ui.five.vertical.buttons > .button {
+  height: 20%;
+}
+.semantic_ui.six.vertical.buttons > .button {
+  height: 16.666%;
+}
+.semantic_ui.seven.vertical.buttons > .button {
+  height: 14.285%;
+}
+.semantic_ui.eight.vertical.buttons > .button {
+  height: 12.5%;
+}
+.semantic_ui.nine.vertical.buttons > .button {
+  height: 11.11%;
+}
+.semantic_ui.ten.vertical.buttons > .button {
+  height: 10%;
+}
+.semantic_ui.eleven.vertical.buttons > .button {
+  height: 9.09%;
+}
+.semantic_ui.twelve.vertical.buttons > .button {
+  height: 8.3333%;
+}
+
+/*-------------------
+       Colors
+--------------------*/
+
+
+/*--- Black ---*/
+
+.semantic_ui.black.buttons .button,
+.semantic_ui.black.button {
+  background-color: #1B1C1D;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.black.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.black.buttons .button:hover,
+.semantic_ui.black.button:hover {
+  background-color: #27292a;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.black.buttons .button:focus,
+.semantic_ui.black.button:focus {
+  background-color: #2f3032;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.black.buttons .button:active,
+.semantic_ui.black.button:active {
+  background-color: #343637;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.black.buttons .active.button,
+.semantic_ui.black.buttons .active.button:active,
+.semantic_ui.black.active.button,
+.semantic_ui.black.button .active.button:active {
+  background-color: #0f0f10;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.black.buttons .button,
+.semantic_ui.basic.black.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
+          box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
+  color: #1B1C1D !important;
+}
+.semantic_ui.basic.black.buttons .button:hover,
+.semantic_ui.basic.black.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #27292a inset !important;
+          box-shadow: 0px 0px 0px 1px #27292a inset !important;
+  color: #27292a !important;
+}
+.semantic_ui.basic.black.buttons .button:focus,
+.semantic_ui.basic.black.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #2f3032 inset !important;
+          box-shadow: 0px 0px 0px 1px #2f3032 inset !important;
+  color: #27292a !important;
+}
+.semantic_ui.basic.black.buttons .active.button,
+.semantic_ui.basic.black.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #0f0f10 inset !important;
+          box-shadow: 0px 0px 0px 1px #0f0f10 inset !important;
+  color: #343637 !important;
+}
+.semantic_ui.basic.black.buttons .button:active,
+.semantic_ui.basic.black.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #343637 inset !important;
+          box-shadow: 0px 0px 0px 1px #343637 inset !important;
+  color: #343637 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.black.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.black.buttons .button,
+.semantic_ui.inverted.black.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
+          box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.black.buttons .button:hover,
+.semantic_ui.inverted.black.button:hover,
+.semantic_ui.inverted.black.buttons .button:focus,
+.semantic_ui.inverted.black.button:focus,
+.semantic_ui.inverted.black.buttons .button.active,
+.semantic_ui.inverted.black.button.active,
+.semantic_ui.inverted.black.buttons .button:active,
+.semantic_ui.inverted.black.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.black.buttons .button:hover,
+.semantic_ui.inverted.black.button:hover {
+  background-color: #000000;
+}
+.semantic_ui.inverted.black.buttons .button:focus,
+.semantic_ui.inverted.black.button:focus {
+  background-color: #000000;
+}
+.semantic_ui.inverted.black.buttons .active.button,
+.semantic_ui.inverted.black.active.button {
+  background-color: #000000;
+}
+.semantic_ui.inverted.black.buttons .button:active,
+.semantic_ui.inverted.black.button:active {
+  background-color: #000000;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.black.basic.buttons .button,
+.semantic_ui.inverted.black.buttons .basic.button,
+.semantic_ui.inverted.black.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.black.basic.buttons .button:hover,
+.semantic_ui.inverted.black.buttons .basic.button:hover,
+.semantic_ui.inverted.black.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #000000 inset !important;
+          box-shadow: 0px 0px 0px 2px #000000 inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.black.basic.buttons .button:focus,
+.semantic_ui.inverted.black.basic.buttons .button:focus,
+.semantic_ui.inverted.black.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #000000 inset !important;
+          box-shadow: 0px 0px 0px 2px #000000 inset !important;
+  color: #545454 !important;
+}
+.semantic_ui.inverted.black.basic.buttons .active.button,
+.semantic_ui.inverted.black.buttons .basic.active.button,
+.semantic_ui.inverted.black.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #000000 inset !important;
+          box-shadow: 0px 0px 0px 2px #000000 inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.black.basic.buttons .button:active,
+.semantic_ui.inverted.black.buttons .basic.button:active,
+.semantic_ui.inverted.black.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #000000 inset !important;
+          box-shadow: 0px 0px 0px 2px #000000 inset !important;
+  color: #FFFFFF !important;
+}
+
+/*--- Grey ---*/
+
+.semantic_ui.grey.buttons .button,
+.semantic_ui.grey.button {
+  background-color: #767676;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.grey.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.grey.buttons .button:hover,
+.semantic_ui.grey.button:hover {
+  background-color: #838383;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.grey.buttons .button:focus,
+.semantic_ui.grey.button:focus {
+  background-color: #8a8a8a;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.grey.buttons .button:active,
+.semantic_ui.grey.button:active {
+  background-color: #909090;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.grey.buttons .active.button,
+.semantic_ui.grey.buttons .active.button:active,
+.semantic_ui.grey.active.button,
+.semantic_ui.grey.button .active.button:active {
+  background-color: #696969;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.grey.buttons .button,
+.semantic_ui.basic.grey.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #767676 inset !important;
+          box-shadow: 0px 0px 0px 1px #767676 inset !important;
+  color: #767676 !important;
+}
+.semantic_ui.basic.grey.buttons .button:hover,
+.semantic_ui.basic.grey.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #838383 inset !important;
+          box-shadow: 0px 0px 0px 1px #838383 inset !important;
+  color: #838383 !important;
+}
+.semantic_ui.basic.grey.buttons .button:focus,
+.semantic_ui.basic.grey.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #8a8a8a inset !important;
+          box-shadow: 0px 0px 0px 1px #8a8a8a inset !important;
+  color: #838383 !important;
+}
+.semantic_ui.basic.grey.buttons .active.button,
+.semantic_ui.basic.grey.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #696969 inset !important;
+          box-shadow: 0px 0px 0px 1px #696969 inset !important;
+  color: #909090 !important;
+}
+.semantic_ui.basic.grey.buttons .button:active,
+.semantic_ui.basic.grey.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #909090 inset !important;
+          box-shadow: 0px 0px 0px 1px #909090 inset !important;
+  color: #909090 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.grey.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.grey.buttons .button,
+.semantic_ui.inverted.grey.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
+          box-shadow: 0px 0px 0px 2px #D4D4D5 inset !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.grey.buttons .button:hover,
+.semantic_ui.inverted.grey.button:hover,
+.semantic_ui.inverted.grey.buttons .button:focus,
+.semantic_ui.inverted.grey.button:focus,
+.semantic_ui.inverted.grey.buttons .button.active,
+.semantic_ui.inverted.grey.button.active,
+.semantic_ui.inverted.grey.buttons .button:active,
+.semantic_ui.inverted.grey.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+.semantic_ui.inverted.grey.buttons .button:hover,
+.semantic_ui.inverted.grey.button:hover {
+  background-color: #cfd0d2;
+}
+.semantic_ui.inverted.grey.buttons .button:focus,
+.semantic_ui.inverted.grey.button:focus {
+  background-color: #c7c9cb;
+}
+.semantic_ui.inverted.grey.buttons .active.button,
+.semantic_ui.inverted.grey.active.button {
+  background-color: #cfd0d2;
+}
+.semantic_ui.inverted.grey.buttons .button:active,
+.semantic_ui.inverted.grey.button:active {
+  background-color: #c2c4c5;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.grey.basic.buttons .button,
+.semantic_ui.inverted.grey.buttons .basic.button,
+.semantic_ui.inverted.grey.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.grey.basic.buttons .button:hover,
+.semantic_ui.inverted.grey.buttons .basic.button:hover,
+.semantic_ui.inverted.grey.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
+          box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.grey.basic.buttons .button:focus,
+.semantic_ui.inverted.grey.basic.buttons .button:focus,
+.semantic_ui.inverted.grey.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #c7c9cb inset !important;
+          box-shadow: 0px 0px 0px 2px #c7c9cb inset !important;
+  color: #DCDDDE !important;
+}
+.semantic_ui.inverted.grey.basic.buttons .active.button,
+.semantic_ui.inverted.grey.buttons .basic.active.button,
+.semantic_ui.inverted.grey.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
+          box-shadow: 0px 0px 0px 2px #cfd0d2 inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.grey.basic.buttons .button:active,
+.semantic_ui.inverted.grey.buttons .basic.button:active,
+.semantic_ui.inverted.grey.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #c2c4c5 inset !important;
+          box-shadow: 0px 0px 0px 2px #c2c4c5 inset !important;
+  color: #FFFFFF !important;
+}
+
+/*--- Brown ---*/
+
+.semantic_ui.brown.buttons .button,
+.semantic_ui.brown.button {
+  background-color: #A5673F;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.brown.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.brown.buttons .button:hover,
+.semantic_ui.brown.button:hover {
+  background-color: #975b33;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.brown.buttons .button:focus,
+.semantic_ui.brown.button:focus {
+  background-color: #90532b;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.brown.buttons .button:active,
+.semantic_ui.brown.button:active {
+  background-color: #805031;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.brown.buttons .active.button,
+.semantic_ui.brown.buttons .active.button:active,
+.semantic_ui.brown.active.button,
+.semantic_ui.brown.button .active.button:active {
+  background-color: #995a31;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.brown.buttons .button,
+.semantic_ui.basic.brown.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #A5673F inset !important;
+          box-shadow: 0px 0px 0px 1px #A5673F inset !important;
+  color: #A5673F !important;
+}
+.semantic_ui.basic.brown.buttons .button:hover,
+.semantic_ui.basic.brown.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #975b33 inset !important;
+          box-shadow: 0px 0px 0px 1px #975b33 inset !important;
+  color: #975b33 !important;
+}
+.semantic_ui.basic.brown.buttons .button:focus,
+.semantic_ui.basic.brown.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #90532b inset !important;
+          box-shadow: 0px 0px 0px 1px #90532b inset !important;
+  color: #975b33 !important;
+}
+.semantic_ui.basic.brown.buttons .active.button,
+.semantic_ui.basic.brown.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #995a31 inset !important;
+          box-shadow: 0px 0px 0px 1px #995a31 inset !important;
+  color: #805031 !important;
+}
+.semantic_ui.basic.brown.buttons .button:active,
+.semantic_ui.basic.brown.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #805031 inset !important;
+          box-shadow: 0px 0px 0px 1px #805031 inset !important;
+  color: #805031 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.brown.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.brown.buttons .button,
+.semantic_ui.inverted.brown.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #D67C1C inset !important;
+          box-shadow: 0px 0px 0px 2px #D67C1C inset !important;
+  color: #D67C1C;
+}
+.semantic_ui.inverted.brown.buttons .button:hover,
+.semantic_ui.inverted.brown.button:hover,
+.semantic_ui.inverted.brown.buttons .button:focus,
+.semantic_ui.inverted.brown.button:focus,
+.semantic_ui.inverted.brown.buttons .button.active,
+.semantic_ui.inverted.brown.button.active,
+.semantic_ui.inverted.brown.buttons .button:active,
+.semantic_ui.inverted.brown.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.brown.buttons .button:hover,
+.semantic_ui.inverted.brown.button:hover {
+  background-color: #c86f11;
+}
+.semantic_ui.inverted.brown.buttons .button:focus,
+.semantic_ui.inverted.brown.button:focus {
+  background-color: #c16808;
+}
+.semantic_ui.inverted.brown.buttons .active.button,
+.semantic_ui.inverted.brown.active.button {
+  background-color: #cc6f0d;
+}
+.semantic_ui.inverted.brown.buttons .button:active,
+.semantic_ui.inverted.brown.button:active {
+  background-color: #a96216;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.brown.basic.buttons .button,
+.semantic_ui.inverted.brown.buttons .basic.button,
+.semantic_ui.inverted.brown.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.brown.basic.buttons .button:hover,
+.semantic_ui.inverted.brown.buttons .basic.button:hover,
+.semantic_ui.inverted.brown.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #c86f11 inset !important;
+          box-shadow: 0px 0px 0px 2px #c86f11 inset !important;
+  color: #D67C1C !important;
+}
+.semantic_ui.inverted.brown.basic.buttons .button:focus,
+.semantic_ui.inverted.brown.basic.buttons .button:focus,
+.semantic_ui.inverted.brown.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #c16808 inset !important;
+          box-shadow: 0px 0px 0px 2px #c16808 inset !important;
+  color: #D67C1C !important;
+}
+.semantic_ui.inverted.brown.basic.buttons .active.button,
+.semantic_ui.inverted.brown.buttons .basic.active.button,
+.semantic_ui.inverted.brown.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #cc6f0d inset !important;
+          box-shadow: 0px 0px 0px 2px #cc6f0d inset !important;
+  color: #D67C1C !important;
+}
+.semantic_ui.inverted.brown.basic.buttons .button:active,
+.semantic_ui.inverted.brown.buttons .basic.button:active,
+.semantic_ui.inverted.brown.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #a96216 inset !important;
+          box-shadow: 0px 0px 0px 2px #a96216 inset !important;
+  color: #D67C1C !important;
+}
+
+/*--- Blue ---*/
+
+.semantic_ui.blue.buttons .button,
+.semantic_ui.blue.button {
+  background-color: #2185D0;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.blue.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.blue.buttons .button:hover,
+.semantic_ui.blue.button:hover {
+  background-color: #1678c2;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.blue.buttons .button:focus,
+.semantic_ui.blue.button:focus {
+  background-color: #0d71bb;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.blue.buttons .button:active,
+.semantic_ui.blue.button:active {
+  background-color: #1a69a4;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.blue.buttons .active.button,
+.semantic_ui.blue.buttons .active.button:active,
+.semantic_ui.blue.active.button,
+.semantic_ui.blue.button .active.button:active {
+  background-color: #1279c6;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.blue.buttons .button,
+.semantic_ui.basic.blue.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
+          box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
+  color: #2185D0 !important;
+}
+.semantic_ui.basic.blue.buttons .button:hover,
+.semantic_ui.basic.blue.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #1678c2 inset !important;
+          box-shadow: 0px 0px 0px 1px #1678c2 inset !important;
+  color: #1678c2 !important;
+}
+.semantic_ui.basic.blue.buttons .button:focus,
+.semantic_ui.basic.blue.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #0d71bb inset !important;
+          box-shadow: 0px 0px 0px 1px #0d71bb inset !important;
+  color: #1678c2 !important;
+}
+.semantic_ui.basic.blue.buttons .active.button,
+.semantic_ui.basic.blue.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
+          box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
+  color: #1a69a4 !important;
+}
+.semantic_ui.basic.blue.buttons .button:active,
+.semantic_ui.basic.blue.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #1a69a4 inset !important;
+          box-shadow: 0px 0px 0px 1px #1a69a4 inset !important;
+  color: #1a69a4 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.blue.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.blue.buttons .button,
+.semantic_ui.inverted.blue.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
+          box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
+  color: #54C8FF;
+}
+.semantic_ui.inverted.blue.buttons .button:hover,
+.semantic_ui.inverted.blue.button:hover,
+.semantic_ui.inverted.blue.buttons .button:focus,
+.semantic_ui.inverted.blue.button:focus,
+.semantic_ui.inverted.blue.buttons .button.active,
+.semantic_ui.inverted.blue.button.active,
+.semantic_ui.inverted.blue.buttons .button:active,
+.semantic_ui.inverted.blue.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.blue.buttons .button:hover,
+.semantic_ui.inverted.blue.button:hover {
+  background-color: #3ac0ff;
+}
+.semantic_ui.inverted.blue.buttons .button:focus,
+.semantic_ui.inverted.blue.button:focus {
+  background-color: #2bbbff;
+}
+.semantic_ui.inverted.blue.buttons .active.button,
+.semantic_ui.inverted.blue.active.button {
+  background-color: #3ac0ff;
+}
+.semantic_ui.inverted.blue.buttons .button:active,
+.semantic_ui.inverted.blue.button:active {
+  background-color: #21b8ff;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.blue.basic.buttons .button,
+.semantic_ui.inverted.blue.buttons .basic.button,
+.semantic_ui.inverted.blue.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.blue.basic.buttons .button:hover,
+.semantic_ui.inverted.blue.buttons .basic.button:hover,
+.semantic_ui.inverted.blue.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+          box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.blue.basic.buttons .button:focus,
+.semantic_ui.inverted.blue.basic.buttons .button:focus,
+.semantic_ui.inverted.blue.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #2bbbff inset !important;
+          box-shadow: 0px 0px 0px 2px #2bbbff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.blue.basic.buttons .active.button,
+.semantic_ui.inverted.blue.buttons .basic.active.button,
+.semantic_ui.inverted.blue.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+          box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.blue.basic.buttons .button:active,
+.semantic_ui.inverted.blue.buttons .basic.button:active,
+.semantic_ui.inverted.blue.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #21b8ff inset !important;
+          box-shadow: 0px 0px 0px 2px #21b8ff inset !important;
+  color: #54C8FF !important;
+}
+
+/*--- Green ---*/
+
+.semantic_ui.green.buttons .button,
+.semantic_ui.green.button {
+  background-color: #21BA45;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.green.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.green.buttons .button:hover,
+.semantic_ui.green.button:hover {
+  background-color: #16ab39;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.green.buttons .button:focus,
+.semantic_ui.green.button:focus {
+  background-color: #0ea432;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.green.buttons .button:active,
+.semantic_ui.green.button:active {
+  background-color: #198f35;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.green.buttons .active.button,
+.semantic_ui.green.buttons .active.button:active,
+.semantic_ui.green.active.button,
+.semantic_ui.green.button .active.button:active {
+  background-color: #13ae38;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.green.buttons .button,
+.semantic_ui.basic.green.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+          box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+  color: #21BA45 !important;
+}
+.semantic_ui.basic.green.buttons .button:hover,
+.semantic_ui.basic.green.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #16ab39 inset !important;
+          box-shadow: 0px 0px 0px 1px #16ab39 inset !important;
+  color: #16ab39 !important;
+}
+.semantic_ui.basic.green.buttons .button:focus,
+.semantic_ui.basic.green.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #0ea432 inset !important;
+          box-shadow: 0px 0px 0px 1px #0ea432 inset !important;
+  color: #16ab39 !important;
+}
+.semantic_ui.basic.green.buttons .active.button,
+.semantic_ui.basic.green.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
+          box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
+  color: #198f35 !important;
+}
+.semantic_ui.basic.green.buttons .button:active,
+.semantic_ui.basic.green.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #198f35 inset !important;
+          box-shadow: 0px 0px 0px 1px #198f35 inset !important;
+  color: #198f35 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.green.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.green.buttons .button,
+.semantic_ui.inverted.green.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #2ECC40 inset !important;
+          box-shadow: 0px 0px 0px 2px #2ECC40 inset !important;
+  color: #2ECC40;
+}
+.semantic_ui.inverted.green.buttons .button:hover,
+.semantic_ui.inverted.green.button:hover,
+.semantic_ui.inverted.green.buttons .button:focus,
+.semantic_ui.inverted.green.button:focus,
+.semantic_ui.inverted.green.buttons .button.active,
+.semantic_ui.inverted.green.button.active,
+.semantic_ui.inverted.green.buttons .button:active,
+.semantic_ui.inverted.green.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.green.buttons .button:hover,
+.semantic_ui.inverted.green.button:hover {
+  background-color: #22be34;
+}
+.semantic_ui.inverted.green.buttons .button:focus,
+.semantic_ui.inverted.green.button:focus {
+  background-color: #19b82b;
+}
+.semantic_ui.inverted.green.buttons .active.button,
+.semantic_ui.inverted.green.active.button {
+  background-color: #1fc231;
+}
+.semantic_ui.inverted.green.buttons .button:active,
+.semantic_ui.inverted.green.button:active {
+  background-color: #25a233;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.green.basic.buttons .button,
+.semantic_ui.inverted.green.buttons .basic.button,
+.semantic_ui.inverted.green.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.green.basic.buttons .button:hover,
+.semantic_ui.inverted.green.buttons .basic.button:hover,
+.semantic_ui.inverted.green.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #22be34 inset !important;
+          box-shadow: 0px 0px 0px 2px #22be34 inset !important;
+  color: #2ECC40 !important;
+}
+.semantic_ui.inverted.green.basic.buttons .button:focus,
+.semantic_ui.inverted.green.basic.buttons .button:focus,
+.semantic_ui.inverted.green.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #19b82b inset !important;
+          box-shadow: 0px 0px 0px 2px #19b82b inset !important;
+  color: #2ECC40 !important;
+}
+.semantic_ui.inverted.green.basic.buttons .active.button,
+.semantic_ui.inverted.green.buttons .basic.active.button,
+.semantic_ui.inverted.green.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #1fc231 inset !important;
+          box-shadow: 0px 0px 0px 2px #1fc231 inset !important;
+  color: #2ECC40 !important;
+}
+.semantic_ui.inverted.green.basic.buttons .button:active,
+.semantic_ui.inverted.green.buttons .basic.button:active,
+.semantic_ui.inverted.green.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #25a233 inset !important;
+          box-shadow: 0px 0px 0px 2px #25a233 inset !important;
+  color: #2ECC40 !important;
+}
+
+/*--- Orange ---*/
+
+.semantic_ui.orange.buttons .button,
+.semantic_ui.orange.button {
+  background-color: #F2711C;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.orange.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.orange.buttons .button:hover,
+.semantic_ui.orange.button:hover {
+  background-color: #f26202;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.orange.buttons .button:focus,
+.semantic_ui.orange.button:focus {
+  background-color: #e55b00;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.orange.buttons .button:active,
+.semantic_ui.orange.button:active {
+  background-color: #cf590c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.orange.buttons .active.button,
+.semantic_ui.orange.buttons .active.button:active,
+.semantic_ui.orange.active.button,
+.semantic_ui.orange.button .active.button:active {
+  background-color: #f56100;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.orange.buttons .button,
+.semantic_ui.basic.orange.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #F2711C inset !important;
+          box-shadow: 0px 0px 0px 1px #F2711C inset !important;
+  color: #F2711C !important;
+}
+.semantic_ui.basic.orange.buttons .button:hover,
+.semantic_ui.basic.orange.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #f26202 inset !important;
+          box-shadow: 0px 0px 0px 1px #f26202 inset !important;
+  color: #f26202 !important;
+}
+.semantic_ui.basic.orange.buttons .button:focus,
+.semantic_ui.basic.orange.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #e55b00 inset !important;
+          box-shadow: 0px 0px 0px 1px #e55b00 inset !important;
+  color: #f26202 !important;
+}
+.semantic_ui.basic.orange.buttons .active.button,
+.semantic_ui.basic.orange.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #f56100 inset !important;
+          box-shadow: 0px 0px 0px 1px #f56100 inset !important;
+  color: #cf590c !important;
+}
+.semantic_ui.basic.orange.buttons .button:active,
+.semantic_ui.basic.orange.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #cf590c inset !important;
+          box-shadow: 0px 0px 0px 1px #cf590c inset !important;
+  color: #cf590c !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.orange.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.orange.buttons .button,
+.semantic_ui.inverted.orange.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #FF851B inset !important;
+          box-shadow: 0px 0px 0px 2px #FF851B inset !important;
+  color: #FF851B;
+}
+.semantic_ui.inverted.orange.buttons .button:hover,
+.semantic_ui.inverted.orange.button:hover,
+.semantic_ui.inverted.orange.buttons .button:focus,
+.semantic_ui.inverted.orange.button:focus,
+.semantic_ui.inverted.orange.buttons .button.active,
+.semantic_ui.inverted.orange.button.active,
+.semantic_ui.inverted.orange.buttons .button:active,
+.semantic_ui.inverted.orange.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.orange.buttons .button:hover,
+.semantic_ui.inverted.orange.button:hover {
+  background-color: #ff7701;
+}
+.semantic_ui.inverted.orange.buttons .button:focus,
+.semantic_ui.inverted.orange.button:focus {
+  background-color: #f17000;
+}
+.semantic_ui.inverted.orange.buttons .active.button,
+.semantic_ui.inverted.orange.active.button {
+  background-color: #ff7701;
+}
+.semantic_ui.inverted.orange.buttons .button:active,
+.semantic_ui.inverted.orange.button:active {
+  background-color: #e76b00;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.orange.basic.buttons .button,
+.semantic_ui.inverted.orange.buttons .basic.button,
+.semantic_ui.inverted.orange.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.orange.basic.buttons .button:hover,
+.semantic_ui.inverted.orange.buttons .basic.button:hover,
+.semantic_ui.inverted.orange.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
+  color: #FF851B !important;
+}
+.semantic_ui.inverted.orange.basic.buttons .button:focus,
+.semantic_ui.inverted.orange.basic.buttons .button:focus,
+.semantic_ui.inverted.orange.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #f17000 inset !important;
+          box-shadow: 0px 0px 0px 2px #f17000 inset !important;
+  color: #FF851B !important;
+}
+.semantic_ui.inverted.orange.basic.buttons .active.button,
+.semantic_ui.inverted.orange.buttons .basic.active.button,
+.semantic_ui.inverted.orange.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff7701 inset !important;
+  color: #FF851B !important;
+}
+.semantic_ui.inverted.orange.basic.buttons .button:active,
+.semantic_ui.inverted.orange.buttons .basic.button:active,
+.semantic_ui.inverted.orange.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #e76b00 inset !important;
+          box-shadow: 0px 0px 0px 2px #e76b00 inset !important;
+  color: #FF851B !important;
+}
+
+/*--- Pink ---*/
+
+.semantic_ui.pink.buttons .button,
+.semantic_ui.pink.button {
+  background-color: #E03997;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.pink.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.pink.buttons .button:hover,
+.semantic_ui.pink.button:hover {
+  background-color: #e61a8d;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.pink.buttons .button:focus,
+.semantic_ui.pink.button:focus {
+  background-color: #e10f85;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.pink.buttons .button:active,
+.semantic_ui.pink.button:active {
+  background-color: #c71f7e;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.pink.buttons .active.button,
+.semantic_ui.pink.buttons .active.button:active,
+.semantic_ui.pink.active.button,
+.semantic_ui.pink.button .active.button:active {
+  background-color: #ea158d;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.pink.buttons .button,
+.semantic_ui.basic.pink.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #E03997 inset !important;
+          box-shadow: 0px 0px 0px 1px #E03997 inset !important;
+  color: #E03997 !important;
+}
+.semantic_ui.basic.pink.buttons .button:hover,
+.semantic_ui.basic.pink.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #e61a8d inset !important;
+          box-shadow: 0px 0px 0px 1px #e61a8d inset !important;
+  color: #e61a8d !important;
+}
+.semantic_ui.basic.pink.buttons .button:focus,
+.semantic_ui.basic.pink.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #e10f85 inset !important;
+          box-shadow: 0px 0px 0px 1px #e10f85 inset !important;
+  color: #e61a8d !important;
+}
+.semantic_ui.basic.pink.buttons .active.button,
+.semantic_ui.basic.pink.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #ea158d inset !important;
+          box-shadow: 0px 0px 0px 1px #ea158d inset !important;
+  color: #c71f7e !important;
+}
+.semantic_ui.basic.pink.buttons .button:active,
+.semantic_ui.basic.pink.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #c71f7e inset !important;
+          box-shadow: 0px 0px 0px 1px #c71f7e inset !important;
+  color: #c71f7e !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.pink.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.pink.buttons .button,
+.semantic_ui.inverted.pink.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #FF8EDF inset !important;
+          box-shadow: 0px 0px 0px 2px #FF8EDF inset !important;
+  color: #FF8EDF;
+}
+.semantic_ui.inverted.pink.buttons .button:hover,
+.semantic_ui.inverted.pink.button:hover,
+.semantic_ui.inverted.pink.buttons .button:focus,
+.semantic_ui.inverted.pink.button:focus,
+.semantic_ui.inverted.pink.buttons .button.active,
+.semantic_ui.inverted.pink.button.active,
+.semantic_ui.inverted.pink.buttons .button:active,
+.semantic_ui.inverted.pink.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.pink.buttons .button:hover,
+.semantic_ui.inverted.pink.button:hover {
+  background-color: #ff74d8;
+}
+.semantic_ui.inverted.pink.buttons .button:focus,
+.semantic_ui.inverted.pink.button:focus {
+  background-color: #ff65d3;
+}
+.semantic_ui.inverted.pink.buttons .active.button,
+.semantic_ui.inverted.pink.active.button {
+  background-color: #ff74d8;
+}
+.semantic_ui.inverted.pink.buttons .button:active,
+.semantic_ui.inverted.pink.button:active {
+  background-color: #ff5bd1;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.pink.basic.buttons .button,
+.semantic_ui.inverted.pink.buttons .basic.button,
+.semantic_ui.inverted.pink.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.pink.basic.buttons .button:hover,
+.semantic_ui.inverted.pink.buttons .basic.button:hover,
+.semantic_ui.inverted.pink.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
+  color: #FF8EDF !important;
+}
+.semantic_ui.inverted.pink.basic.buttons .button:focus,
+.semantic_ui.inverted.pink.basic.buttons .button:focus,
+.semantic_ui.inverted.pink.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff65d3 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff65d3 inset !important;
+  color: #FF8EDF !important;
+}
+.semantic_ui.inverted.pink.basic.buttons .active.button,
+.semantic_ui.inverted.pink.buttons .basic.active.button,
+.semantic_ui.inverted.pink.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff74d8 inset !important;
+  color: #FF8EDF !important;
+}
+.semantic_ui.inverted.pink.basic.buttons .button:active,
+.semantic_ui.inverted.pink.buttons .basic.button:active,
+.semantic_ui.inverted.pink.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff5bd1 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff5bd1 inset !important;
+  color: #FF8EDF !important;
+}
+
+/*--- Violet ---*/
+
+.semantic_ui.violet.buttons .button,
+.semantic_ui.violet.button {
+  background-color: #6435C9;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.violet.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.violet.buttons .button:hover,
+.semantic_ui.violet.button:hover {
+  background-color: #5829bb;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.violet.buttons .button:focus,
+.semantic_ui.violet.button:focus {
+  background-color: #4f20b5;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.violet.buttons .button:active,
+.semantic_ui.violet.button:active {
+  background-color: #502aa1;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.violet.buttons .active.button,
+.semantic_ui.violet.buttons .active.button:active,
+.semantic_ui.violet.active.button,
+.semantic_ui.violet.button .active.button:active {
+  background-color: #5626bf;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.violet.buttons .button,
+.semantic_ui.basic.violet.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #6435C9 inset !important;
+          box-shadow: 0px 0px 0px 1px #6435C9 inset !important;
+  color: #6435C9 !important;
+}
+.semantic_ui.basic.violet.buttons .button:hover,
+.semantic_ui.basic.violet.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #5829bb inset !important;
+          box-shadow: 0px 0px 0px 1px #5829bb inset !important;
+  color: #5829bb !important;
+}
+.semantic_ui.basic.violet.buttons .button:focus,
+.semantic_ui.basic.violet.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #4f20b5 inset !important;
+          box-shadow: 0px 0px 0px 1px #4f20b5 inset !important;
+  color: #5829bb !important;
+}
+.semantic_ui.basic.violet.buttons .active.button,
+.semantic_ui.basic.violet.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #5626bf inset !important;
+          box-shadow: 0px 0px 0px 1px #5626bf inset !important;
+  color: #502aa1 !important;
+}
+.semantic_ui.basic.violet.buttons .button:active,
+.semantic_ui.basic.violet.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #502aa1 inset !important;
+          box-shadow: 0px 0px 0px 1px #502aa1 inset !important;
+  color: #502aa1 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.violet.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.violet.buttons .button,
+.semantic_ui.inverted.violet.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #A291FB inset !important;
+          box-shadow: 0px 0px 0px 2px #A291FB inset !important;
+  color: #A291FB;
+}
+.semantic_ui.inverted.violet.buttons .button:hover,
+.semantic_ui.inverted.violet.button:hover,
+.semantic_ui.inverted.violet.buttons .button:focus,
+.semantic_ui.inverted.violet.button:focus,
+.semantic_ui.inverted.violet.buttons .button.active,
+.semantic_ui.inverted.violet.button.active,
+.semantic_ui.inverted.violet.buttons .button:active,
+.semantic_ui.inverted.violet.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.violet.buttons .button:hover,
+.semantic_ui.inverted.violet.button:hover {
+  background-color: #8a73ff;
+}
+.semantic_ui.inverted.violet.buttons .button:focus,
+.semantic_ui.inverted.violet.button:focus {
+  background-color: #7d64ff;
+}
+.semantic_ui.inverted.violet.buttons .active.button,
+.semantic_ui.inverted.violet.active.button {
+  background-color: #8a73ff;
+}
+.semantic_ui.inverted.violet.buttons .button:active,
+.semantic_ui.inverted.violet.button:active {
+  background-color: #7860f9;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.violet.basic.buttons .button,
+.semantic_ui.inverted.violet.buttons .basic.button,
+.semantic_ui.inverted.violet.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.violet.basic.buttons .button:hover,
+.semantic_ui.inverted.violet.buttons .basic.button:hover,
+.semantic_ui.inverted.violet.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
+          box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
+  color: #A291FB !important;
+}
+.semantic_ui.inverted.violet.basic.buttons .button:focus,
+.semantic_ui.inverted.violet.basic.buttons .button:focus,
+.semantic_ui.inverted.violet.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #7d64ff inset !important;
+          box-shadow: 0px 0px 0px 2px #7d64ff inset !important;
+  color: #A291FB !important;
+}
+.semantic_ui.inverted.violet.basic.buttons .active.button,
+.semantic_ui.inverted.violet.buttons .basic.active.button,
+.semantic_ui.inverted.violet.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
+          box-shadow: 0px 0px 0px 2px #8a73ff inset !important;
+  color: #A291FB !important;
+}
+.semantic_ui.inverted.violet.basic.buttons .button:active,
+.semantic_ui.inverted.violet.buttons .basic.button:active,
+.semantic_ui.inverted.violet.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #7860f9 inset !important;
+          box-shadow: 0px 0px 0px 2px #7860f9 inset !important;
+  color: #A291FB !important;
+}
+
+/*--- Purple ---*/
+
+.semantic_ui.purple.buttons .button,
+.semantic_ui.purple.button {
+  background-color: #A333C8;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.purple.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.purple.buttons .button:hover,
+.semantic_ui.purple.button:hover {
+  background-color: #9627ba;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.purple.buttons .button:focus,
+.semantic_ui.purple.button:focus {
+  background-color: #8f1eb4;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.purple.buttons .button:active,
+.semantic_ui.purple.button:active {
+  background-color: #82299f;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.purple.buttons .active.button,
+.semantic_ui.purple.buttons .active.button:active,
+.semantic_ui.purple.active.button,
+.semantic_ui.purple.button .active.button:active {
+  background-color: #9724be;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.purple.buttons .button,
+.semantic_ui.basic.purple.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #A333C8 inset !important;
+          box-shadow: 0px 0px 0px 1px #A333C8 inset !important;
+  color: #A333C8 !important;
+}
+.semantic_ui.basic.purple.buttons .button:hover,
+.semantic_ui.basic.purple.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #9627ba inset !important;
+          box-shadow: 0px 0px 0px 1px #9627ba inset !important;
+  color: #9627ba !important;
+}
+.semantic_ui.basic.purple.buttons .button:focus,
+.semantic_ui.basic.purple.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #8f1eb4 inset !important;
+          box-shadow: 0px 0px 0px 1px #8f1eb4 inset !important;
+  color: #9627ba !important;
+}
+.semantic_ui.basic.purple.buttons .active.button,
+.semantic_ui.basic.purple.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #9724be inset !important;
+          box-shadow: 0px 0px 0px 1px #9724be inset !important;
+  color: #82299f !important;
+}
+.semantic_ui.basic.purple.buttons .button:active,
+.semantic_ui.basic.purple.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #82299f inset !important;
+          box-shadow: 0px 0px 0px 1px #82299f inset !important;
+  color: #82299f !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.purple.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.purple.buttons .button,
+.semantic_ui.inverted.purple.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #DC73FF inset !important;
+          box-shadow: 0px 0px 0px 2px #DC73FF inset !important;
+  color: #DC73FF;
+}
+.semantic_ui.inverted.purple.buttons .button:hover,
+.semantic_ui.inverted.purple.button:hover,
+.semantic_ui.inverted.purple.buttons .button:focus,
+.semantic_ui.inverted.purple.button:focus,
+.semantic_ui.inverted.purple.buttons .button.active,
+.semantic_ui.inverted.purple.button.active,
+.semantic_ui.inverted.purple.buttons .button:active,
+.semantic_ui.inverted.purple.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.purple.buttons .button:hover,
+.semantic_ui.inverted.purple.button:hover {
+  background-color: #d65aff;
+}
+.semantic_ui.inverted.purple.buttons .button:focus,
+.semantic_ui.inverted.purple.button:focus {
+  background-color: #d24aff;
+}
+.semantic_ui.inverted.purple.buttons .active.button,
+.semantic_ui.inverted.purple.active.button {
+  background-color: #d65aff;
+}
+.semantic_ui.inverted.purple.buttons .button:active,
+.semantic_ui.inverted.purple.button:active {
+  background-color: #cf40ff;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.purple.basic.buttons .button,
+.semantic_ui.inverted.purple.buttons .basic.button,
+.semantic_ui.inverted.purple.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.purple.basic.buttons .button:hover,
+.semantic_ui.inverted.purple.buttons .basic.button:hover,
+.semantic_ui.inverted.purple.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #d65aff inset !important;
+          box-shadow: 0px 0px 0px 2px #d65aff inset !important;
+  color: #DC73FF !important;
+}
+.semantic_ui.inverted.purple.basic.buttons .button:focus,
+.semantic_ui.inverted.purple.basic.buttons .button:focus,
+.semantic_ui.inverted.purple.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #d24aff inset !important;
+          box-shadow: 0px 0px 0px 2px #d24aff inset !important;
+  color: #DC73FF !important;
+}
+.semantic_ui.inverted.purple.basic.buttons .active.button,
+.semantic_ui.inverted.purple.buttons .basic.active.button,
+.semantic_ui.inverted.purple.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #d65aff inset !important;
+          box-shadow: 0px 0px 0px 2px #d65aff inset !important;
+  color: #DC73FF !important;
+}
+.semantic_ui.inverted.purple.basic.buttons .button:active,
+.semantic_ui.inverted.purple.buttons .basic.button:active,
+.semantic_ui.inverted.purple.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #cf40ff inset !important;
+          box-shadow: 0px 0px 0px 2px #cf40ff inset !important;
+  color: #DC73FF !important;
+}
+
+/*--- Red ---*/
+
+.semantic_ui.red.buttons .button,
+.semantic_ui.red.button {
+  background-color: #DB2828;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.red.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.red.buttons .button:hover,
+.semantic_ui.red.button:hover {
+  background-color: #d01919;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.red.buttons .button:focus,
+.semantic_ui.red.button:focus {
+  background-color: #ca1010;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.red.buttons .button:active,
+.semantic_ui.red.button:active {
+  background-color: #b21e1e;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.red.buttons .active.button,
+.semantic_ui.red.buttons .active.button:active,
+.semantic_ui.red.active.button,
+.semantic_ui.red.button .active.button:active {
+  background-color: #d41515;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.red.buttons .button,
+.semantic_ui.basic.red.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+          box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+  color: #DB2828 !important;
+}
+.semantic_ui.basic.red.buttons .button:hover,
+.semantic_ui.basic.red.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #d01919 inset !important;
+          box-shadow: 0px 0px 0px 1px #d01919 inset !important;
+  color: #d01919 !important;
+}
+.semantic_ui.basic.red.buttons .button:focus,
+.semantic_ui.basic.red.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #ca1010 inset !important;
+          box-shadow: 0px 0px 0px 1px #ca1010 inset !important;
+  color: #d01919 !important;
+}
+.semantic_ui.basic.red.buttons .active.button,
+.semantic_ui.basic.red.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #d41515 inset !important;
+          box-shadow: 0px 0px 0px 1px #d41515 inset !important;
+  color: #b21e1e !important;
+}
+.semantic_ui.basic.red.buttons .button:active,
+.semantic_ui.basic.red.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #b21e1e inset !important;
+          box-shadow: 0px 0px 0px 1px #b21e1e inset !important;
+  color: #b21e1e !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.red.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.red.buttons .button,
+.semantic_ui.inverted.red.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #FF695E inset !important;
+          box-shadow: 0px 0px 0px 2px #FF695E inset !important;
+  color: #FF695E;
+}
+.semantic_ui.inverted.red.buttons .button:hover,
+.semantic_ui.inverted.red.button:hover,
+.semantic_ui.inverted.red.buttons .button:focus,
+.semantic_ui.inverted.red.button:focus,
+.semantic_ui.inverted.red.buttons .button.active,
+.semantic_ui.inverted.red.button.active,
+.semantic_ui.inverted.red.buttons .button:active,
+.semantic_ui.inverted.red.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.red.buttons .button:hover,
+.semantic_ui.inverted.red.button:hover {
+  background-color: #ff5144;
+}
+.semantic_ui.inverted.red.buttons .button:focus,
+.semantic_ui.inverted.red.button:focus {
+  background-color: #ff4335;
+}
+.semantic_ui.inverted.red.buttons .active.button,
+.semantic_ui.inverted.red.active.button {
+  background-color: #ff5144;
+}
+.semantic_ui.inverted.red.buttons .button:active,
+.semantic_ui.inverted.red.button:active {
+  background-color: #ff392b;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.red.basic.buttons .button,
+.semantic_ui.inverted.red.buttons .basic.button,
+.semantic_ui.inverted.red.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.red.basic.buttons .button:hover,
+.semantic_ui.inverted.red.buttons .basic.button:hover,
+.semantic_ui.inverted.red.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
+  color: #FF695E !important;
+}
+.semantic_ui.inverted.red.basic.buttons .button:focus,
+.semantic_ui.inverted.red.basic.buttons .button:focus,
+.semantic_ui.inverted.red.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff4335 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff4335 inset !important;
+  color: #FF695E !important;
+}
+.semantic_ui.inverted.red.basic.buttons .active.button,
+.semantic_ui.inverted.red.buttons .basic.active.button,
+.semantic_ui.inverted.red.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
+          box-shadow: 0px 0px 0px 2px #ff5144 inset !important;
+  color: #FF695E !important;
+}
+.semantic_ui.inverted.red.basic.buttons .button:active,
+.semantic_ui.inverted.red.buttons .basic.button:active,
+.semantic_ui.inverted.red.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #ff392b inset !important;
+          box-shadow: 0px 0px 0px 2px #ff392b inset !important;
+  color: #FF695E !important;
+}
+
+/*--- Teal ---*/
+
+.semantic_ui.teal.buttons .button,
+.semantic_ui.teal.button {
+  background-color: #00B5AD;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.teal.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.teal.buttons .button:hover,
+.semantic_ui.teal.button:hover {
+  background-color: #009c95;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.teal.buttons .button:focus,
+.semantic_ui.teal.button:focus {
+  background-color: #008c86;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.teal.buttons .button:active,
+.semantic_ui.teal.button:active {
+  background-color: #00827c;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.teal.buttons .active.button,
+.semantic_ui.teal.buttons .active.button:active,
+.semantic_ui.teal.active.button,
+.semantic_ui.teal.button .active.button:active {
+  background-color: #009c95;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.teal.buttons .button,
+.semantic_ui.basic.teal.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
+          box-shadow: 0px 0px 0px 1px #00B5AD inset !important;
+  color: #00B5AD !important;
+}
+.semantic_ui.basic.teal.buttons .button:hover,
+.semantic_ui.basic.teal.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #009c95 inset !important;
+          box-shadow: 0px 0px 0px 1px #009c95 inset !important;
+  color: #009c95 !important;
+}
+.semantic_ui.basic.teal.buttons .button:focus,
+.semantic_ui.basic.teal.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #008c86 inset !important;
+          box-shadow: 0px 0px 0px 1px #008c86 inset !important;
+  color: #009c95 !important;
+}
+.semantic_ui.basic.teal.buttons .active.button,
+.semantic_ui.basic.teal.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #009c95 inset !important;
+          box-shadow: 0px 0px 0px 1px #009c95 inset !important;
+  color: #00827c !important;
+}
+.semantic_ui.basic.teal.buttons .button:active,
+.semantic_ui.basic.teal.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #00827c inset !important;
+          box-shadow: 0px 0px 0px 1px #00827c inset !important;
+  color: #00827c !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.teal.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.teal.buttons .button,
+.semantic_ui.inverted.teal.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #6DFFFF inset !important;
+          box-shadow: 0px 0px 0px 2px #6DFFFF inset !important;
+  color: #6DFFFF;
+}
+.semantic_ui.inverted.teal.buttons .button:hover,
+.semantic_ui.inverted.teal.button:hover,
+.semantic_ui.inverted.teal.buttons .button:focus,
+.semantic_ui.inverted.teal.button:focus,
+.semantic_ui.inverted.teal.buttons .button.active,
+.semantic_ui.inverted.teal.button.active,
+.semantic_ui.inverted.teal.buttons .button:active,
+.semantic_ui.inverted.teal.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+.semantic_ui.inverted.teal.buttons .button:hover,
+.semantic_ui.inverted.teal.button:hover {
+  background-color: #54ffff;
+}
+.semantic_ui.inverted.teal.buttons .button:focus,
+.semantic_ui.inverted.teal.button:focus {
+  background-color: #44ffff;
+}
+.semantic_ui.inverted.teal.buttons .active.button,
+.semantic_ui.inverted.teal.active.button {
+  background-color: #54ffff;
+}
+.semantic_ui.inverted.teal.buttons .button:active,
+.semantic_ui.inverted.teal.button:active {
+  background-color: #3affff;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.teal.basic.buttons .button,
+.semantic_ui.inverted.teal.buttons .basic.button,
+.semantic_ui.inverted.teal.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.teal.basic.buttons .button:hover,
+.semantic_ui.inverted.teal.buttons .basic.button:hover,
+.semantic_ui.inverted.teal.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #54ffff inset !important;
+          box-shadow: 0px 0px 0px 2px #54ffff inset !important;
+  color: #6DFFFF !important;
+}
+.semantic_ui.inverted.teal.basic.buttons .button:focus,
+.semantic_ui.inverted.teal.basic.buttons .button:focus,
+.semantic_ui.inverted.teal.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #44ffff inset !important;
+          box-shadow: 0px 0px 0px 2px #44ffff inset !important;
+  color: #6DFFFF !important;
+}
+.semantic_ui.inverted.teal.basic.buttons .active.button,
+.semantic_ui.inverted.teal.buttons .basic.active.button,
+.semantic_ui.inverted.teal.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #54ffff inset !important;
+          box-shadow: 0px 0px 0px 2px #54ffff inset !important;
+  color: #6DFFFF !important;
+}
+.semantic_ui.inverted.teal.basic.buttons .button:active,
+.semantic_ui.inverted.teal.buttons .basic.button:active,
+.semantic_ui.inverted.teal.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #3affff inset !important;
+          box-shadow: 0px 0px 0px 2px #3affff inset !important;
+  color: #6DFFFF !important;
+}
+
+/*--- Olive ---*/
+
+.semantic_ui.olive.buttons .button,
+.semantic_ui.olive.button {
+  background-color: #B5CC18;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.olive.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.olive.buttons .button:hover,
+.semantic_ui.olive.button:hover {
+  background-color: #a7bd0d;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.olive.buttons .button:focus,
+.semantic_ui.olive.button:focus {
+  background-color: #a0b605;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.olive.buttons .button:active,
+.semantic_ui.olive.button:active {
+  background-color: #8d9e13;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.olive.buttons .active.button,
+.semantic_ui.olive.buttons .active.button:active,
+.semantic_ui.olive.active.button,
+.semantic_ui.olive.button .active.button:active {
+  background-color: #aac109;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.olive.buttons .button,
+.semantic_ui.basic.olive.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #B5CC18 inset !important;
+          box-shadow: 0px 0px 0px 1px #B5CC18 inset !important;
+  color: #B5CC18 !important;
+}
+.semantic_ui.basic.olive.buttons .button:hover,
+.semantic_ui.basic.olive.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #a7bd0d inset !important;
+          box-shadow: 0px 0px 0px 1px #a7bd0d inset !important;
+  color: #a7bd0d !important;
+}
+.semantic_ui.basic.olive.buttons .button:focus,
+.semantic_ui.basic.olive.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #a0b605 inset !important;
+          box-shadow: 0px 0px 0px 1px #a0b605 inset !important;
+  color: #a7bd0d !important;
+}
+.semantic_ui.basic.olive.buttons .active.button,
+.semantic_ui.basic.olive.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #aac109 inset !important;
+          box-shadow: 0px 0px 0px 1px #aac109 inset !important;
+  color: #8d9e13 !important;
+}
+.semantic_ui.basic.olive.buttons .button:active,
+.semantic_ui.basic.olive.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #8d9e13 inset !important;
+          box-shadow: 0px 0px 0px 1px #8d9e13 inset !important;
+  color: #8d9e13 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.olive.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.olive.buttons .button,
+.semantic_ui.inverted.olive.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #D9E778 inset !important;
+          box-shadow: 0px 0px 0px 2px #D9E778 inset !important;
+  color: #D9E778;
+}
+.semantic_ui.inverted.olive.buttons .button:hover,
+.semantic_ui.inverted.olive.button:hover,
+.semantic_ui.inverted.olive.buttons .button:focus,
+.semantic_ui.inverted.olive.button:focus,
+.semantic_ui.inverted.olive.buttons .button.active,
+.semantic_ui.inverted.olive.button.active,
+.semantic_ui.inverted.olive.buttons .button:active,
+.semantic_ui.inverted.olive.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+.semantic_ui.inverted.olive.buttons .button:hover,
+.semantic_ui.inverted.olive.button:hover {
+  background-color: #d8ea5c;
+}
+.semantic_ui.inverted.olive.buttons .button:focus,
+.semantic_ui.inverted.olive.button:focus {
+  background-color: #daef47;
+}
+.semantic_ui.inverted.olive.buttons .active.button,
+.semantic_ui.inverted.olive.active.button {
+  background-color: #daed59;
+}
+.semantic_ui.inverted.olive.buttons .button:active,
+.semantic_ui.inverted.olive.button:active {
+  background-color: #cddf4d;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.olive.basic.buttons .button,
+.semantic_ui.inverted.olive.buttons .basic.button,
+.semantic_ui.inverted.olive.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.olive.basic.buttons .button:hover,
+.semantic_ui.inverted.olive.buttons .basic.button:hover,
+.semantic_ui.inverted.olive.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #d8ea5c inset !important;
+          box-shadow: 0px 0px 0px 2px #d8ea5c inset !important;
+  color: #D9E778 !important;
+}
+.semantic_ui.inverted.olive.basic.buttons .button:focus,
+.semantic_ui.inverted.olive.basic.buttons .button:focus,
+.semantic_ui.inverted.olive.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #daef47 inset !important;
+          box-shadow: 0px 0px 0px 2px #daef47 inset !important;
+  color: #D9E778 !important;
+}
+.semantic_ui.inverted.olive.basic.buttons .active.button,
+.semantic_ui.inverted.olive.buttons .basic.active.button,
+.semantic_ui.inverted.olive.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #daed59 inset !important;
+          box-shadow: 0px 0px 0px 2px #daed59 inset !important;
+  color: #D9E778 !important;
+}
+.semantic_ui.inverted.olive.basic.buttons .button:active,
+.semantic_ui.inverted.olive.buttons .basic.button:active,
+.semantic_ui.inverted.olive.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #cddf4d inset !important;
+          box-shadow: 0px 0px 0px 2px #cddf4d inset !important;
+  color: #D9E778 !important;
+}
+
+/*--- Yellow ---*/
+
+.semantic_ui.yellow.buttons .button,
+.semantic_ui.yellow.button {
+  background-color: #FBBD08;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.yellow.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.yellow.buttons .button:hover,
+.semantic_ui.yellow.button:hover {
+  background-color: #eaae00;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.yellow.buttons .button:focus,
+.semantic_ui.yellow.button:focus {
+  background-color: #daa300;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.yellow.buttons .button:active,
+.semantic_ui.yellow.button:active {
+  background-color: #cd9903;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.yellow.buttons .active.button,
+.semantic_ui.yellow.buttons .active.button:active,
+.semantic_ui.yellow.active.button,
+.semantic_ui.yellow.button .active.button:active {
+  background-color: #eaae00;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.yellow.buttons .button,
+.semantic_ui.basic.yellow.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
+          box-shadow: 0px 0px 0px 1px #FBBD08 inset !important;
+  color: #FBBD08 !important;
+}
+.semantic_ui.basic.yellow.buttons .button:hover,
+.semantic_ui.basic.yellow.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
+          box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
+  color: #eaae00 !important;
+}
+.semantic_ui.basic.yellow.buttons .button:focus,
+.semantic_ui.basic.yellow.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #daa300 inset !important;
+          box-shadow: 0px 0px 0px 1px #daa300 inset !important;
+  color: #eaae00 !important;
+}
+.semantic_ui.basic.yellow.buttons .active.button,
+.semantic_ui.basic.yellow.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
+          box-shadow: 0px 0px 0px 1px #eaae00 inset !important;
+  color: #cd9903 !important;
+}
+.semantic_ui.basic.yellow.buttons .button:active,
+.semantic_ui.basic.yellow.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #cd9903 inset !important;
+          box-shadow: 0px 0px 0px 1px #cd9903 inset !important;
+  color: #cd9903 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.yellow.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.yellow.buttons .button,
+.semantic_ui.inverted.yellow.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #FFE21F inset !important;
+          box-shadow: 0px 0px 0px 2px #FFE21F inset !important;
+  color: #FFE21F;
+}
+.semantic_ui.inverted.yellow.buttons .button:hover,
+.semantic_ui.inverted.yellow.button:hover,
+.semantic_ui.inverted.yellow.buttons .button:focus,
+.semantic_ui.inverted.yellow.button:focus,
+.semantic_ui.inverted.yellow.buttons .button.active,
+.semantic_ui.inverted.yellow.button.active,
+.semantic_ui.inverted.yellow.buttons .button:active,
+.semantic_ui.inverted.yellow.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+.semantic_ui.inverted.yellow.buttons .button:hover,
+.semantic_ui.inverted.yellow.button:hover {
+  background-color: #ffdf05;
+}
+.semantic_ui.inverted.yellow.buttons .button:focus,
+.semantic_ui.inverted.yellow.button:focus {
+  background-color: #f5d500;
+}
+.semantic_ui.inverted.yellow.buttons .active.button,
+.semantic_ui.inverted.yellow.active.button {
+  background-color: #ffdf05;
+}
+.semantic_ui.inverted.yellow.buttons .button:active,
+.semantic_ui.inverted.yellow.button:active {
+  background-color: #ebcd00;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.yellow.basic.buttons .button,
+.semantic_ui.inverted.yellow.buttons .basic.button,
+.semantic_ui.inverted.yellow.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.yellow.basic.buttons .button:hover,
+.semantic_ui.inverted.yellow.buttons .basic.button:hover,
+.semantic_ui.inverted.yellow.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
+          box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
+  color: #FFE21F !important;
+}
+.semantic_ui.inverted.yellow.basic.buttons .button:focus,
+.semantic_ui.inverted.yellow.basic.buttons .button:focus,
+.semantic_ui.inverted.yellow.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #f5d500 inset !important;
+          box-shadow: 0px 0px 0px 2px #f5d500 inset !important;
+  color: #FFE21F !important;
+}
+.semantic_ui.inverted.yellow.basic.buttons .active.button,
+.semantic_ui.inverted.yellow.buttons .basic.active.button,
+.semantic_ui.inverted.yellow.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
+          box-shadow: 0px 0px 0px 2px #ffdf05 inset !important;
+  color: #FFE21F !important;
+}
+.semantic_ui.inverted.yellow.basic.buttons .button:active,
+.semantic_ui.inverted.yellow.buttons .basic.button:active,
+.semantic_ui.inverted.yellow.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #ebcd00 inset !important;
+          box-shadow: 0px 0px 0px 2px #ebcd00 inset !important;
+  color: #FFE21F !important;
+}
+
+/*-------------------
+       Primary
+--------------------*/
+
+
+/*--- Standard ---*/
+
+.semantic_ui.primary.buttons .button,
+.semantic_ui.primary.button {
+  background-color: #2185D0;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.primary.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.primary.buttons .button:hover,
+.semantic_ui.primary.button:hover {
+  background-color: #1678c2;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.primary.buttons .button:focus,
+.semantic_ui.primary.button:focus {
+  background-color: #0d71bb;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.primary.buttons .button:active,
+.semantic_ui.primary.button:active {
+  background-color: #1a69a4;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.primary.buttons .active.button,
+.semantic_ui.primary.buttons .active.button:active,
+.semantic_ui.primary.active.button,
+.semantic_ui.primary.button .active.button:active {
+  background-color: #1279c6;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.primary.buttons .button,
+.semantic_ui.basic.primary.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
+          box-shadow: 0px 0px 0px 1px #2185D0 inset !important;
+  color: #2185D0 !important;
+}
+.semantic_ui.basic.primary.buttons .button:hover,
+.semantic_ui.basic.primary.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #1678c2 inset !important;
+          box-shadow: 0px 0px 0px 1px #1678c2 inset !important;
+  color: #1678c2 !important;
+}
+.semantic_ui.basic.primary.buttons .button:focus,
+.semantic_ui.basic.primary.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #0d71bb inset !important;
+          box-shadow: 0px 0px 0px 1px #0d71bb inset !important;
+  color: #1678c2 !important;
+}
+.semantic_ui.basic.primary.buttons .active.button,
+.semantic_ui.basic.primary.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
+          box-shadow: 0px 0px 0px 1px #1279c6 inset !important;
+  color: #1a69a4 !important;
+}
+.semantic_ui.basic.primary.buttons .button:active,
+.semantic_ui.basic.primary.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #1a69a4 inset !important;
+          box-shadow: 0px 0px 0px 1px #1a69a4 inset !important;
+  color: #1a69a4 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.primary.buttons .button,
+.semantic_ui.inverted.primary.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
+          box-shadow: 0px 0px 0px 2px #54C8FF inset !important;
+  color: #54C8FF;
+}
+.semantic_ui.inverted.primary.buttons .button:hover,
+.semantic_ui.inverted.primary.button:hover,
+.semantic_ui.inverted.primary.buttons .button:focus,
+.semantic_ui.inverted.primary.button:focus,
+.semantic_ui.inverted.primary.buttons .button.active,
+.semantic_ui.inverted.primary.button.active,
+.semantic_ui.inverted.primary.buttons .button:active,
+.semantic_ui.inverted.primary.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.primary.buttons .button:hover,
+.semantic_ui.inverted.primary.button:hover {
+  background-color: #3ac0ff;
+}
+.semantic_ui.inverted.primary.buttons .button:focus,
+.semantic_ui.inverted.primary.button:focus {
+  background-color: #2bbbff;
+}
+.semantic_ui.inverted.primary.buttons .active.button,
+.semantic_ui.inverted.primary.active.button {
+  background-color: #3ac0ff;
+}
+.semantic_ui.inverted.primary.buttons .button:active,
+.semantic_ui.inverted.primary.button:active {
+  background-color: #21b8ff;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.primary.basic.buttons .button,
+.semantic_ui.inverted.primary.buttons .basic.button,
+.semantic_ui.inverted.primary.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.primary.basic.buttons .button:hover,
+.semantic_ui.inverted.primary.buttons .basic.button:hover,
+.semantic_ui.inverted.primary.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+          box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.primary.basic.buttons .button:focus,
+.semantic_ui.inverted.primary.basic.buttons .button:focus,
+.semantic_ui.inverted.primary.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #2bbbff inset !important;
+          box-shadow: 0px 0px 0px 2px #2bbbff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.primary.basic.buttons .active.button,
+.semantic_ui.inverted.primary.buttons .basic.active.button,
+.semantic_ui.inverted.primary.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+          box-shadow: 0px 0px 0px 2px #3ac0ff inset !important;
+  color: #54C8FF !important;
+}
+.semantic_ui.inverted.primary.basic.buttons .button:active,
+.semantic_ui.inverted.primary.buttons .basic.button:active,
+.semantic_ui.inverted.primary.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #21b8ff inset !important;
+          box-shadow: 0px 0px 0px 2px #21b8ff inset !important;
+  color: #54C8FF !important;
+}
+
+/*-------------------
+      Secondary
+--------------------*/
+
+
+/* Standard */
+.semantic_ui.secondary.buttons .button,
+.semantic_ui.secondary.button {
+  background-color: #1B1C1D;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.secondary.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.secondary.buttons .button:hover,
+.semantic_ui.secondary.button:hover {
+  background-color: #27292a;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.secondary.buttons .button:focus,
+.semantic_ui.secondary.button:focus {
+  background-color: #2e3032;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.secondary.buttons .button:active,
+.semantic_ui.secondary.button:active {
+  background-color: #343637;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.secondary.buttons .active.button,
+.semantic_ui.secondary.buttons .active.button:active,
+.semantic_ui.secondary.active.button,
+.semantic_ui.secondary.button .active.button:active {
+  background-color: #27292a;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.secondary.buttons .button,
+.semantic_ui.basic.secondary.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
+          box-shadow: 0px 0px 0px 1px #1B1C1D inset !important;
+  color: #1B1C1D !important;
+}
+.semantic_ui.basic.secondary.buttons .button:hover,
+.semantic_ui.basic.secondary.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #27292a inset !important;
+          box-shadow: 0px 0px 0px 1px #27292a inset !important;
+  color: #27292a !important;
+}
+.semantic_ui.basic.secondary.buttons .button:focus,
+.semantic_ui.basic.secondary.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #2e3032 inset !important;
+          box-shadow: 0px 0px 0px 1px #2e3032 inset !important;
+  color: #27292a !important;
+}
+.semantic_ui.basic.secondary.buttons .active.button,
+.semantic_ui.basic.secondary.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #27292a inset !important;
+          box-shadow: 0px 0px 0px 1px #27292a inset !important;
+  color: #343637 !important;
+}
+.semantic_ui.basic.secondary.buttons .button:active,
+.semantic_ui.basic.secondary.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #343637 inset !important;
+          box-shadow: 0px 0px 0px 1px #343637 inset !important;
+  color: #343637 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/* Inverted */
+.semantic_ui.inverted.secondary.buttons .button,
+.semantic_ui.inverted.secondary.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px #545454 inset !important;
+          box-shadow: 0px 0px 0px 2px #545454 inset !important;
+  color: #545454;
+}
+.semantic_ui.inverted.secondary.buttons .button:hover,
+.semantic_ui.inverted.secondary.button:hover,
+.semantic_ui.inverted.secondary.buttons .button:focus,
+.semantic_ui.inverted.secondary.button:focus,
+.semantic_ui.inverted.secondary.buttons .button.active,
+.semantic_ui.inverted.secondary.button.active,
+.semantic_ui.inverted.secondary.buttons .button:active,
+.semantic_ui.inverted.secondary.button:active {
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  color: #FFFFFF;
+}
+.semantic_ui.inverted.secondary.buttons .button:hover,
+.semantic_ui.inverted.secondary.button:hover {
+  background-color: #616161;
+}
+.semantic_ui.inverted.secondary.buttons .button:focus,
+.semantic_ui.inverted.secondary.button:focus {
+  background-color: #686868;
+}
+.semantic_ui.inverted.secondary.buttons .active.button,
+.semantic_ui.inverted.secondary.active.button {
+  background-color: #616161;
+}
+.semantic_ui.inverted.secondary.buttons .button:active,
+.semantic_ui.inverted.secondary.button:active {
+  background-color: #6e6e6e;
+}
+
+/* Inverted Basic */
+.semantic_ui.inverted.secondary.basic.buttons .button,
+.semantic_ui.inverted.secondary.buttons .basic.button,
+.semantic_ui.inverted.secondary.basic.button {
+  background-color: transparent;
+  -webkit-box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+          box-shadow: 0px 0px 0px 2px rgba(255, 255, 255, 0.5) inset !important;
+  color: #FFFFFF !important;
+}
+.semantic_ui.inverted.secondary.basic.buttons .button:hover,
+.semantic_ui.inverted.secondary.buttons .basic.button:hover,
+.semantic_ui.inverted.secondary.basic.button:hover {
+  -webkit-box-shadow: 0px 0px 0px 2px #616161 inset !important;
+          box-shadow: 0px 0px 0px 2px #616161 inset !important;
+  color: #545454 !important;
+}
+.semantic_ui.inverted.secondary.basic.buttons .button:focus,
+.semantic_ui.inverted.secondary.basic.buttons .button:focus,
+.semantic_ui.inverted.secondary.basic.button:focus {
+  -webkit-box-shadow: 0px 0px 0px 2px #686868 inset !important;
+          box-shadow: 0px 0px 0px 2px #686868 inset !important;
+  color: #545454 !important;
+}
+.semantic_ui.inverted.secondary.basic.buttons .active.button,
+.semantic_ui.inverted.secondary.buttons .basic.active.button,
+.semantic_ui.inverted.secondary.basic.active.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #616161 inset !important;
+          box-shadow: 0px 0px 0px 2px #616161 inset !important;
+  color: #545454 !important;
+}
+.semantic_ui.inverted.secondary.basic.buttons .button:active,
+.semantic_ui.inverted.secondary.buttons .basic.button:active,
+.semantic_ui.inverted.secondary.basic.button:active {
+  -webkit-box-shadow: 0px 0px 0px 2px #6e6e6e inset !important;
+          box-shadow: 0px 0px 0px 2px #6e6e6e inset !important;
+  color: #545454 !important;
+}
+
+/*---------------
+    Positive
+----------------*/
+
+
+/* Standard */
+.semantic_ui.positive.buttons .button,
+.semantic_ui.positive.button {
+  background-color: #21BA45;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.positive.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.positive.buttons .button:hover,
+.semantic_ui.positive.button:hover {
+  background-color: #16ab39;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.positive.buttons .button:focus,
+.semantic_ui.positive.button:focus {
+  background-color: #0ea432;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.positive.buttons .button:active,
+.semantic_ui.positive.button:active {
+  background-color: #198f35;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.positive.buttons .active.button,
+.semantic_ui.positive.buttons .active.button:active,
+.semantic_ui.positive.active.button,
+.semantic_ui.positive.button .active.button:active {
+  background-color: #13ae38;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.positive.buttons .button,
+.semantic_ui.basic.positive.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+          box-shadow: 0px 0px 0px 1px #21BA45 inset !important;
+  color: #21BA45 !important;
+}
+.semantic_ui.basic.positive.buttons .button:hover,
+.semantic_ui.basic.positive.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #16ab39 inset !important;
+          box-shadow: 0px 0px 0px 1px #16ab39 inset !important;
+  color: #16ab39 !important;
+}
+.semantic_ui.basic.positive.buttons .button:focus,
+.semantic_ui.basic.positive.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #0ea432 inset !important;
+          box-shadow: 0px 0px 0px 1px #0ea432 inset !important;
+  color: #16ab39 !important;
+}
+.semantic_ui.basic.positive.buttons .active.button,
+.semantic_ui.basic.positive.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
+          box-shadow: 0px 0px 0px 1px #13ae38 inset !important;
+  color: #198f35 !important;
+}
+.semantic_ui.basic.positive.buttons .button:active,
+.semantic_ui.basic.positive.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #198f35 inset !important;
+          box-shadow: 0px 0px 0px 1px #198f35 inset !important;
+  color: #198f35 !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+/*---------------
+     Negative
+----------------*/
+
+
+/* Standard */
+.semantic_ui.negative.buttons .button,
+.semantic_ui.negative.button {
+  background-color: #DB2828;
+  color: #FFFFFF;
+  text-shadow: none;
+  background-image: none;
+}
+.semantic_ui.negative.button {
+  -webkit-box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.negative.buttons .button:hover,
+.semantic_ui.negative.button:hover {
+  background-color: #d01919;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.negative.buttons .button:focus,
+.semantic_ui.negative.button:focus {
+  background-color: #ca1010;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.negative.buttons .button:active,
+.semantic_ui.negative.button:active {
+  background-color: #b21e1e;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+.semantic_ui.negative.buttons .active.button,
+.semantic_ui.negative.buttons .active.button:active,
+.semantic_ui.negative.active.button,
+.semantic_ui.negative.button .active.button:active {
+  background-color: #d41515;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* Basic */
+.semantic_ui.basic.negative.buttons .button,
+.semantic_ui.basic.negative.button {
+  -webkit-box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+          box-shadow: 0px 0px 0px 1px #DB2828 inset !important;
+  color: #DB2828 !important;
+}
+.semantic_ui.basic.negative.buttons .button:hover,
+.semantic_ui.basic.negative.button:hover {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #d01919 inset !important;
+          box-shadow: 0px 0px 0px 1px #d01919 inset !important;
+  color: #d01919 !important;
+}
+.semantic_ui.basic.negative.buttons .button:focus,
+.semantic_ui.basic.negative.button:focus {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #ca1010 inset !important;
+          box-shadow: 0px 0px 0px 1px #ca1010 inset !important;
+  color: #d01919 !important;
+}
+.semantic_ui.basic.negative.buttons .active.button,
+.semantic_ui.basic.negative.active.button {
+  background: transparent !important;
+  -webkit-box-shadow: 0px 0px 0px 1px #d41515 inset !important;
+          box-shadow: 0px 0px 0px 1px #d41515 inset !important;
+  color: #b21e1e !important;
+}
+.semantic_ui.basic.negative.buttons .button:active,
+.semantic_ui.basic.negative.button:active {
+  -webkit-box-shadow: 0px 0px 0px 1px #b21e1e inset !important;
+          box-shadow: 0px 0px 0px 1px #b21e1e inset !important;
+  color: #b21e1e !important;
+}
+.semantic_ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+  margin-left: -1px;
+}
+
+
+/*******************************
+            Groups
+*******************************/
+
+.semantic_ui.buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  font-size: 0em;
+  vertical-align: baseline;
+  margin: 0em 0.25em 0em 0em;
+}
+.semantic_ui.buttons:not(.basic):not(.inverted) {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/* Clearfix */
+.semantic_ui.buttons:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* Standard Group */
+.semantic_ui.buttons .button {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  margin: 0em;
+  border-radius: 0em;
+  margin: 0px 0px 0px 0px;
+}
+.semantic_ui.buttons > .semantic_ui.button:not(.basic):not(.inverted),
+.semantic_ui.buttons:not(.basic):not(.inverted) > .button {
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+}
+.semantic_ui.buttons .button:first-child {
+  border-left: none;
+  margin-left: 0em;
+  border-top-left-radius: 0.28571429rem;
+  border-bottom-left-radius: 0.28571429rem;
+}
+.semantic_ui.buttons .button:last-child {
+  border-top-right-radius: 0.28571429rem;
+  border-bottom-right-radius: 0.28571429rem;
+}
+
+/* Vertical  Style */
+.semantic_ui.vertical.buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.semantic_ui.vertical.buttons .button {
+  display: block;
+  float: none;
+  width: 100%;
+  margin: 0px 0px 0px 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 0em;
+}
+.semantic_ui.vertical.buttons .button:first-child {
+  border-top-left-radius: 0.28571429rem;
+  border-top-right-radius: 0.28571429rem;
+}
+.semantic_ui.vertical.buttons .button:last-child {
+  margin-bottom: 0px;
+  border-bottom-left-radius: 0.28571429rem;
+  border-bottom-right-radius: 0.28571429rem;
+}
+.semantic_ui.vertical.buttons .button:only-child {
+  border-radius: 0.28571429rem;
+}
+
+/*******************************
+            Label
+*******************************/
+
+.semantic_ui.label {
+  display: inline-block;
+  line-height: 1;
+  vertical-align: baseline;
+  margin: 0em 0.14285714em;
+  background-color: #E8E8E8;
+  background-image: none;
+  padding: 0.5833em 0.833em;
+  color: rgba(0, 0, 0, 0.6);
+  text-transform: none;
+  font-weight: bold;
+  border: 0px solid transparent;
+  border-radius: 0.28571429rem;
+  -webkit-transition: background 0.1s ease;
+  transition: background 0.1s ease;
+}
+.semantic_ui.label:first-child {
+  margin-left: 0em;
+}
+.semantic_ui.label:last-child {
+  margin-right: 0em;
+}
+
+/* Link */
+a.semantic_ui.label {
+  cursor: pointer;
+}
+
+/* Inside Link */
+.semantic_ui.label > a {
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.5;
+  -webkit-transition: 0.1s opacity ease;
+  transition: 0.1s opacity ease;
+}
+.semantic_ui.label > a:hover {
+  opacity: 1;
+}
+
+/* Image */
+.semantic_ui.label > img {
+  width: auto !important;
+  vertical-align: middle;
+  height: 2.1666em !important;
+}
+
+/* Icon */
+.semantic_ui.label > .icon {
+  width: auto;
+  margin: 0em 0.75em 0em 0em;
+}
+
+/* Detail */
+.semantic_ui.label > .detail {
+  display: inline-block;
+  vertical-align: top;
+  font-weight: bold;
+  margin-left: 1em;
+  opacity: 0.8;
+}
+.semantic_ui.label > .detail .icon {
+  margin: 0em 0.25em 0em 0em;
+}
+
+/* Removable label */
+.semantic_ui.label > .close.icon,
+.semantic_ui.label > .delete.icon {
+  cursor: pointer;
+  margin-right: 0em;
+  margin-left: 0.5em;
+  font-size: 0.92857143em;
+  opacity: 0.5;
+  -webkit-transition: background 0.1s ease;
+  transition: background 0.1s ease;
+}
+.semantic_ui.label > .delete.icon:hover {
+  opacity: 1;
+}
+
+/*-------------------
+       Group
+--------------------*/
+
+.semantic_ui.labels > .label {
+  margin: 0em 0.5em 0.5em 0em;
+}
+
+/*-------------------
+       Coupling
+--------------------*/
+
+.semantic_ui.header > .semantic_ui.label {
+  margin-top: -0.29165em;
+}
+
+/* Remove border radius on attached segment */
+.semantic_ui.attached.segment > .semantic_ui.top.left.attached.label,
+.semantic_ui.bottom.attached.segment > .semantic_ui.top.left.attached.label {
+  border-top-left-radius: 0;
+}
+.semantic_ui.attached.segment > .semantic_ui.top.right.attached.label,
+.semantic_ui.bottom.attached.segment > .semantic_ui.top.right.attached.label {
+  border-top-right-radius: 0;
+}
+.semantic_ui.top.attached.segment > .semantic_ui.bottom.left.attached.label {
+  border-bottom-left-radius: 0;
+}
+.semantic_ui.top.attached.segment > .semantic_ui.bottom.right.attached.label {
+  border-bottom-right-radius: 0;
+}
+
+/* Padding on next content after a label */
+.semantic_ui.top.attached.label:first-child + :not(.attached),
+.semantic_ui.top.attached.label + [class*="right floated"] + * {
+  margin-top: 2rem !important;
+}
+.semantic_ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
+  margin-top: 0em;
+  margin-bottom: 2rem !important;
+}
+
+
+/*******************************
+             Types
+*******************************/
+
+.semantic_ui.image.label {
+  width: auto !important;
+  margin-top: 0em;
+  margin-bottom: 0em;
+  max-width: 9999px;
+  vertical-align: baseline;
+  text-transform: none;
+  background: #E8E8E8;
+  padding: 0.5833em 0.833em 0.5833em 0.5em;
+  border-radius: 0.28571429rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.semantic_ui.image.label img {
+  display: inline-block;
+  vertical-align: top;
+  height: 2.1666em;
+  margin: -0.5833em 0.5em -0.5833em -0.5em;
+  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+}
+.semantic_ui.image.label .detail {
+  background: rgba(0, 0, 0, 0.1);
+  margin: -0.5833em -0.833em -0.5833em 0.5em;
+  padding: 0.5833em 0.833em;
+  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+}
+
+/*-------------------
+         Tag
+--------------------*/
+
+.semantic_ui.tag.labels .label,
+.semantic_ui.tag.label {
+  margin-left: 1em;
+  position: relative;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  -webkit-transition: none;
+  transition: none;
+}
+.semantic_ui.tag.labels .label:before,
+.semantic_ui.tag.label:before {
+  position: absolute;
+  -webkit-transform: translateY(-50%) translateX(50%) rotate(-45deg);
+          transform: translateY(-50%) translateX(50%) rotate(-45deg);
+  top: 50%;
+  right: 100%;
+  content: '';
+  background-color: inherit;
+  background-image: none;
+  width: 1.56em;
+  height: 1.56em;
+  -webkit-transition: none;
+  transition: none;
+}
+.semantic_ui.tag.labels .label:after,
+.semantic_ui.tag.label:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: -0.25em;
+  margin-top: -0.25em;
+  background-color: #FFFFFF !important;
+  width: 0.5em;
+  height: 0.5em;
+  -webkit-box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+          box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+  border-radius: 500rem;
+}
+
+/*-------------------
+    Corner Label
+--------------------*/
+
+.semantic_ui.corner.label {
+  position: absolute;
+  top: 0em;
+  right: 0em;
+  margin: 0em;
+  padding: 0em;
+  text-align: center;
+  border-color: #E8E8E8;
+  width: 4em;
+  height: 4em;
+  z-index: 1;
+  -webkit-transition: border-color 0.1s ease;
+  transition: border-color 0.1s ease;
+}
+
+/* Icon Label */
+.semantic_ui.corner.label {
+  background-color: transparent !important;
+}
+.semantic_ui.corner.label:after {
+  position: absolute;
+  content: "";
+  right: 0em;
+  top: 0em;
+  z-index: -1;
+  width: 0em;
+  height: 0em;
+  background-color: transparent !important;
+  border-top: 0em solid transparent;
+  border-right: 4em solid transparent;
+  border-bottom: 4em solid transparent;
+  border-left: 0em solid transparent;
+  border-right-color: inherit;
+  -webkit-transition: border-color 0.1s ease;
+  transition: border-color 0.1s ease;
+}
+.semantic_ui.corner.label .icon {
+  cursor: default;
+  position: relative;
+  top: 0.64285714em;
+  left: 0.78571429em;
+  font-size: 1.14285714em;
+  margin: 0em;
+}
+
+/* Left Corner */
+.semantic_ui.left.corner.label,
+.semantic_ui.left.corner.label:after {
+  right: auto;
+  left: 0em;
+}
+.semantic_ui.left.corner.label:after {
+  border-top: 4em solid transparent;
+  border-right: 4em solid transparent;
+  border-bottom: 0em solid transparent;
+  border-left: 0em solid transparent;
+  border-top-color: inherit;
+}
+.semantic_ui.left.corner.label .icon {
+  left: -0.78571429em;
+}
+
+/* Segment */
+.semantic_ui.segment > .semantic_ui.corner.label {
+  top: -1px;
+  right: -1px;
+}
+.semantic_ui.segment > .semantic_ui.left.corner.label {
+  right: auto;
+  left: -1px;
+}
+
+/*-------------------
+       Ribbon
+--------------------*/
+
+.semantic_ui.ribbon.label {
+  position: relative;
+  margin: 0em;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  border-radius: 0em 0.28571429rem 0.28571429rem 0em;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+.semantic_ui.ribbon.label:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0%;
+  background-color: transparent !important;
+  border-style: solid;
+  border-width: 0em 1.2em 1.2em 0em;
+  border-color: transparent;
+  border-right-color: inherit;
+  width: 0em;
+  height: 0em;
+}
+
+/* Positioning */
+.semantic_ui.ribbon.label {
+  left: calc(-1rem - 1.2em);
+  margin-right: -1.2em;
+  padding-left: calc(1rem + 1.2em);
+  padding-right: 1.2em;
+}
+.ui[class*="right ribbon"].label {
+  left: calc(100% + 1rem + 1.2em);
+  padding-left: 1.2em;
+  padding-right: calc(1rem + 1.2em);
+}
+
+/* Right Ribbon */
+.ui[class*="right ribbon"].label {
+  text-align: left;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  border-radius: 0.28571429rem 0em 0em 0.28571429rem;
+}
+.ui[class*="right ribbon"].label:after {
+  left: auto;
+  right: 0%;
+  border-style: solid;
+  border-width: 1.2em 1.2em 0em 0em;
+  border-color: transparent;
+  border-top-color: inherit;
+}
+
+/* Inside Table */
+.semantic_ui.image > .ribbon.label,
+.semantic_ui.card .image > .ribbon.label {
+  position: absolute;
+  top: 1rem;
+}
+.semantic_ui.card .image > .semantic_ui.ribbon.label,
+.semantic_ui.image > .semantic_ui.ribbon.label {
+  left: calc(--0.05rem - 1.2em);
+}
+.semantic_ui.card .image > .ui[class*="right ribbon"].label,
+.semantic_ui.image > .ui[class*="right ribbon"].label {
+  left: calc(100% + -0.05rem + 1.2em);
+  padding-left: 0.833em;
+}
+
+/* Inside Table */
+.semantic_ui.table td > .semantic_ui.ribbon.label {
+  left: calc(-0.78571429em - 1.2em);
+}
+.semantic_ui.table td > .ui[class*="right ribbon"].label {
+  left: calc(100% + 0.78571429em + 1.2em);
+  padding-left: 0.833em;
+}
+
+/*-------------------
+      Attached
+--------------------*/
+
+.ui[class*="top attached"].label,
+.semantic_ui.attached.label {
+  width: 100%;
+  position: absolute;
+  margin: 0em;
+  top: 0em;
+  left: 0em;
+  padding: 0.75em 1em;
+  border-radius: 0.21428571rem 0.21428571rem 0em 0em;
+}
+.ui[class*="bottom attached"].label {
+  top: auto;
+  bottom: 0em;
+  border-radius: 0em 0em 0.21428571rem 0.21428571rem;
+}
+.ui[class*="top left attached"].label {
+  width: auto;
+  margin-top: 0em !important;
+  border-radius: 0.21428571rem 0em 0.28571429rem 0em;
+}
+.ui[class*="top right attached"].label {
+  width: auto;
+  left: auto;
+  right: 0em;
+  border-radius: 0em 0.21428571rem 0em 0.28571429rem;
+}
+.ui[class*="bottom left attached"].label {
+  width: auto;
+  top: auto;
+  bottom: 0em;
+  border-radius: 0em 0.28571429rem 0em 0.21428571rem;
+}
+.ui[class*="bottom right attached"].label {
+  top: auto;
+  bottom: 0em;
+  left: auto;
+  right: 0em;
+  width: auto;
+  border-radius: 0.28571429rem 0em 0.21428571rem 0em;
+}
+
+
+/*******************************
+             States
+*******************************/
+
+
+/*-------------------
+      Disabled
+--------------------*/
+
+.semantic_ui.label.disabled {
+  opacity: 0.5;
+}
+
+/*-------------------
+        Hover
+--------------------*/
+
+a.semantic_ui.labels .label:hover,
+a.semantic_ui.label:hover {
+  background-color: #E0E0E0;
+  border-color: #E0E0E0;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.8);
+}
+.semantic_ui.labels a.label:hover:before,
+a.semantic_ui.label:hover:before {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/*-------------------
+        Active
+--------------------*/
+
+.semantic_ui.active.label {
+  background-color: #D0D0D0;
+  border-color: #D0D0D0;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+.semantic_ui.active.label:before {
+  background-color: #D0D0D0;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+/*-------------------
+     Active Hover
+--------------------*/
+
+a.semantic_ui.labels .active.label:hover,
+a.semantic_ui.active.label:hover {
+  background-color: #C8C8C8;
+  border-color: #C8C8C8;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+.semantic_ui.labels a.active.label:ActiveHover:before,
+a.semantic_ui.active.label:ActiveHover:before {
+  background-color: #C8C8C8;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+/*-------------------
+      Visible
+--------------------*/
+
+.semantic_ui.labels.visible .label,
+.semantic_ui.label.visible:not(.dropdown) {
+  display: inline-block !important;
+}
+
+/*-------------------
+      Hidden
+--------------------*/
+
+.semantic_ui.labels.hidden .label,
+.semantic_ui.label.hidden {
+  display: none !important;
+}
+
+
+/*******************************
+           Variations
+*******************************/
+
+
+/*-------------------
+       Colors
+--------------------*/
+
+
+/*--- Red ---*/
+
+.semantic_ui.red.labels .label,
+.semantic_ui.red.label {
+  background-color: #DB2828 !important;
+  border-color: #DB2828 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.red.labels .label:hover,
+a.semantic_ui.red.label:hover {
+  background-color: #d01919 !important;
+  border-color: #d01919 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.red.corner.label,
+.semantic_ui.red.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.red.ribbon.label {
+  border-color: #b21e1e !important;
+}
+
+/* Basic */
+.semantic_ui.basic.red.label {
+  background: none #FFFFFF !important;
+  color: #DB2828 !important;
+  border-color: #DB2828 !important;
+}
+.semantic_ui.basic.red.labels a.label:hover,
+a.semantic_ui.basic.red.label:hover {
+  background-color: #FFFFFF !important;
+  color: #d01919 !important;
+  border-color: #d01919 !important;
+}
+
+/*--- Orange ---*/
+
+.semantic_ui.orange.labels .label,
+.semantic_ui.orange.label {
+  background-color: #F2711C !important;
+  border-color: #F2711C !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.orange.labels .label:hover,
+a.semantic_ui.orange.label:hover {
+  background-color: #f26202 !important;
+  border-color: #f26202 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.orange.corner.label,
+.semantic_ui.orange.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.orange.ribbon.label {
+  border-color: #cf590c !important;
+}
+
+/* Basic */
+.semantic_ui.basic.orange.label {
+  background: none #FFFFFF !important;
+  color: #F2711C !important;
+  border-color: #F2711C !important;
+}
+.semantic_ui.basic.orange.labels a.label:hover,
+a.semantic_ui.basic.orange.label:hover {
+  background-color: #FFFFFF !important;
+  color: #f26202 !important;
+  border-color: #f26202 !important;
+}
+
+/*--- Yellow ---*/
+
+.semantic_ui.yellow.labels .label,
+.semantic_ui.yellow.label {
+  background-color: #FBBD08 !important;
+  border-color: #FBBD08 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.yellow.labels .label:hover,
+a.semantic_ui.yellow.label:hover {
+  background-color: #eaae00 !important;
+  border-color: #eaae00 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.yellow.corner.label,
+.semantic_ui.yellow.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.yellow.ribbon.label {
+  border-color: #cd9903 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.yellow.label {
+  background: none #FFFFFF !important;
+  color: #FBBD08 !important;
+  border-color: #FBBD08 !important;
+}
+.semantic_ui.basic.yellow.labels a.label:hover,
+a.semantic_ui.basic.yellow.label:hover {
+  background-color: #FFFFFF !important;
+  color: #eaae00 !important;
+  border-color: #eaae00 !important;
+}
+
+/*--- Olive ---*/
+
+.semantic_ui.olive.labels .label,
+.semantic_ui.olive.label {
+  background-color: #B5CC18 !important;
+  border-color: #B5CC18 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.olive.labels .label:hover,
+a.semantic_ui.olive.label:hover {
+  background-color: #a7bd0d !important;
+  border-color: #a7bd0d !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.olive.corner.label,
+.semantic_ui.olive.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.olive.ribbon.label {
+  border-color: #198f35 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.olive.label {
+  background: none #FFFFFF !important;
+  color: #B5CC18 !important;
+  border-color: #B5CC18 !important;
+}
+.semantic_ui.basic.olive.labels a.label:hover,
+a.semantic_ui.basic.olive.label:hover {
+  background-color: #FFFFFF !important;
+  color: #a7bd0d !important;
+  border-color: #a7bd0d !important;
+}
+
+/*--- Green ---*/
+
+.semantic_ui.green.labels .label,
+.semantic_ui.green.label {
+  background-color: #21BA45 !important;
+  border-color: #21BA45 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.green.labels .label:hover,
+a.semantic_ui.green.label:hover {
+  background-color: #16ab39 !important;
+  border-color: #16ab39 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.green.corner.label,
+.semantic_ui.green.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.green.ribbon.label {
+  border-color: #198f35 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.green.label {
+  background: none #FFFFFF !important;
+  color: #21BA45 !important;
+  border-color: #21BA45 !important;
+}
+.semantic_ui.basic.green.labels a.label:hover,
+a.semantic_ui.basic.green.label:hover {
+  background-color: #FFFFFF !important;
+  color: #16ab39 !important;
+  border-color: #16ab39 !important;
+}
+
+/*--- Teal ---*/
+
+.semantic_ui.teal.labels .label,
+.semantic_ui.teal.label {
+  background-color: #00B5AD !important;
+  border-color: #00B5AD !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.teal.labels .label:hover,
+a.semantic_ui.teal.label:hover {
+  background-color: #009c95 !important;
+  border-color: #009c95 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.teal.corner.label,
+.semantic_ui.teal.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.teal.ribbon.label {
+  border-color: #00827c !important;
+}
+
+/* Basic */
+.semantic_ui.basic.teal.label {
+  background: none #FFFFFF !important;
+  color: #00B5AD !important;
+  border-color: #00B5AD !important;
+}
+.semantic_ui.basic.teal.labels a.label:hover,
+a.semantic_ui.basic.teal.label:hover {
+  background-color: #FFFFFF !important;
+  color: #009c95 !important;
+  border-color: #009c95 !important;
+}
+
+/*--- Blue ---*/
+
+.semantic_ui.blue.labels .label,
+.semantic_ui.blue.label {
+  background-color: #2185D0 !important;
+  border-color: #2185D0 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.blue.labels .label:hover,
+a.semantic_ui.blue.label:hover {
+  background-color: #1678c2 !important;
+  border-color: #1678c2 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.blue.corner.label,
+.semantic_ui.blue.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.blue.ribbon.label {
+  border-color: #1a69a4 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.blue.label {
+  background: none #FFFFFF !important;
+  color: #2185D0 !important;
+  border-color: #2185D0 !important;
+}
+.semantic_ui.basic.blue.labels a.label:hover,
+a.semantic_ui.basic.blue.label:hover {
+  background-color: #FFFFFF !important;
+  color: #1678c2 !important;
+  border-color: #1678c2 !important;
+}
+
+/*--- Violet ---*/
+
+.semantic_ui.violet.labels .label,
+.semantic_ui.violet.label {
+  background-color: #6435C9 !important;
+  border-color: #6435C9 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.violet.labels .label:hover,
+a.semantic_ui.violet.label:hover {
+  background-color: #5829bb !important;
+  border-color: #5829bb !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.violet.corner.label,
+.semantic_ui.violet.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.violet.ribbon.label {
+  border-color: #502aa1 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.violet.label {
+  background: none #FFFFFF !important;
+  color: #6435C9 !important;
+  border-color: #6435C9 !important;
+}
+.semantic_ui.basic.violet.labels a.label:hover,
+a.semantic_ui.basic.violet.label:hover {
+  background-color: #FFFFFF !important;
+  color: #5829bb !important;
+  border-color: #5829bb !important;
+}
+
+/*--- Purple ---*/
+
+.semantic_ui.purple.labels .label,
+.semantic_ui.purple.label {
+  background-color: #A333C8 !important;
+  border-color: #A333C8 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.purple.labels .label:hover,
+a.semantic_ui.purple.label:hover {
+  background-color: #9627ba !important;
+  border-color: #9627ba !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.purple.corner.label,
+.semantic_ui.purple.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.purple.ribbon.label {
+  border-color: #82299f !important;
+}
+
+/* Basic */
+.semantic_ui.basic.purple.label {
+  background: none #FFFFFF !important;
+  color: #A333C8 !important;
+  border-color: #A333C8 !important;
+}
+.semantic_ui.basic.purple.labels a.label:hover,
+a.semantic_ui.basic.purple.label:hover {
+  background-color: #FFFFFF !important;
+  color: #9627ba !important;
+  border-color: #9627ba !important;
+}
+
+/*--- Pink ---*/
+
+.semantic_ui.pink.labels .label,
+.semantic_ui.pink.label {
+  background-color: #E03997 !important;
+  border-color: #E03997 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.pink.labels .label:hover,
+a.semantic_ui.pink.label:hover {
+  background-color: #e61a8d !important;
+  border-color: #e61a8d !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.pink.corner.label,
+.semantic_ui.pink.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.pink.ribbon.label {
+  border-color: #c71f7e !important;
+}
+
+/* Basic */
+.semantic_ui.basic.pink.label {
+  background: none #FFFFFF !important;
+  color: #E03997 !important;
+  border-color: #E03997 !important;
+}
+.semantic_ui.basic.pink.labels a.label:hover,
+a.semantic_ui.basic.pink.label:hover {
+  background-color: #FFFFFF !important;
+  color: #e61a8d !important;
+  border-color: #e61a8d !important;
+}
+
+/*--- Brown ---*/
+
+.semantic_ui.brown.labels .label,
+.semantic_ui.brown.label {
+  background-color: #A5673F !important;
+  border-color: #A5673F !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.brown.labels .label:hover,
+a.semantic_ui.brown.label:hover {
+  background-color: #975b33 !important;
+  border-color: #975b33 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.brown.corner.label,
+.semantic_ui.brown.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.brown.ribbon.label {
+  border-color: #805031 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.brown.label {
+  background: none #FFFFFF !important;
+  color: #A5673F !important;
+  border-color: #A5673F !important;
+}
+.semantic_ui.basic.brown.labels a.label:hover,
+a.semantic_ui.basic.brown.label:hover {
+  background-color: #FFFFFF !important;
+  color: #975b33 !important;
+  border-color: #975b33 !important;
+}
+
+/*--- Grey ---*/
+
+.semantic_ui.grey.labels .label,
+.semantic_ui.grey.label {
+  background-color: #767676 !important;
+  border-color: #767676 !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.grey.labels .label:hover,
+a.semantic_ui.grey.label:hover {
+  background-color: #838383 !important;
+  border-color: #838383 !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.grey.corner.label,
+.semantic_ui.grey.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.grey.ribbon.label {
+  border-color: #805031 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.grey.label {
+  background: none #FFFFFF !important;
+  color: #767676 !important;
+  border-color: #767676 !important;
+}
+.semantic_ui.basic.grey.labels a.label:hover,
+a.semantic_ui.basic.grey.label:hover {
+  background-color: #FFFFFF !important;
+  color: #838383 !important;
+  border-color: #838383 !important;
+}
+
+/*--- Black ---*/
+
+.semantic_ui.black.labels .label,
+.semantic_ui.black.label {
+  background-color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+  color: #FFFFFF !important;
+}
+
+/* Link */
+.semantic_ui.black.labels .label:hover,
+a.semantic_ui.black.label:hover {
+  background-color: #27292a !important;
+  border-color: #27292a !important;
+  color: #FFFFFF !important;
+}
+
+/* Corner */
+.semantic_ui.black.corner.label,
+.semantic_ui.black.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.semantic_ui.black.ribbon.label {
+  border-color: #805031 !important;
+}
+
+/* Basic */
+.semantic_ui.basic.black.label {
+  background: none #FFFFFF !important;
+  color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+}
+.semantic_ui.basic.black.labels a.label:hover,
+a.semantic_ui.basic.black.label:hover {
+  background-color: #FFFFFF !important;
+  color: #27292a !important;
+  border-color: #27292a !important;
+}
+
+/*-------------------
+        Basic
+--------------------*/
+
+.semantic_ui.basic.label {
+  background: none #FFFFFF;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/* Link */
+a.semantic_ui.basic.label:hover {
+  text-decoration: none;
+  background: none #FFFFFF;
+  color: #1e70bf;
+  -webkit-box-shadow: 1px solid rgba(34, 36, 38, 0.15);
+          box-shadow: 1px solid rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/* Pointing */
+.semantic_ui.basic.pointing.label:before {
+  border-color: inherit;
+}
+
+/*-------------------
+       Fluid
+--------------------*/
+
+.semantic_ui.label.fluid,
+.semantic_ui.fluid.labels > .label {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.semantic_ui.inverted.labels .label,
+.semantic_ui.inverted.label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/*-------------------
+     Horizontal
+--------------------*/
+
+.semantic_ui.horizontal.labels .label,
+.semantic_ui.horizontal.label {
+  margin: 0em 0.5em 0em 0em;
+  padding: 0.4em 0.833em;
+  min-width: 3em;
+  text-align: center;
+}
+
+/*-------------------
+       Circular
+--------------------*/
+
+.semantic_ui.circular.labels .label,
+.semantic_ui.circular.label {
+  min-width: 2em;
+  min-height: 2em;
+  padding: 0.5em !important;
+  line-height: 1em;
+  text-align: center;
+  border-radius: 500rem;
+}
+.semantic_ui.empty.circular.labels .label,
+.semantic_ui.empty.circular.label {
+  min-width: 0em;
+  min-height: 0em;
+  overflow: hidden;
+  width: 0.5em;
+  height: 0.5em;
+  vertical-align: baseline;
+}
+
+/*-------------------
+       Pointing
+--------------------*/
+
+.semantic_ui.pointing.label {
+  position: relative;
+}
+.semantic_ui.attached.pointing.label {
+  position: absolute;
+}
+.semantic_ui.pointing.label:before {
+  background-color: inherit;
+  background-image: inherit;
+  border-width: none;
+  border-style: solid;
+  border-color: inherit;
+}
+
+/* Arrow */
+.semantic_ui.pointing.label:before {
+  position: absolute;
+  content: '';
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  background-image: none;
+  z-index: 2;
+  width: 0.6666em;
+  height: 0.6666em;
+  -webkit-transition: background 0.1s ease;
+  transition: background 0.1s ease;
+}
+
+/*--- Above ---*/
+
+.semantic_ui.pointing.label,
+.ui[class*="pointing above"].label {
+  margin-top: 1em;
+}
+.semantic_ui.pointing.label:before,
+.ui[class*="pointing above"].label:before {
+  border-width: 1px 0px 0px 1px;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  top: 0%;
+  left: 50%;
+}
+
+/*--- Below ---*/
+
+.ui[class*="bottom pointing"].label,
+.ui[class*="pointing below"].label {
+  margin-top: 0em;
+  margin-bottom: 1em;
+}
+.ui[class*="bottom pointing"].label:before,
+.ui[class*="pointing below"].label:before {
+  border-width: 0px 1px 1px 0px;
+  top: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  top: 100%;
+  left: 50%;
+}
+
+/*--- Left ---*/
+
+.ui[class*="left pointing"].label {
+  margin-top: 0em;
+  margin-left: 0.6666em;
+}
+.ui[class*="left pointing"].label:before {
+  border-width: 0px 0px 1px 1px;
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+          transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  bottom: auto;
+  right: auto;
+  top: 50%;
+  left: 0em;
+}
+
+/*--- Right ---*/
+
+.ui[class*="right pointing"].label {
+  margin-top: 0em;
+  margin-right: 0.6666em;
+}
+.ui[class*="right pointing"].label:before {
+  border-width: 1px 1px 0px 0px;
+  -webkit-transform: translateX(50%) translateY(-50%) rotate(45deg);
+          transform: translateX(50%) translateY(-50%) rotate(45deg);
+  top: 50%;
+  right: 0%;
+  bottom: auto;
+  left: auto;
+}
+
+/* Basic Pointing */
+
+/*--- Above ---*/
+
+.semantic_ui.basic.pointing.label:before,
+.semantic_ui.basic[class*="pointing above"].label:before {
+  margin-top: -1px;
+}
+
+/*--- Below ---*/
+
+.semantic_ui.basic[class*="bottom pointing"].label:before,
+.semantic_ui.basic[class*="pointing below"].label:before {
+  bottom: auto;
+  top: 100%;
+  margin-top: 1px;
+}
+
+/*--- Left ---*/
+
+.semantic_ui.basic[class*="left pointing"].label:before {
+  top: 50%;
+  left: -1px;
+}
+
+/*--- Right ---*/
+
+.semantic_ui.basic[class*="right pointing"].label:before {
+  top: 50%;
+  right: -1px;
+}
+
+/*------------------
+   Floating Label
+-------------------*/
+
+.semantic_ui.floating.label {
+  position: absolute;
+  z-index: 100;
+  top: -1em;
+  left: 100%;
+  margin: 0em 0em 0em -1.5em !important;
+}
+
+/*-------------------
+        Sizes
+--------------------*/
+
+.semantic_ui.mini.labels .label,
+.semantic_ui.mini.label {
+  font-size: 0.64285714rem;
+}
+.semantic_ui.tiny.labels .label,
+.semantic_ui.tiny.label {
+  font-size: 0.71428571rem;
+}
+.semantic_ui.small.labels .label,
+.semantic_ui.small.label {
+  font-size: 0.78571429rem;
+}
+.semantic_ui.labels .label,
+.semantic_ui.label {
+  font-size: 0.85714286rem;
+}
+.semantic_ui.large.labels .label,
+.semantic_ui.large.label {
+  font-size: 1rem;
+}
+.semantic_ui.big.labels .label,
+.semantic_ui.big.label {
+  font-size: 1.28571429rem;
+}
+.semantic_ui.huge.labels .label,
+.semantic_ui.huge.label {
+  font-size: 1.42857143rem;
+}
+.semantic_ui.massive.labels .label,
+.semantic_ui.massive.label {
+  font-size: 1.71428571rem;
+}

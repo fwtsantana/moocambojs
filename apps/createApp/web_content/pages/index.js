@@ -109,6 +109,15 @@ module.exports = function (moo) {
     
     module.init = function() {
         console.log("Load index");
+        
+        var formFieldWorkspaceDir = moo.view().formField("WorkspaceDir", "Workspace Directory");
+        var formFieldAppName = moo.view().formField("AppName", "Application Name");
+        var formFieldFirstPage = moo.view().formField("FirstPage", "First Page");
+        var fieldset = moo.view().base.fieldset("fdsCreateApp", [], formFieldWorkspaceDir + formFieldAppName + formFieldFirstPage);
+        
+        var form = moo.view().base.form("frmCreateApp", [], fieldset);
+        
+        moo.server.fragment.loadFromText(form, "form");
     }; 
     
     return module;

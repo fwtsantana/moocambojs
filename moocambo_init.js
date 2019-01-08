@@ -53,6 +53,7 @@ var loadApplication = function(wsConnection, incomingData) {
     
     wsConnection.application.name = appName;
     wsConnection.application.modules = appModules;
+    wsConnection.application.config.local = require("./apps/" + appName + "/config");
 }
 
 function loadModule(moduleName, api) {
