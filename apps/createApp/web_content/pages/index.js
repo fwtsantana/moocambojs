@@ -1,7 +1,19 @@
 module.exports = function (moo) {
+    
     var module = {
-        view: {}
-        , init: {}
+        init: function() {
+            console.log("Load index");
+            
+            var onclick = "onclick=\"run('create($util.getValue(txtWorkspaceDir), $util.getValue(txtAppName))')\"";
+            
+            var button = moo.view().base.button("btnCreateApp", [onclick], "CREATE");
+
+            var fieldset = moo.view().base.fieldset("fdsCreateApp", [], formFieldWorkspaceDir(moo) + formFieldAppName(moo) + formFieldFirstPage(moo) + button);
+            
+            var form = moo.view().base.form("frmCreateApp", [], fieldset);
+            
+            moo.server.fragment.loadFromText(form, "form");
+        }
         , create: function(workspaceDir, appName) {
             const fs = require("fs");
             
@@ -35,9 +47,9 @@ module.exports = function (moo) {
                     console.log("Created main javascript file.");
                 });
                 
-                var cssData = "/* Enter the CSS of your application here. */";
-                createFile(workspaceDir + '/' + appName, appName + ".css", cssData, onError, () => {
-                    console.log("Created main css file.");
+                var configData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/config.json"), 'utf-8');
+                createFile(workspaceDir + '/' + appName, "config.json", configData, onError, () => {
+                    console.log("Created app config file.");
                 });
                 
                 fs.copyFile(pathResolve.resolve(__dirname, "../templates/favicon.ico"), workspaceDir + '/' + appName + '/favicon.ico', (err) => {
@@ -83,7 +95,16 @@ module.exports = function (moo) {
                     mkdir(path, "images", onError, (path) => {
                         console.log("Created 'images' subdirectory.");
                     });
-
+                    
+                    mkdir(path, "css", onError, (path) => {
+                        console.log("Created 'css' subdirectory.");
+                        
+                        var cssData = "/* Enter the CSS of your application here. */";
+                        createFile(path, appName + ".css", cssData, onError, () => {
+                            console.log("Created main css file.");
+                        });
+                    });
+                    
                     mkdir(path, "pages", onError, (path) => {
                         console.log("Created 'pages' subdirectory.");
                         
@@ -100,25 +121,34 @@ module.exports = function (moo) {
                     });
                 });
 
-                
-                
                 moo.util().base.messages.notify("Project created!", "success");
             });
         }
     };
-    
-    module.init = function() {
-        console.log("Load index");
         
-        var formFieldWorkspaceDir = moo.view().formField("WorkspaceDir", "Workspace Directory");
-        var formFieldAppName = moo.view().formField("AppName", "Application Name");
-        var formFieldFirstPage = moo.view().formField("FirstPage", "First Page");
-        var fieldset = moo.view().base.fieldset("fdsCreateApp", [], formFieldWorkspaceDir + formFieldAppName + formFieldFirstPage);
-        
-        var form = moo.view().base.form("frmCreateApp", [], fieldset);
-        
-        moo.server.fragment.loadFromText(form, "form");
-    }; 
-    
     return module;
 };
+
+function formFieldWorkspaceDir(moo) {
+    var label = moo.view().base.label("lblWorkspaceDir", ["for='txtWorkspaceDir'", "class='" + moo.config.getLocal("theme") + " label'"], "Workspace Directory");
+    var input = moo.view().base.input("txtWorkspaceDir", ["type='text'", "disabled", "value='C:/Temp'", "class='" + moo.config.getLocal("theme") + " input'"], "");
+    var div = moo.view().base.div("divWorkspaceDir", [], label + input);
+    
+    return div;
+}
+
+function formFieldAppName(moo) {
+    var label = moo.view().base.label("lblAppName", ["for='txtAppName'", "class='" + moo.config.getLocal("theme") + " label'"], "Application Name");
+    var input = moo.view().base.input("txtAppName", ["type='text'", "autofocus", "class='" + moo.config.getLocal("theme") + " input'"], "");
+    var div = moo.view().base.div("divAppName", [], label + input);
+    
+    return div;
+}
+
+function formFieldFirstPage(moo) {
+    var label = moo.view().base.label("lblFirstPage", ["for='txtFirstPage'", "class='" + moo.config.getLocal("theme") + " label'"], "First Page");
+    var input = moo.view().base.input("txtFirstPage", ["type='text'", "disabled", "value='index.html'", "class='" + moo.config.getLocal("theme") + " input'"], "");
+    var div = moo.view().base.div("divFirstPage", [], label + input);
+    
+    return div;
+}

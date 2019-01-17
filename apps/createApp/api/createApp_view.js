@@ -11,6 +11,7 @@ module.exports = function(moo) {
     var module = {
         base: require("../../../fapi/view")(moo)
         , formField:  function(fieldName, labelName) {
+            
             var label = module.base.label("lbl_" + fieldName, ["for='txt_" + fieldName + "'", "class='" + moo.config.getLocal("theme") + " label'"], labelName);
             var input = module.base.input("txt_" + fieldName, ["type='text'", "class='" + moo.config.getLocal("theme") + "'"], "");
             
