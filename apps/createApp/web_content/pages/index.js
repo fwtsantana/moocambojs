@@ -4,11 +4,7 @@ module.exports = function (moo) {
         init: function() {
             console.log("Load index");
             
-            var onclick = "onclick=\"run('create($util.getValue(txtWorkspaceDir), $util.getValue(txtAppName))')\"";
-            
-            var button = moo.view().base.button("btnCreateApp", [onclick], "CREATE");
-
-            var fieldset = moo.view().base.fieldset("fdsCreateApp", [], formFieldWorkspaceDir(moo) + formFieldAppName(moo) + formFieldFirstPage(moo) + button);
+            var fieldset = moo.view().base.fieldset("fdsCreateApp", [], formFieldWorkspaceDir(moo) + formFieldAppName(moo) + formFieldFirstPage(moo));
             
             var form = moo.view().base.form("frmCreateApp", [], fieldset);
             
@@ -20,6 +16,7 @@ module.exports = function (moo) {
             appName = appName.toLowerCase();
             
             var onError = function(err) {
+                console.log("ERROR: " + err);
                 moo.util().base.messages.notify(err, "error");
             };
             
@@ -31,31 +28,6 @@ module.exports = function (moo) {
                 const createFile = moo.util().base.filesystem.createFile;
                 const pathResolve = require("path");
                 const firstPage = "index";
-                
-                var htmlData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/app.html"), 'utf-8');
-                const capitalizedAppName = appName.charAt(0).toUpperCase() + appName.slice(1);
-                htmlData = htmlData.replace(/#capitalizedAppName#/g, capitalizedAppName);
-                htmlData = htmlData.replace(/#appName#/g, appName);
-                htmlData = htmlData.replace(/#firstPage#/g, firstPage);
-                createFile(workspaceDir + '/' + appName, appName + ".html", htmlData, onError, () => {
-                    console.log("Created main html file.");
-                });
-                
-                var jsData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/app.js"), 'utf-8');
-                jsData = jsData.replace(/#appName#/g, appName);
-                createFile(workspaceDir + '/' + appName, appName + ".js", jsData, onError, () => {
-                    console.log("Created main javascript file.");
-                });
-                
-                var configData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/config.json"), 'utf-8');
-                createFile(workspaceDir + '/' + appName, "config.json", configData, onError, () => {
-                    console.log("Created app config file.");
-                });
-                
-                fs.copyFile(pathResolve.resolve(__dirname, "../templates/favicon.ico"), workspaceDir + '/' + appName + '/favicon.ico', (err) => {
-                    if (err) throw err;
-                    console.log("Created application's favorite icon. (default moo icon)");
-                });
                 
                 mkdir(path, "api", onError, (path) => {
                     console.log("Created 'api' subdirectory.");
@@ -120,7 +92,32 @@ module.exports = function (moo) {
                         });
                     });
                 });
-
+                
+                var htmlData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/app.html"), 'utf-8');
+                const capitalizedAppName = appName.charAt(0).toUpperCase() + appName.slice(1);
+                htmlData = htmlData.replace(/#capitalizedAppName#/g, capitalizedAppName);
+                htmlData = htmlData.replace(/#appName#/g, appName);
+                htmlData = htmlData.replace(/#firstPage#/g, firstPage);
+                createFile(workspaceDir + '/' + appName, appName + ".html", htmlData, onError, () => {
+                    console.log("Created main html file.");
+                });
+                
+                var jsData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/app.js"), 'utf-8');
+                jsData = jsData.replace(/#appName#/g, appName);
+                createFile(workspaceDir + '/' + appName, appName + ".js", jsData, onError, () => {
+                    console.log("Created main javascript file.");
+                });
+                
+                var configData = fs.readFileSync(pathResolve.resolve(__dirname, "../templates/config.json"), 'utf-8');
+                createFile(workspaceDir + '/' + appName, "config.json", configData, onError, () => {
+                    console.log("Created app config file.");
+                });
+                
+                fs.copyFile(pathResolve.resolve(__dirname, "../templates/favicon.ico"), workspaceDir + '/' + appName + '/favicon.ico', (err) => {
+                    if (err) throw err;
+                    console.log("Created application's favorite icon. (default moo icon)");
+                });
+                
                 moo.util().base.messages.notify("Project created!", "success");
             });
         }
