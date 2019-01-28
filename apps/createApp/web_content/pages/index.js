@@ -15,10 +15,27 @@ module.exports = function (moo) {
             
             appName = appName.toLowerCase();
             
+            // Define error function
             var onError = function(err) {
                 console.log("ERROR: " + err);
                 moo.util().base.messages.notify(err, "error");
             };
+            
+            // Clear validation message
+            moo.server.fragment.loadFromText("<div></div>", "msg_panel");
+            
+            
+            //Validations ***
+            if (appName.trim().length == 0) {
+                onError("Type project name!");
+                return;
+            }
+            
+            if (fs.existsSync(workspaceDir + "/" + appName)) {
+                onError("Project already exists!");
+                return;
+            }
+            // ***
             
             var mkdir = moo.util().base.filesystem.createDir;
             
@@ -119,6 +136,8 @@ module.exports = function (moo) {
                 });
                 
                 moo.util().base.messages.notify("Project created!", "success");
+                
+                moo.server.page.reload();
             });
         }
     };
