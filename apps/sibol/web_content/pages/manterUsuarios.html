@@ -1,3 +1,27 @@
-<div id="page">
-    <h1>Manter Contas de Usuário</h1>
+<div id="page" class="manterUsuarios">
+    <h3>Manter Contas de Usuário</h3>
+        <div>
+            <select id="lstCampo">
+                <option value="txEmail">Email:</option>
+                <option value="dtCadastro">Data Cadastro:</option>
+                <option value="stUsuario">Situação:</option>
+                <option value="perfil">Perfil:</option>
+            </select>
+            <input id="txtPesquisa"
+                   oninput="run('digitouTexto(lstCampo.value, txtPesquisa.value)')"
+                   placeholder="Pesquisar usuário"/>
+        </div>
+        <div id="tabUsuarios"></div>
+    
+        <div class="divRecord">
+            <div class="actions">
+                Funções
+            </div>
+            <div class="contents">
+                <span><label>E:mail:  </label>abc@abc.com.br</span>
+                <span><label>Data de Cadastro:  </label>?</span>
+                <span><label>Situação:  </label>?</span>
+                <span><label>Perfil:  </label>?</span>
+            </div>
+        </div>
 </div>

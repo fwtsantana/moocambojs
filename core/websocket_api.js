@@ -197,9 +197,14 @@ function changeFromFragment(wsConnection, fragmentFile, uiOper, element) {
 }
 
 function changeFromText(wsConnection, text, uiOper, element) {
-    var ret = '{"uiOper":"' + uiOper + '", "uiRef":"' + element + '","uiFragment":"' + encodeURI(text) + '","path":"' + wsConnection.application.currentPage.path + '"}';
-    
-    wsConnection.send(ret);
+    try {
+        
+        var ret = '{"uiOper":"' + uiOper + '", "uiRef":"' + element + '","uiFragment":"' + encodeURI(text) + '","path":"' + wsConnection.application.currentPage.path + '"}';
+        wsConnection.send(ret);
+        
+    } catch (err) {
+        console.log("----------------\n [ERROR]: " + err + " --> function: wsConnection.onclose\n----------------");
+    }
 }
 
 function replaceELStatements(api, text, pagePath) {

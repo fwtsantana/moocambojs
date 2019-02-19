@@ -6,10 +6,7 @@ module.exports = function(moo) {
     initializeDatabaseConnectionInstances(moo);
     
     var modulo = {
-        /*
-        someService: require("../services/usuarioService")(moo, data)
-        ...
-        */
+        usuario: require("../services/usuarioService")(moo, data)
     };
     
     return modulo;

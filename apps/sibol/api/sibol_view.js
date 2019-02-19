@@ -1,9 +1,14 @@
 'use strict';
 
 module.exports = function(moo) {    
-    var modulo = {
+    var module = {
         base: require("../../../fapi/view")(moo)
+        , fichaUsuario: function(objUsuario) {
+            var divActions = module.base.div("actions::" + objUsuario._id, ["class='actions'"], "Funções");
+            
+            return divActions;
+        }
     };
     
-    return modulo;
+    return module;
 };

@@ -1,1 +1,33 @@
 /* Enter the CSS of your application here. */
+div {
+    width: 100%;
+}
+.manterUsuarios div {
+    width: 96%;
+    display: inline-flex;
+}
+
+.divRecord {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 1%;
+    border-color: gainsboro;
+}
+
+.divRecord label {
+    font-weight: 800;
+}
+
+.divRecord div {
+    display: inline-grid;
+}
+
+.divRecord .actions {
+    width: 80px;
+}
+
+.divRecord .contents {
+    background-color: gainsboro;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
