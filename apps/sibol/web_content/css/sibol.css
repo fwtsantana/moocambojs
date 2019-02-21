@@ -1,33 +1,41 @@
 /* Enter the CSS of your application here. */
-div {
-    width: 100%;
-}
-.manterUsuarios div {
-    width: 96%;
-    display: inline-flex;
+.grid {
+    
 }
 
-.divRecord {
-    border: 1px solid black;
+.grid_record {
+    border: 1px solid gainsboro;
     border-radius: 10px;
-    padding: 1%;
-    border-color: gainsboro;
+    margin-bottom: 4px;
 }
 
-.divRecord label {
+.grid_label {
     font-weight: 800;
 }
 
-.divRecord div {
-    display: inline-grid;
+.grid_actions {
+    text-decoration: none;
 }
 
-.divRecord .actions {
-    width: 80px;
-}
-
-.divRecord .contents {
+.grid_contents {
+    display: grid;
     background-color: gainsboro;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 10px;
+    padding: 4px;
+    margin: 4px;
+    overflow: hidden;
 }
+
+.grid_button {
+    border: none;
+    color: blue;
+    background-color: white;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.manterUsuarios.campos {
+    display: inline-flex;
+    margin: 4px;
+}
+

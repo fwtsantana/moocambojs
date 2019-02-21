@@ -213,13 +213,18 @@ var $server = {
         };
     }
     , run: function(jsFunction, file) {
-        ctx.currentJsFunction = jsFunction;
+        try {
+            ctx.currentJsFunction = jsFunction;
 
-        if (!file) {
-            file = ctx.currentPath;
+            if (!file) {
+                file = ctx.currentPath;
+            }
+
+            privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
+        } catch (err) {
+            console.log("----------------\n [ERROR]: " + err + " --> function: run\n----------------");
+            throw err;
         }
-
-        privatefunctions.sendRequest("js", file, "", "", privatefunctions.prepareJSFunction(jsFunction));
     }
 }
 

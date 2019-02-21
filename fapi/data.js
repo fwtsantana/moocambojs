@@ -7,27 +7,27 @@ module.exports = function(moo) {
             find: function(collection, filter, onSuccess, onError) {
                 moo.server.dataConnections.mongoDB.get().collection(collection).find(filter).toArray(function(err, docs){
                     if (err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(docs);
+                        return onSuccess(docs);
                     }
                 });
             }
             , findAttributes: function(collection, filter, attribute, onSuccess, onError) {
                 moo.server.dataConnections.mongoDB.get().collection(collection).find(filter, attribute).toArray(function(err, docs){
                     if (err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(docs);
+                        return onSuccess(docs);
                     }
                 });
             }
             , exists: function(collection, filter, onExists, onNotExists) {
                 moo.server.dataConnections.mongoDB.get().collection(collection).count(filter).then(function(count) {
                     if (count > 0) {
-                        onExists(count);
+                        return onExists(count);
                     } else {
-                        onNotExists();
+                        return onNotExists();
                     }
                 });
             }
@@ -37,9 +37,9 @@ module.exports = function(moo) {
                 coll.insertOne(objectToInsert, function(err, docs){
 
                     if(err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(docs);
+                        return onSuccess(docs);
                     }
 
                 });
@@ -52,9 +52,9 @@ module.exports = function(moo) {
 
                 moo.server.dataConnections.mongoDB.get().collection(collection).update(filter, {$set: newObject}, function(err, docs){
                     if (err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(docs);
+                        return onSuccess(docs);
                     }
                 });
             }
@@ -66,9 +66,9 @@ module.exports = function(moo) {
 
                 moo.server.dataConnections.mongoDB.get().collection(collection).updateOne(filter, {$push: newObject}, function(err, docs){
                     if (err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(docs);
+                        return onSuccess(docs);
                     }
                 });
             }

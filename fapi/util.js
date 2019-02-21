@@ -57,9 +57,9 @@ module.exports = function(moo) {
 
                 transporter.sendMail(mailOptions, function(err, info){
                     if(err){
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(info);
+                        return onSuccess(info);
                     }
                 });
             }
@@ -117,9 +117,9 @@ module.exports = function(moo) {
 
                 fs.mkdir(parentPath + "/" + dirName, {recursive: true}, (err) => {
                     if (err) {
-                        onError(err);
+                        return onError(err);
                     } else {
-                        onSuccess(parentPath + "/" + dirName);
+                        return onSuccess(parentPath + "/" + dirName);
                     }
                 });
             }

@@ -6,7 +6,7 @@ module.exports = function (moo) {
             console.log("Index loaded!");
         }
         , manterUsuarios: function() {
-            moo.server.page.load("manterUsuarios", "page");
+            moo.server.page.load("usuarios/manterUsuarios", "page");
         }
         , manterTiposBoleto: function() {
             moo.server.page.load("manterTiposBoleto", "page");
