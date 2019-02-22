@@ -54,15 +54,20 @@ var privatefunctions = {
             if (websocket.readyState != 1) {
                 console.info("Unable to connect!");
             }
-
             return false;
         }
-        
         
         return true;
     }
     , updateElem: function (elem, uiFragment) {
-        elem.parentNode.replaceChild(privatefunctions.text2dom(uiFragment), elem);
+        var newElemNode = privatefunctions.text2dom(uiFragment);
+        var resultElem = elem.parentNode.replaceChild(newElemNode, elem);
+        
+        console.log(newElemNode.querySelectorAll("*[autofocus]"));
+        var autoFocusElem = newElemNode.querySelectorAll("*[autofocus]")[0];
+        if (autoFocusElem) {
+            autoFocusElem.focus();    
+        }
     }
     , validateUIReference: function (uiRef) {
         //Verifying element existence
@@ -96,7 +101,7 @@ var privatefunctions = {
         } else if (obj.uiOper === "replace") {
             privatefunctions.updateElem(elem, uiFragment);
         }
-        document.activeElement.blur();
+        //document.activeElement.blur();
     }
     , text2dom: function(text) {
         var tmp = document.createElement("div");
@@ -132,6 +137,7 @@ var privatefunctions = {
         dados = JSON.stringify(objEnviar);
         
         wsocket.send(dados);
+        
     }
     , validateArgumentsListSize: function () {
         if (args.length >= 3) {
@@ -204,7 +210,7 @@ var $server = {
 
         // Listen for connection errors
         wsocket.onerror = function (e) {
-            console.info("Error - connecting failure");
+            console.info("Error - connecting failure. " + e);
         };
 
         // Listen for new messages arriving at the client
@@ -226,8 +232,18 @@ var $server = {
             throw err;
         }
     }
+    , redirect: function(page, elemId) {
+        if (!page) {
+            page = ctx.currentPath;
+        }
+        if (!elemId) {
+            elemId = "page";
+        }
+        privatefunctions.sendRequest("html", page, "replace", elemId, "");
+    }
 }
 
 //Main functions aliases
 var run = $server.run;
 var connect = $server.connect;
+var redirect = $server.redirect;

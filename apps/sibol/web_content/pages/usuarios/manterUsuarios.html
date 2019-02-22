@@ -1,6 +1,6 @@
-<div id="page" class="manterUsuarios" onfocus="alert('ok')">
+<div id="page">
     <h3>Manter Contas de Usuário</h3>
-    <div class="manterUsuarios campos">
+    <div class="manterUsuarios">
         <select id="lstCampo" onchange="run('mudouCampo()')">
             <option value="txEmail">Email:</option>
             <option value="dtCadastro">Data Cadastro:</option>
@@ -9,9 +9,9 @@
         </select>
         <input type="search" id="txtPesquisa"
                oninput="run('digitouTexto(lstCampo.value, txtPesquisa.value)')"
-               onblur="if (document.activeElement === body) { txtPesquisa.focus();}"
-               placeholder="Pesquisar usuário"
-               autofocus/>
+               onblur="if (document.activeElement === body && document.getElementById('txtPesquisa')) { txtPesquisa.focus();}"
+               placeholder="Pesquisar usuário" autofocus />
+        <button onclick="redirect('usuarios/cadastrarNovoUsuario')">Cadastrar</button>
     </div>
     <div id="tabUsuarios"></div>
 </div>
