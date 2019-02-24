@@ -2,10 +2,18 @@
     <h3>Cadastrar Novo Usuário</h3>
     
     <div class="cadastrarNovoUsuario">
-        <label for="txEmail">Email: </label><input id="txtEmail" type="email" placeholder="Informe o email" autofocus/>
-        <label for="dtCadastro">Data Cadastro: </label><input id="datCadastro" type="datetime" placeholder="Informe a data de cadastro"/>
-        <label for="stUsuario">Situação: </label><input id="sitUsuario" type="email" placeholder="Informe o email"/>
-        <label for="perfil">Perfil: </label><input id="txtPerfil" placeholder="Informe o email"/>  
+        <label for="txtEmail">Email: </label><input id="txtEmail" type="email" placeholder="Informe o email" autofocus><label for="txtSenha">Senha: </label><input id="txtSenha" type="password" placeholder="Informe a senha"> 
+        <label>Perfil: </label>
+        <div>
+            <input type="radio" id="admin" name="perfil" value="admin" checked>Administrador
+            <input type="radio" id="gestor" name="perfil" value="gestor">Gestor
+            <input type="radio" id="usuario" name="perfil" value="usuario">Usuário
+        </div>
+        
     </div>
-    <button>Confirmar</button><button id="btnLimpar" onclick="redirect()">Limpar</button>
+    <button id="btnConfirmar"
+            onclick="run('cadastrarNovoUsuario(txtEmail.value, txtSenha.value, \'admin\')')"
+            onblur="$util.emptyDiv('err')">Confirmar</button>
+    <button id="btnLimpar" onclick="refresh()">Limpar</button>
+    <div id="err"></div>
 </div>

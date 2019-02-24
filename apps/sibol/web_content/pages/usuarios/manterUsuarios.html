@@ -9,7 +9,7 @@
         </select>
         <input type="search" id="txtPesquisa"
                oninput="run('digitouTexto(lstCampo.value, txtPesquisa.value)')"
-               onblur="if (document.activeElement === body && document.getElementById('txtPesquisa')) { txtPesquisa.focus();}"
+               onblur="if (!document.hasFocus() && document.getElementById('txtPesquisa')) { txtPesquisa.focus();console.log(document.hasFocus());}"
                placeholder="Pesquisar usuário" autofocus />
         <button onclick="redirect('usuarios/cadastrarNovoUsuario')">Cadastrar</button>
     </div>

@@ -22,12 +22,12 @@ var $util = {
     , getSessionArg: function(index) {
         return sessionStorage.getItem("arg" + index);
     }
-    , emptyDiv: function(elem) {
-        var e = document.getElementById(elem);
+    , emptyDiv: function(elemId) {
+        var e = document.getElementById(elemId);
 
         if (e) {
             var newDiv = document.createElement("div");
-            newDiv.setAttribute("id", elem);
+            newDiv.setAttribute("id", elemId);
 
             e.parentNode.replaceChild(newDiv, e);
         }

@@ -40,7 +40,7 @@ button:hover {
 }
 
 .manterUsuarios {
-    display: inline-flex;
+    display: inline-block;
 }
 
 .manterUsuarios #txtPesquisa {

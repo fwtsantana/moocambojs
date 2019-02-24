@@ -63,7 +63,6 @@ var privatefunctions = {
         var newElemNode = privatefunctions.text2dom(uiFragment);
         var resultElem = elem.parentNode.replaceChild(newElemNode, elem);
         
-        console.log(newElemNode.querySelectorAll("*[autofocus]"));
         var autoFocusElem = newElemNode.querySelectorAll("*[autofocus]")[0];
         if (autoFocusElem) {
             autoFocusElem.focus();    
@@ -239,7 +238,12 @@ var $server = {
         if (!elemId) {
             elemId = "page";
         }
+        
         privatefunctions.sendRequest("html", page, "replace", elemId, "");
+    }
+    , refresh: function() {
+        
+        return redirect();
     }
 }
 
@@ -247,3 +251,4 @@ var $server = {
 var run = $server.run;
 var connect = $server.connect;
 var redirect = $server.redirect;
+var refresh = $server.refresh;
