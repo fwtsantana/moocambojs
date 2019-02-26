@@ -69,11 +69,11 @@ module.exports = function(moo) {
                 var newDataArray = [];
 
                 for(var i in simpleArray) {
-                    var registro = [];
+                    var record = [];
                     for(var j in simpleArray[i]) {
-                        registro.push({value:simpleArray[i][j]});
+                        record.push({value:simpleArray[i][j]});
                     }
-                    newDataArray.push(registro);
+                    newDataArray.push(record);
                 }
                 return newDataArray;
             }

@@ -19,6 +19,15 @@ var $util = {
 
         return value;
     }
+    , getCheckedInputRadio(elemName) {
+        var checked = undefined;
+        document.getElementsByName(elemName).forEach(function(item){
+            if(item.checked){
+                checked = item;
+            }
+        });
+        return checked;
+    }
     , getSessionArg: function(index) {
         return sessionStorage.getItem("arg" + index);
     }

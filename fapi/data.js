@@ -13,6 +13,15 @@ module.exports = function(moo) {
                     }
                 });
             }
+            , findOne: function(collection, filter, onSuccess, onError) {
+                moo.server.dataConnections.mongoDB.get().collection(collection).findOne(filter, function(err, result) {
+                   if (err) {
+                       return onError(err);
+                   } else {
+                       return onSuccess(result);
+                   }
+                });
+            }
             , findAttributes: function(collection, filter, attribute, onSuccess, onError) {
                 moo.server.dataConnections.mongoDB.get().collection(collection).find(filter, attribute).toArray(function(err, docs){
                     if (err) {

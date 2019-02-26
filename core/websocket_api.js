@@ -82,6 +82,10 @@ module.exports = function(wsConnection) {
                             });
                         }
                     }
+                    , fromStringToHex: function(id) {
+                        var mongo = require('mongodb');
+                        return new mongo.ObjectID(id);
+                    }
                     , close: function() {
                         if (app.dataConnections.mongoDB.instance) {
                             app.dataConnections.mongoDB.instance.close();

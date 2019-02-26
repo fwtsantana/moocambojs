@@ -5,13 +5,14 @@
             <option value="txEmail">Email:</option>
             <option value="dtCadastro">Data Cadastro:</option>
             <option value="stUsuario">Situação:</option>
-            <option value="perfil">Perfil:</option>
+            <option value="txPerfil">Perfil:</option>
         </select>
         <input type="search" id="txtPesquisa"
-               oninput="run('digitouTexto(lstCampo.value, txtPesquisa.value)')"
-               onblur="if (!document.hasFocus() && document.getElementById('txtPesquisa')) { txtPesquisa.focus();console.log(document.hasFocus());}"
+               oninput="$util.emptyDiv('err');run('digitouTexto(lstCampo.value, txtPesquisa.value)')"
+               onblur="$util.emptyDiv('err');if (!document.hasFocus() && document.getElementById('txtPesquisa')) { txtPesquisa.focus()}"
                placeholder="Pesquisar usuário" autofocus />
         <button onclick="redirect('usuarios/cadastrarNovoUsuario')">Cadastrar</button>
     </div>
     <div id="tabUsuarios"></div>
+    <div id="err"></div>
 </div>

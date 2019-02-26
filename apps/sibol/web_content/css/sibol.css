@@ -54,3 +54,7 @@ button:hover {
 .cadastrarNovoUsuario div {
     display: inline-flex;
 }
+
+.alterarUsuario {
+    display: inline-block;
+}

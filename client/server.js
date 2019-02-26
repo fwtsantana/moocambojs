@@ -63,7 +63,8 @@ var privatefunctions = {
         var newElemNode = privatefunctions.text2dom(uiFragment);
         var resultElem = elem.parentNode.replaceChild(newElemNode, elem);
         
-        var autoFocusElem = newElemNode.querySelectorAll("*[autofocus]")[0];
+        var autoFocusElem = document.querySelectorAll("*[autofocus]")[0];
+        
         if (autoFocusElem) {
             autoFocusElem.focus();    
         }
@@ -231,7 +232,7 @@ var $server = {
             throw err;
         }
     }
-    , redirect: function(page, elemId) {
+    , redirect: function(page, elemId, jsFunction) {
         if (!page) {
             page = ctx.currentPath;
         }
@@ -239,7 +240,7 @@ var $server = {
             elemId = "page";
         }
         
-        privatefunctions.sendRequest("html", page, "replace", elemId, "");
+        privatefunctions.sendRequest("html", page, "replace", elemId, jsFunction);
     }
     , refresh: function() {
         
