@@ -13,7 +13,6 @@ module.exports = function(moo) {
                 + dataHora.getMinutes().toString().padStart(2, '0') + ":"
                 + dataHora.getSeconds().toString().padStart(2, '0');
             
-            console.log(dataHora);
             return dataHora;
         }
     };

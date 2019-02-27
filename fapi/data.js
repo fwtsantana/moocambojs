@@ -53,13 +53,8 @@ module.exports = function(moo) {
 
                 });
             }
-            , updateField: function(collection, filter, fieldName, newValue, onSuccess, onError) {
-
-                var newObject = {};
-
-                newObject[fieldName] = newValue;
-
-                moo.server.dataConnections.mongoDB.get().collection(collection).update(filter, {$set: newObject}, function(err, docs){
+            , updateObject: function(collection, filter, object, onSuccess, onError) {
+                moo.server.dataConnections.mongoDB.get().collection(collection).update(filter, {$set: object}, function(err, docs){
                     if (err) {
                         return onError(err);
                     } else {

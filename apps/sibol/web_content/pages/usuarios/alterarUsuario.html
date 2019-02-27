@@ -3,19 +3,23 @@
     
     <div class="alterarUsuario">
         <div><label for="txtEmail">Email: </label><span id="txEmail"></span></div>
-        <div><label for="txtEmail">Senha: </label><input id="txtSenha" type="password" placeholder="Informe a senha"></div>
+        <div><label for="txtEmail">Senha: </label><input id="txtSenha" maxlength="8" type="password" placeholder="Informe a senha"></div>
         <div>Perfil:</div>
-        <div id="perfil">
+        <div id="perfil" class="radiogroup">
             <div><input type="radio" id="admin" name="perfil" value="admin">Administrador</div>
             <div><input type="radio" id="gestor" name="perfil" value="gestor">Gestor</div>
             <div><input type="radio" id="usuario" name="perfil" value="usuario">Usuário</div>
         </div>
+        <div>Situação:</div>
+        <div id="situacao" class="radiogroup">
+            <div><input type="radio" id="ativo" name="situacao" value="ativo">Ativo</div>
+            <div><input type="radio" id="inativo" name="situacao" value="inativo">Inativo</div>
+        </div>
     </div>
     <div>
         <button id="btnConfirmar"
-            onclick="run('alterarUsuario(txtSenha.value, $util.getCheckedInputRadio(\'perfil\').value)')"
+            onclick="run('alterarUsuario(txtSenha.value, $util.getCheckedInputRadio(\'perfil\').value, $util.getCheckedInputRadio(\'situacao\').value)')"
             onblur="$util.emptyDiv('err')">Confirmar</button>
-        <button id="btnLimpar" onclick="refresh()">Limpar</button>
         <button id="btnVoltar" onclick="redirect('usuarios/manterUsuarios')">Voltar</button>
     </div>
     <div id="err"></div>
