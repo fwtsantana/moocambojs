@@ -55,6 +55,6 @@ button:hover {
     display: inline-flex;
 }
 
-.alterarUsuario {
-    display: inline-block;
+.alterarUsuario #perfil {
+    display: inline-flex;
 }

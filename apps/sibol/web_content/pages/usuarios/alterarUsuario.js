@@ -17,6 +17,10 @@ module.exports = function (moo) {
                 var checked = moo.view().base.input(objUsuario.txPerfil, ["type='radio'", "name='perfil'", "value='" + objUsuario.txPerfil + "'", "checked"], "");
                 moo.server.fragment.loadFromText(checked, objUsuario.txPerfil);
                 
+                var senha = moo.view().base.input("txtSenha",["type='password'", "placeholder='Informe a senha'", "value='" + objUsuario.txSenha + "'"],"");
+                console.log(senha);
+                moo.server.fragment.loadFromText(senha, "txtSenha");
+                
             }, function(err) {
                 moo.server.page.load("usuarios/manterUsuarios", "page");
             });
