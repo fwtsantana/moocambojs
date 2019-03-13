@@ -37,25 +37,25 @@ module.exports = function(moo) {
             return module.div(elemId, ["class='field-validator'"], validationMsg);
         }
         , json: {
-            select: function(elemId, dataArray, placeholder) {
+            select: function(elemId, dataArray, placeholder, attributes) {
                 if (dataArray == null) return this.select(elemId, {}, "");
                 
-                var content = "";
+                var attr = [];
+                if (attributes) {
+                    attr = attributes;
+                }
                 
+                var content = "";
                 if (placeholder) {
                     content += "<option value='' disabled selected>" + placeholder + "</option>";
                 }
                 
                 for(var i = 0; i < dataArray.length; i++){
-                    
                     var obj = dataArray[i];
-                    
-                    console.info(obj);
-                    
                     content += "<option value='" + obj[Object.keys(obj)[0]] + "'>" + obj[Object.keys(obj)[1]] + "</option>";
                 }
-
-                return module.select(elemId, ["required"], content);
+                
+                return module.select(elemId, attr, content);
             }
         }
         , messages: {

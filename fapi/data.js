@@ -4,8 +4,11 @@ module.exports = function(moo) {
     
     var module = {
         mongo: {
-            find: function(collection, filter, onSuccess, onError) {
-                moo.server.dataConnections.mongoDB.get().collection(collection).find(filter).toArray(function(err, docs){
+            getCollection: function(collection) {
+                return moo.server.dataConnections.mongoDB.get().collection(collection);
+            }
+            , find: function(collection, filter, onSuccess, onError) {
+                this.getCollection(collection).find(filter).toArray(function(err, docs){
                     if (err) {
                         return onError(err);
                     } else {
@@ -14,7 +17,7 @@ module.exports = function(moo) {
                 });
             }
             , findOne: function(collection, filter, onSuccess, onError) {
-                moo.server.dataConnections.mongoDB.get().collection(collection).findOne(filter, function(err, result) {
+                this.getCollection(collection).findOne(filter, function(err, result) {
                    if (err) {
                        return onError(err);
                    } else {
@@ -23,7 +26,7 @@ module.exports = function(moo) {
                 });
             }
             , findAttributes: function(collection, filter, attribute, onSuccess, onError) {
-                moo.server.dataConnections.mongoDB.get().collection(collection).find(filter, attribute).toArray(function(err, docs){
+                this.getCollection(collection).find(filter, attribute).toArray(function(err, docs){
                     if (err) {
                         return onError(err);
                     } else {
@@ -32,7 +35,7 @@ module.exports = function(moo) {
                 });
             }
             , exists: function(collection, filter, onExists, onNotExists) {
-                moo.server.dataConnections.mongoDB.get().collection(collection).count(filter).then(function(count) {
+                this.getCollection(collection).count(filter).then(function(count) {
                     if (count > 0) {
                         return onExists(count);
                     } else {
@@ -41,9 +44,7 @@ module.exports = function(moo) {
                 });
             }
             , insertOne: function(collection, objectToInsert, onSuccess, onError) {
-                var coll = moo.server.dataConnections.mongoDB.get().collection(collection);
-
-                coll.insertOne(objectToInsert, function(err, docs){
+                this.getCollection(collection).insertOne(objectToInsert, function(err, docs){
 
                     if(err) {
                         return onError(err);
@@ -54,7 +55,7 @@ module.exports = function(moo) {
                 });
             }
             , updateObject: function(collection, filter, object, onSuccess, onError) {
-                moo.server.dataConnections.mongoDB.get().collection(collection).update(filter, {$set: object}, function(err, docs){
+                this.getCollection(collection).update(filter, {$set: object}, function(err, docs){
                     if (err) {
                         return onError(err);
                     } else {
@@ -68,7 +69,30 @@ module.exports = function(moo) {
 
                 newObject[arrayName] = newValue;
 
-                moo.server.dataConnections.mongoDB.get().collection(collection).updateOne(filter, {$push: newObject}, function(err, docs){
+                this.getCollection(collection).updateOne(filter, {$push: newObject}, function(err, docs){
+                    if (err) {
+                        return onError(err);
+                    } else {
+                        return onSuccess(docs);
+                    }
+                });
+            }
+            , deleteOne: function(collection, filter, onSuccess, onError) {
+                this.getCollection(collection).deleteOne(filter
+                    , function(err, res) {
+                        if (err) {
+                            return onError(err);
+                        } else {
+                            return onSuccess(res.deletedCount);
+                        }
+                    }
+                );
+            }
+            , listDocumentsStartingWith: function(collection, field, startsWith, onSuccess, onError) {
+                var filter = {}
+                filter[field] = { $regex: "^" + startsWith};
+
+                moo.server.dataConnections.mongoDB.get().collection(collection).find(filter).toArray(function(err, docs) {
                     if (err) {
                         return onError(err);
                     } else {

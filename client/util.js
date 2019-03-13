@@ -116,4 +116,16 @@ var $util = {
             }
         }
     }
+    , string: {
+        onlyAlphaNumeric: function(event) {
+            var key = event.keyCode;
+            
+            var isLowerAlpha = (key >= 97 && key <= 122);
+            var isUpperAlpha = (key >= 65 && key <= 90);
+            var isNumber = (key >= 48 && key <= 57);
+            var isTab = (key == 9);
+            
+            return (isLowerAlpha || isUpperAlpha || isNumber || isTab);
+        }
+    }
 }

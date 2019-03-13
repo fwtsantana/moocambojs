@@ -18,7 +18,7 @@ server.listen(config.port, config.host, function (wsConnection) {
             return loadModule(moduleName, wsConnection.api);
         } catch (err) {
             console.log("----------------\n [ERROR]: " + err + " --> function: wsConnection.loadModule\n----------------");
-            throw err;
+            return undefined;
         }
     }
     
@@ -78,11 +78,12 @@ var loadApplication = function(wsConnection, incomingData) {
 
 function loadModule(moduleName, api) {
     try {
+        api.server.logging.log("Loading module " + moduleName);
+        
         uncache(moduleName);
-
+        
         var module = null;
         if (api) {
-            api.server.logging.log("Loading module " + moduleName);
             module = require(moduleName)(api);
         } else {
             module = require(moduleName);
@@ -93,7 +94,8 @@ function loadModule(moduleName, api) {
         return module;
     } catch (err) {
         console.log("----------------\n [ERROR]: " + err + " --> function: loadModule\n----------------");
-        throw err;
+        //throw err;
+        return undefined;
     }
 }
 
