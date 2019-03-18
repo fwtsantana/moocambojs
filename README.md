@@ -13,7 +13,7 @@ In order to create a new web application, after clone or download the project, o
 - <b>web_content/pages</b>: put the pages of the app here.
 - <b>config.json</b>: configuration file for the app.
 - <b>\<appname\>.html</b>: page used for connection with websocket protocol (do not change it, unless you're going to use complementary technologies like Angular, Bootstrap etc)
-- <b>\<appname\>.js</b>: code-behind used with the page above. (do not change it!)
+- <b>\<appname\>.js</b>: code-behind used with the page above (do not change it!)
 
 The first page created is placed in "web_content/pages/index.html". You can change it to do whatever you need the page to do, or navigate to another pages in "web_content/pages".
 Be sure that every page has its corresponding javascript code-behind.
@@ -21,4 +21,22 @@ You may call the following functions within the pages:
 - <b>connect</b>: connects to websocket protocol. Although you can use it, it is not needed, because it's used only once.
 - <b>run</b>: call a javascript function defined in the corresponding code-behind.
 - <b>redirect</b>: redirects to another page.
-- <b>refresh</b>: redirects to the same page (used to "refresh" the page).
+- <b>refresh</b>: redirects to the same page (used to "refresh" the page)
+
+
+Every javascript code-behind uses the "moo" parameter as a context/session variable, as shown below:
+
+```
+  module.exports = function (moo) {
+    var module = {
+        init: function() {
+        }
+    }
+    return module;
+  };
+  
+```
+
+The "moo" context/session variable brings a lot of global functionalities, as defined in "core/websocket_api.js". In fact, it is responsable for all the "magic" in the framework!
+
+The "init()" function does the initial work when opening the page.
