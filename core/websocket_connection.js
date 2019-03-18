@@ -226,12 +226,6 @@ exports.listen = function (port, host, connectionHandler) {
     var app = "";
     var hasFinalSlash = false;
     
-    var options = {
-        pfx: fs.readFileSync('./ssl/moocambo.pfx'),
-        passphrase: '12345678'
-    };
-    
-//    var srv = https.createServer(options, function (req, res) {
     var srv = http.createServer(function (req, res) {
         
         var hasPeriod = (req.url.split('.').length > 1); 
